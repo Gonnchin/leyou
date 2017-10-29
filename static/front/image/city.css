@@ -1,0 +1,20 @@
+@charset "utf-8";
+.mtop{
+    padding: 50px 0 30px;overflow: hidden;
+}
+.mbody{
+    height: 800px;  background-color: rgba(255,255,255,.5);
+}
+.city-hd,.city-info{
+    background-color: rgba(0,0,0,.5);color: rgb(255,255,255);
+}
+.city-hd{
+    width: 260px;
+    padding: 20px;
+}
+.city-hd h1{font-weight: normal;padding: 0 0 5px;font-size: 39px;}
+.city-py{padding:5px 0 20px;font-size: 22px;}
+.city-hd .city-sg{padding:5px 0 20px;font-size: 22px;}
+.city-info{
+    width: 640px;padding: 20px 10px;line-height: 20px;font-size: 14px;
+}

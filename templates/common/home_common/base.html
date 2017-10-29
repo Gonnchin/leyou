@@ -1,0 +1,86 @@
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {# 标题部分 #}
+        {% block title%}{% endblock title %}
+    </title>
+    <link href="{% static 'favicon.ico' %}" rel="SHORTCUT ICON" />
+
+    {# 顶部js部分 #}
+    {% block head_js %}{% endblock head_js %}
+
+</head>
+
+
+<body>
+
+<header class="clearfix">
+    <div class="le-hd-wrapper clearfix">
+        <h1 class="logo"></h1>
+        <div class="le-hd-so">
+            <form class="so-form clearfix" name="so-form" method="get" action="###">
+                <input name="so" class="so-word" type="text"
+                       placeholder="搜索感兴趣的内容"
+                       maxlength="256" autocomplete="off">
+                <button type="submit" class="so-btn"></button>
+            </form>
+        </div>
+        <div class="le-hd-user">
+            <div class="u-pannel">
+                <div class="unlogin">
+                    <a class="" href="{% url 'users:index' %}">用户中心</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="le-header-nav">
+        <div class="le-hd-wrapper clearfix">
+            <ul class="le-nav clearfix">
+                <li class="le-m"><h3><a href="{% url 'home:index' %}">首页</a></h3></li>
+                <li class="le-m"><h3><a href="{% url 'home:destination' %}">目的地攻略</a></h3></li>
+                <li class="le-m"><span>&nbsp;|&nbsp;</span></li>
+                <li class="le-m"><h3><a href="{% url 'home:photography' %}">摄影</a></h3></li>
+                <li class="le-m"><h3><a href="{% url 'home:travelnotes' %}">游记</a></h3></li>
+                <li class="le-m"><h3><a href="{% url 'home:tourist' %}">旅行家</a></h3></li>
+                <li class="le-m"><span>&nbsp;|&nbsp;</span></li>
+                <li class="le-m"><h3><a href="{% url 'home:info' %}">资讯</a></h3></li>
+                <li class="le-m"><h3><a href="{% url 'home:travel' %}">旅行社</a></h3></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+{# 网页主体部分内容 #}
+{% block body %}{% endblock body %}
+
+
+{# 网页底部 #}
+{% block footer %}
+<!--脚底部分-->
+<div class="le-footer clearfix">
+    <div class="le-ft-wrapper">
+        <div class="ft-nav">
+            &nbsp;<a href="#">用户协议</a>&nbsp;
+            &nbsp;<a href="#">联系我们</a>&nbsp;
+            &nbsp;<a href="#">友情链接</a>&nbsp;
+        </div>
+        <div class="le-copyright">
+            版权所有 翻版必究 &copy;2016 lelvyou.com
+        </div>
+    </div>
+</div>
+{% endblock footer %}
+
+
+{# 底部js #}
+{% block footer_js %}
+{% endblock footer_js %}
+
+</body>
+</html>

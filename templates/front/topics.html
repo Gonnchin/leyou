@@ -1,0 +1,154 @@
+
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>十大园林推荐_中国十大园林全景,虚拟旅游_十大园林有哪些,好玩吗_乐旅网</title>
+    <meta name="keywords" content="十大园林,十大园林有哪些,十大园林好玩吗">
+    <meta name="description" content="中国十大园林您去过吗？想知道有哪些吗？乐旅网为您推荐拙政园,留园,个园等十大园林全景,让您足不出户就可以游遍十大园林!还为您提供十大园林的介绍,地址,周边看点等信息，让您网上虚拟游十大园林，体验穿越的感觉，您想玩吗？" />
+    <link rel="stylesheet" href="{% static 'front/css/base.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'front/css/mou_tem.css' %}" type="text/css" />
+    <style>
+        body{width:100%;background:url("{% static cag.background %}") no-repeat top center #d0e7f5;font-family:微软雅黑;}
+        .le-hd{
+            height: 67px;
+        }
+        .logo{
+            height: 40px;
+            width: 130px;
+            float: left;
+            margin: 13px 0 14px;
+            background: url("{% static 'logo.png' %}") no-repeat 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="le-hd">
+    <a href="{% url 'home:index' %}"><h1 class="logo"></h1></a>
+</div>
+
+<div class="mou_intro">
+    <p>园林美在它那与大自然合而为一的精妙布局，美在它那如同山水画一般的独特意境，美在它那渗透着深厚文化底蕴的一草一木，一砖一石。漫步在园林中，处处充满着诗情画意，时时是洋溢着浓墨温情，来到这里，就仿佛走进人间天堂。</p>
+</div>
+
+<div class="mou_main">
+    <span class="look_mou"></span>
+
+    <div class="mou_main_one clear_fl">
+        <a class="fl tu" href="#"/><img src="{% static hotview.0.view_image %}" alt="{{ hotview.0.view_name }}" /></a>
+        <div class="fl mou_one_right">
+            <em class="text_one"><a herf="#">{{ hotview.0.view_name }}</a></em>
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.0 %}
+        </div>
+    </div>
+
+    <div class="mou_main_two clear_fl">
+        <div class="mou_main_wrap fl">
+            <em class="mou_one"><a herf="#">{{ hotview.1.view_name }}</a></em>
+            <a class="tu" href="#"/><img src="{% static hotview.1.view_image %}" alt="{{ hotview.1.view_name }}" /></a>
+            <div class="mou_one_wrap">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.1 %}
+            </div>
+        </div>
+        <div class="mou_main_wrap fl" style="padding-left:30px;padding-right:0;background:none;">
+            <em class="mou_two"><a herf="#">{{ hotview.2.view_name }}</a> </em>
+            <a class="tu" href="#"><img src="{% static hotview.2.view_image %}" alt="{{ hotview.2.view_name }}" /></a>
+            <div class="mou_one_wrap">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.2 %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mou_main_extra clear_fl">
+        <div class="fl mou_one_left">
+            <em class="mou_three"><a href="#">{{ hotview.3.view_name }}</a></em>
+            {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.3 %}
+        </div>
+        <a class="fl tu" style="margin-right:0;" href="#"><img src="{% static hotview.3.view_image %}" alt="{{ hotview.3.view_name }}" /></a>
+    </div>
+
+    <div class="mou_nor_wrap clear_fl">
+        <div class="mou_nor_wrap_one fl">
+            <em class="mou_four"><a href="#">{{ hotview.4.view_name }}</a></em>
+            <a class="tu" href="#"><img src="{% static hotview.4.view_image %}" alt="{{ hotview.4.view_name }}" /></a>
+            <div class="mou_nor_one">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.4 %}
+            </div>
+        </div>
+
+        <div class="mou_nor_wrap_one fl">
+            <em class="mou_five"><a href="#">{{ hotview.5.view_name }}</a></em>
+            <a class="tu" href="#"><img src="{% static hotview.5.view_image %}" alt="{{ hotview.5.view_name }}" /></a>
+            <div class="mou_nor_one">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.5 %}
+            </div>
+        </div>
+
+        <div class="mou_nor_wrap_one fl">
+            <em class="mou_six"><a href="#">{{ hotview.6.view_name }}</a></em>
+            <a class="tu" href="#"><img src="{% static hotview.6.view_image %}" alt="{{ hotview.6.view_name }}" /></a>>
+            <div class="mou_nor_one">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.6 %}
+            </div>
+        </div>
+    </div>
+
+    <div class="mou_nor_wrap clear_fl no_bg">
+        <div class="mou_nor_wrap_one fl">
+            <em class="mou_seven"><a href="#">{{ hotview.7.view_name }}</a></em>
+            <a class="tu" href="#"><img src="{% static hotview.7.view_image %}" alt="{{ hotview.7.view_name }}" /></a>
+            <div class="mou_nor_one">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.7 %}
+            </div>
+        </div>
+
+        <div class="mou_nor_wrap_one fl">
+            <em class="mou_egit"><a href="#">{{ hotview.8.view_name }}</a></em>
+            <a class="tu" href="#"><img src="{% static hotview.8.view_image %}" alt="{{ hotview.8.view_name }}" /></a>
+            <div class="mou_nor_one clear_float">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.8 %}
+            </div>
+        </div>
+
+        <div class="mou_nor_wrap_one fl">
+            <em class="mou_nine"><a href="#">{{ hotview.9.view_name }}</a></em>
+            <a class="tu" href="#"><img src="{% static hotview.9.view_image %}" alt="{{ hotview.9.view_name }}" /></a>
+            <div class="mou_nor_one">
+                {# 景点具体内容 #}
+                {% include 'common/front_common/topics_include.html' with view=hotview.9 %}
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- 主体内容 end -->
+
+<div id="footer">
+    <div class="footer_main">
+        <div class="footer_main_left fl">
+            <ul class="index_nav">
+                <li><a href="#">首页</a><span>|</span></li>
+                <li><a href="#">资讯</a><span>|</span></li>
+                <li><a href="#">网站地图</a><span>|</span></li>
+                <li><a href="#">友情链接</a><span>|</span></li>
+            </ul>
+            <p>Copyright &copy; 2017 乐旅网</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

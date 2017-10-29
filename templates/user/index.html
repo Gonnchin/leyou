@@ -1,0 +1,75 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}乐旅网-用户中心{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+<div class="le-wrap">
+
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop"></div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+
+{# 用户中心左边公共部分 #}
+{% include 'common/usercommon/left_include.html' %}
+
+<div class="ub-right">
+
+    <div class="page">
+        <div class="ptitle"><span>首页 </span></div>
+
+        <div class="pbody">
+            <div class="welinfo">
+                <b>{{ user_name }}欢迎登录乐旅网</b>
+            </div>
+
+            <div class="nav-bd">
+                <h3 class="h3fn">快捷功能</h3>
+                <div class="fns">
+                    <a class="fn" href="{% url 'users:travnotes' %}">发布游记</a>
+                    <a class="fn" href="{% url 'users:ualbum' %}">上传照片</a>
+                    <a class="fn" href="{% url 'users:pwdmanage' %}">密码管理</a>
+                    <a class="fn" href="{% url 'users:uinfo' %}">个人信息</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+
+
+</div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+
+
+

@@ -1,0 +1,95 @@
+{# 继承父模板 #}
+{% extends 'common/front_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}相册-乐旅网{% endblock title %}
+
+{# 顶部js部分 #}
+{% block head_js %}
+
+<link rel="stylesheet" href="{% static 'front/css/g.css' %}">
+<link rel="stylesheet" href="/public/SimpleSlide/simple.slide.css" type="text/css">
+
+{% endblock head_js %}
+
+
+{# 网页主体头部 #}
+{% block body_header %}{% endblock body_header %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+
+<div class="mhtml">
+<div class="le-wrapper">
+    <div class="photoContainer">
+        <div class="photoHd">
+            <h1 class="pH1tn">{$photos.title}</h1>
+            <div class="pInfo">
+                <div class="ntFrom">
+                    <span>作者:</span>
+                    <a href="{:U('Home/User/index',null,null)}?np={$photos.user.open}" class="u-link">
+                        {$photos.user.nick}
+                    </a>
+                </div>
+                <div class="ntPubtime">
+                    <span>时间:</span>
+                    <span>{$photos.create_time|date='Y-m-d',###}</span>
+                </div>
+                <div class="ntPubtime">
+                    <span>浏览:</span>
+                    <span>{$photos.visted}</span>
+                </div>
+            </div>
+        </div>
+        <div class="photoBd">
+            <div class="photoRlist fl">
+                <h3 class="ph3tn">图片列表</h3>
+                <div class="plist">
+                    <div class="lPhotos">
+                    <foreach name="plist" item="p">
+                        <a class="lpic" i="/{$p.img.path}{$p.img.name}" href="#link"><img src="/{$p.img.path}{$p.img.thumb}" /></a>
+                    </foreach>
+                    </div>
+                    <div class="sPage">
+                        {$page}
+                    </div>
+                </div>
+            </div>
+            <div class="photoSide fr">
+                <h3 class="ph3tn">精彩推荐</h3>
+                <div class="pslist">
+                    <ul class="imgliBox">
+                        <foreach name="photos.splist" item="sp">
+                            <li>
+                                <a href="{:U('Home/Photos/Album',null,null)}?np={$sp.open}">
+                                    <img src="/{$sp.img.path}{$sp.img.thumb}">
+                                    <span>{$sp.title}</span>
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+                <div class="pMore">
+                    <div class="pmp"> 
+                        <a href="{:U('Home/Photos/index')}" class="vlink">查看更多相册</a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock body %}
+
+
+{# 底部js #}
+{% block footer_js %}
+<script type="text/javascript" src="/public/SimpleSlide/183.js"></script>
+<script type="text/javascript" src="/public/SimpleSlide/simple.slide.min.js"></script>
+<script type="text/javascript">
+    $('.lpic').simpleSlide();
+</script>
+{% endblock footer_js %}

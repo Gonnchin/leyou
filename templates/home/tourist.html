@@ -1,0 +1,70 @@
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}旅行家{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/tourist.css' %}">
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="mbody">
+
+<div class="dt-list">
+<foreach name="Users" item="u">
+    <div class="dt-box">
+            <div class="u-avatar">
+                <div class="u-nav">
+                    <a href="{:U('Home/User/index',null,null)}?np={$u.open}" class="ucard-pic fl">
+                        <img src="/{$u.img.path}{$u.img.name}" alt="">
+                    </a>
+                    <div class="u-info">
+                        <h3 class="u-name"><a href="{:U('Home/User/index',null,null)}?np={$u.open}">{$u.nick}</a></h3>
+                        <div class="u-dt">
+                            游记<span>{$u.ncount}</span>
+                            照片<span>{$u.pcount}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="u-pannel">
+                <p class="u-sign ellipsis">{$u.sign}</p>
+            </div>
+    </div>
+</foreach>
+
+<!--     <div class="dt-box">
+            <div class="u-avatar">
+                <div class="u-nav">
+                    <a href="#" class="ucard-pic fl"><img src="http://127.0.0.1:82/data/daren/02.jpg" alt=""></a>
+                    <div class="u-info">
+                        <h3 class="u-name"><a href="#">飞扬的心情</a></h3>
+                        <div class="u-dt">
+                            游记<span>5</span>
+                            照片<span>1043</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="u-pannel">
+                <p class="u-sign ellipsis">我就是我，走过千山和万水,不负时光，只为看到这个世界的美丽，看见太阳，看见最美的你</p>
+            </div>
+    </div> -->
+</div>
+
+</div>
+{% endblock body %}
+
+</body>
+</html>

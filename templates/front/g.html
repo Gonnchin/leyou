@@ -1,0 +1,38 @@
+{# 继承父模板 #}
+{% extends 'common/front_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}乐旅网{% endblock title %}
+
+{# 顶部js部分 #}
+{% block head_js %}
+
+<link rel="stylesheet" href="{% static 'front/css/g.css' %}">
+
+{% endblock head_js %}
+
+
+{# 网页主体头部 #}
+{% block body_header %}
+
+    <div class="le-hd-ua">
+        <div class="u-pannel">
+            <div class="unlogin">
+                <a class="" href="###">登录</a><span> | </span>
+                <a class="" href="###">注册</a>
+            </div>
+            <div class="login">
+                <a class="" href="###">飞扬的心情</a><span> | </span>
+                <a class="" href="###">退出</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock body_header %}
+
+
+
+

@@ -1,0 +1,51 @@
+body{background:url(../images/tem_1.png) no-repeat top center #f6f3ec;font-family:微软雅黑;}	
+#content{margin-top:390px;}
+.sy_con_intro{width:980px;background:url(../images/tem_2.png) #fff;padding:10px;background:rgba(255,255,255,0.6) none repeat scroll 0 0 !important;filter:Alpha(opacity=60);}
+.sy_con_intro p{line-height:30px;color:#5b3f28;font-size:16px;font-family:"微软雅黑";}
+.mou_main_one{margin-top:30px;background:url(../images/line_1.jpg) repeat-x 0 bottom;padding-bottom:30px;}
+.mou_main_one a.tu,.mou_main_wrap a.tu,.mou_main_extra a.tu{display:block;width:380px;height:250px;border:3px solid #d1c3ae;margin-right:15px;}
+.mou_main_one a.tu img,.mou_main_wrap a.tu img,.mou_main_extra a.tu img{width:380px;height:250px;}
+.mou_one_right{width:550px;background:url(../images/tem_4.png) no-repeat 0 5px;padding-top:70px;padding-left:10px;position:relative;font-family:'微软雅黑';}
+.mou_one_right em.text_one{position:absolute;top:17px;left:60px;font-size:24px;color:#68360e;}
+a.name_u{font-size:18px;color:#68360e;font-family:'微软雅黑';display:block;}
+a.bg_img_nv{padding-left:45px;height:35px;background:url(../images/tem_10.png) no-repeat;}
+a.name_t{font-size:14px;color:#555;font-family:'微软雅黑';line-height:25px;}
+.mou_one_right span,.mou_one_wrap span
+,.mou_one_left span,.mou_one_left div span
+,.mou_nor_one span,.mou_nor_one div span{color:#68360e;font-weight:bold;}
+.mou_one_right p,.mou_one_right div{width:569px;font-size:14px;color:#555;line-height:30px;}
+.mou_one_wrap p,.mou_one_left div
+,.mou_one_left p,.mou_one_wrap div
+,.mou_nor_one p,.mou_nor_one div{font-size:14px;color:#555;line-height:30px;font-family:"微软雅黑";}
+.list_word em{margin-left:10px;color:#68360e;font-weight:bold;}
+div a.persion{color:#000;text-decoration:none;border-bottom:1px #68360e dotted;}
+div a.persion:hover{color:#68360e;}
+.btn_mou a{color:#fff;background-color:#8d5800;display:inline-block;padding:0 5px;height:23px;line-height:23px;margin-left:10px;}
+a.go_look_one{display:inline-block;padding:0 10px;height:20px;color:#68360e;background-color:#ddd9cf;line-height:20px;margin-top:10px;}
+.font_wrap{width:980px;height:auto;}
+/* 大众评审团 */
+.big_cp{margin-top:15px;background:url(../images/tem_5.png) no-repeat;width:980px;padding-top:55px;}
+.big_cp_one{width:260px;margin-right:65px;}
+.big_cp_one span{display:block;}
+.big_cp_one span.img_one{width:75px;margin-right:20px;}
+.big_cp_one span.text_one{width:165px;}
+em.mou_seven{display:block;background:url(../images/tem_4.png) no-repeat 0 2px;height:44px;font-family:'微软雅黑';font-size:22px;color:#68360E;padding-left:55px;padding-top:15px;}
+.big_lag{width:263px;height:174px;background:url(../images/tem_11.png) no-repeat;position:absolute;left:255px;top:5px;text-align:center;}
+.mou_intro{position:relative;width:1050px;margin:0 auto;}
+.mou_intro p{position:absolute;top:-355px;_top:140px;left:-26px;width:510px;line-height:25px;font-size:14px;color:#000;font-weight:bold;}
+.mou_main{width:980px;background:url(../images/mou_jpg1.jpg) no-repeat 0 8px #fff;margin:500px auto 0;position:relative;height:auto;padding-bottom:30px;}
+.look_mou{display:block;width:282px;height:100px;background:url(../images/mou_1.png) no-repeat;position:absolute;top:-40px;left:-40px;}
+.mou_nor_wrap_one a.tu{display:block;width:255px;height:165px;border:3px solid #dadada;margin-right:15px;}
+.mou_nor_wrap_one a.tu img{width:255px;height:165px;}
+.mou_main_two{padding:20px 15px 20px;background:url(../images/line_1.jpg) repeat-x 0 bottom;}
+.mou_main_wrap{width:440px;background:url(../images/line_2.jpg) repeat-y right 0;padding-right:30px;}
+.mou_main_wrap span.tu{margin-left:30px;}
+.mou_one_wrap p,.mou_one_wrap div{padding-left:30px;}
+.mou_main_extra{padding:30px 15px 20px;background:url(../images/line_1.jpg) repeat-x 0 bottom;position:relative;}
+.mou_one_left{padding-left:15px;width:483px;padding-right:30px;margin-right:30px;}
+.mou_nor_wrap{padding:30px 15px 20px;background:url(../images/line_1.jpg) repeat-x 0 bottom;}
+.mou_nor_wrap_one{width:300px;padding-left:15px;}
+.mou_nor_one{width:267px;}
+.mou_main_wrap{position:relative;}
+.no_bg{background:none;}
+.no_bgc{background:none;}

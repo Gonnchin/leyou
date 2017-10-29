@@ -1,0 +1,193 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}个人相册-用户中心-乐旅网{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/dialog.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+    <div class="le-wrap">
+
+        <div class="uc">
+
+            <!-- 用户顶部 -->
+            <div class="utop">
+                <div class="inner">
+
+                </div>
+            </div>
+            <!-- 用户顶部 结束-->
+
+            <!-- 用户主体部分 -->
+            <div class="ub clearfix">
+
+                {# 用户中心左边公共部分 #}
+                {% include 'common/usercommon/left_include.html' %}
+
+                <div class="ub-right">
+
+                    <div class="page">
+                        <div class="ptitle"><span>小新的相册 </span>
+                            <a class="blink fr" id="imgUpBtn" href="#imgUp">上传图片</a></div>
+                        <div class="pbody ">
+
+                            <ul class="imglist line-bottom">
+
+
+                                <if condition="($plist neq null)">
+                                    <foreach name="plist" item="p">
+                                        <li class="pli">
+                                            <if condition="($p.pic neq null)">
+                                                <span><a class="pview"  href="#view"><img src="/{$p.img.path}{$p.img.thumb}" /></a></span>
+                                            </if>
+                                            <p><a href="#ed">编辑</a>&nbsp;&nbsp;<a href="#del">删除</a></p>
+                                        </li>
+
+                                    </foreach>
+                                    <else/>
+                                    <p>暂无图片,马上上传</p>
+                                </if>
+
+
+                                <!--     <li class="pli">
+                                        <span><a class="pview"  href="#view"><img src="http://127.0.01:82/static/images/img03.png" /></a></span>
+                                        <p><a href="#">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></p>
+                                    </li> -->
+
+                            </ul>
+                            <!-- 分页 -->
+                            <div class="fp">{$page}</div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- 用户主体部分结束 -->
+        </div>
+
+
+    </div>
+</section>
+<!-- 主体部分 结束-->
+{% endblock body %}
+
+
+
+{# 底部js部分内容 #}
+{% block footer_js %}
+<!--dialog-->
+<div class="theme-popover">
+    <div class="theme-poptit">
+        <div class="theme-title">标题</div>
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-context">content</div>
+</div>
+<div class="theme-loading"></div>
+<div class="theme-popover-mask"></div>
+<div class="dialogBody">
+    <div id="imgSel">
+        <input id="photo" type="file" name="photo" />
+        <input id="submit" type="button" value="上传" >
+    </div>
+</div>
+<!--dialog-->
+<script type="text/javascript" src="/public/umeditor/third-party/jquery.min.js"></script>
+<script type="text/javascript" src="{$Think.THEME}user/style/js/dialog.js"></script>
+<script type="text/javascript" src="/public/ajaxFileUpload/ajaxFileUpload.js"></script>
+
+
+<script type="text/javascript">
+
+
+    $("#imgUpBtn").click(function(){
+        Dialog.show(true,'图片上传','imgSel');
+    });
+    $("#submit").click(function() {
+        ajaxFileUpload();
+    });
+
+
+
+    function uploadImage() {
+        //判断是否有选择上传文件
+        var imgPath = $("#photo").val();
+        if (imgPath == "") {
+            alert("请选择上传图片！");
+            return;
+        }
+        //判断上传文件的后缀名
+        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+        if (strExtension != 'jpg' && strExtension != 'gif'
+            && strExtension != 'png' && strExtension != 'bmp') {
+            alert("请选择图片文件");
+            return;
+        }
+    }
+
+    function ajaxFileUpload () {
+        var data = { open: '{$np}', description: 'short description' }
+        $.ajaxFileUpload(
+            {
+                url: "/User/FileUpload/ImgAlbumUp", //用于文件上传的服务器端请求地址
+                type:'post',
+                data : data,
+                secureuri: false, //是否需要安全协议，一般设置为false
+                fileElementId: "photo", //文件上传域的ID
+                dataType: 'JSON', //返回值类型 一般设置为json
+                success: function (data,status)  //服务器成功响应处理函数
+                {
+                    // console.log(data);
+                    var objData=$.parseJSON(data);
+                    // console.log(objData);
+                    if (objData.status==1) {
+                        // console.log(objData.response);
+                        var response=objData.response;
+                        var imgThumbUrl="/"
+                            +response.rootPath
+                            +response.savepath
+                            +response.thumb;
+                        var pli='<li class="pli"><span><a class="pview" href="#view"><img src="'+imgThumbUrl+'"/></a></span><p><a href="#ed">编辑</a>&nbsp;<a href="#del">删除</a></p></li>';
+                        $(".imglist").append(pli);
+                        // console.log(imgThumbUrl);
+                        var jstr=JSON.stringify(response);
+                        console.log(jstr);
+                    }else if(objData.status==0){
+                        console.log("fail:"+objData.msg);
+                    }else{
+                        console.log("异常");
+                    };
+                },
+                error: function (s, xml, a, e)//服务器响应失败处理函数
+                {
+                    console.log(e);
+                }
+            }
+        );
+    }
+
+</script>
+{% endblock footer_js %}
+
+
+</body>
+</html>

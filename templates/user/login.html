@@ -1,0 +1,73 @@
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题 #}
+{% block title %}乐旅网-用户登录{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+    <div class="login-box">
+        <form name="boxform" class="form-box"
+              method="post" action="{% url 'users:login_handle' %}">
+            {% csrf_token %}
+            <p>
+                <input placeholder="邮箱" type="text" class="txtin" id="userName" name="user_email"/>
+            </p>
+            <p>
+                <input placeholder="密码" type="password" class="txtin" id="userPwd" name="user_pwd"/>
+            </p>
+            <div class="dVerify">
+                <input placeholder="验证码" type="text" id="verify" name="verify"/>
+                <img class="img-verify" src="">
+            </div>
+            <div class="more_input clearfix">
+                <input type="checkbox" name="reme_name">
+                <label >记住用户名</label>
+                <a href="#">忘记密码</a>
+            </div>
+            <p>
+                <button type="submit">登录</button>
+            </p>
+        </form>
+        <div class="navbar">
+            <a href="{% url 'users:register' %}">用户注册</a>
+            <span>&nbsp; - &nbsp;</span>
+            <a href="javascript;" target="_blank">用户协议</a>
+        </div>
+    </div>
+</section>
+<!-- 主体部分 结束-->
+{% endblock body %}
+
+
+{# 底部js部分内容 #}
+{% block footer_js %}
+<!--<script src="{% static 'user/js/jquery.min.js' %}"></script>-->
+<!--<script>-->
+    <!--var captcha_img = $('.dVerify').find('img')-->
+    <!--var verifyimg = captcha_img.attr("src");-->
+    <!--captcha_img.attr('title', '点击刷新');-->
+    <!--captcha_img.click(function(){-->
+        <!--if( verifyimg.indexOf('?')>0){-->
+            <!--$(this).attr("src", verifyimg+'&random='+Math.random());-->
+        <!--}else{-->
+            <!--$(this).attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());-->
+        <!--}-->
+    <!--});-->
+<!--</script>-->
+{% endblock footer_js %}
+
+
+</body>
+</html>

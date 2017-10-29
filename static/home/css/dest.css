@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+.mbody{
+    width: 1024px;
+    margin: 0px auto;
+    overflow: hidden;
+    border-bottom:1px solid #e2e2e5;
+}
+.fg-tile{    
+    position: absolute;bottom: 0;height: 21px; width: 100%;
+    background-image: url(../img/black-bg.png);
+    background-repeat: repeat-x;
+    color: rgb(255,255,255);
+    padding: 16px 0 8px;
+    text-indent: .5em;
+}
+
+/*dest 频道模型*/
+.top-line{border-top: 1px solid #e2e2e2;}
+.dest-channel{overflow: hidden;margin: 15px auto;}
+
+.dest-ch-hd{line-height: 29px; height: 29px;margin: 15px auto;border-left: 2px solid #007ed9;overflow: hidden;}
+.dest-top{margin: 0px auto;}
+.dest-top .dest-ch-hd{margin: 0px auto 15px;}
+.ch-info{float: left;}
+.ch-title{float: left; font-weight: normal; margin: auto 15px;color: #444;}
+.ch-word{float: left; margin: auto 5px;color: #696969;line-height: 36px;}
+.ch-more{float: right; margin-right: 8px;}
+.ch-more a{color:#696969; }
+.ch-more a:hover{color:#f60;}
+.dest-ch-body{margin: 5px auto;}
+
+.dest-box{width: 828px;height: auto; overflow: hidden;}
+.dest-t3,.dest-t2,.dest-t1{
+    display:block; overflow: hidden;float: left; margin:0 10px 10px 0;
+    position: relative;}
+.dest-t3,.dest-t3 img{width: 404px; height: 270px;}
+.dest-t1,.dest-t1 img{width: 197px; height: 130px;}
+
+.dt-side{
+    width: 185px; height: 410px;
+    padding-left: 10px;
+    border-left: 1px solid #eaeaea;
+}
+.sbox{
+    width: 100%;height: 95px;background-color: #f8f8f8;
+    margin-bottom: 10px;
+}
+.tlink{
+    overflow: hidden;display: block;
+    width: 185px;height: 95px;position: relative;
+}
+.tlink img{width: 185px;height: 95px;}
+.tlink p{position: absolute;bottom:0;right: 0;left: 0; color: #fff;
+    background-color: rgba(0,0,0,.5);
+    padding: 5px;
+}
+
+
+.dest-tc{display:block; overflow: hidden;float: left; margin:0 10px 10px 0;}
+.dest-tc{width: 248px; height: auto; }
+.tb-pic img{width: 248px; height: 150px;}
+.tb-pic{
+    width: 248px; height: 150px;overflow: hidden;position: relative;
+}
+.dt-title{
+    height: 50px;width: 100%;
+    position: absolute;bottom: 0;
+    background-image: url(../img/black-bg.png);
+    background-repeat: repeat-x ;
+    background-position:  left bottom;
+}
+.dt-title a{    
+    color: #fff;margin: 22px auto 10px 10px;display: block;
+}
+.dt-title a:hover{color: #f60;}
+.dt-info{
+    border: 1px solid #e2e2e2;border-top: none;
+    width: 226px;height: 36px;line-height: 18px;overflow: hidden;
+    font: 12px/1.5 tahoma,arial,sans-serif;color: #555;
+    padding: 5px 10px 5px;
+}
+
+.theme-box{
+    width: 100%;height: auto;overflow: hidden;
+}
+
+.tbline{
+    width: 1044px;overflow: hidden;
+}
+.tb-li {
+    height: 162px;
+    width: 241px;
+    float: left;
+    margin: 0 20px 15px 0;
+    position: relative;
+    background: #f8f8f8;
+}
+.tb-li img{width: 241px;height: 162px;}
+
+.themelink{
+    position: relative;overflow: hidden;    
+    display: block;    height: 162px;
+    width: 241px;
+}
+.theme-kw{
+    position: absolute;top: 0; 
+    padding: 6px 15px;
+    font-size: 14pt;
+    color: #fff;
+    background-color: rgba(0,0,0,.5);
+}
+
+
+
+.tblist{width: 1035px;height: auto;overflow: hidden;}
+.thb-li{
+    width: 196px;
+    background: #f8f8f8;
+    float: left;
+    margin: 0 11px 15px 0;
+}
+.tdlink{
+    overflow: hidden;display: block;
+    width: 196px;height: 110px;position: relative;
+}
+.tdlink img{width: 196px;height: 110px;}
+
+.dest-list{width: 1032px;overflow: hidden;}
+.visit-lisit{}
+.visit-lisit li{
+display: -moz-inline-stack;
+display: inline-block;
+zoom: 1;
+vertical-align: top;
+width: 236px;
+margin: 0 0 0 16px;
+}
+.visit-type {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.visit-lisit a {
+    font: 12px/1.5 tahoma,arial,宋体,sans-serif;
+    color: #007ed9;
+    margin-right: 8px;
+    line-height: 26px;
+    display: inline-block;
+}
+.visit-lisit li p a:hover {color: #f60;}

@@ -1,0 +1,60 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}我的消息-乐旅网-用户中心{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+    <div class="le-wrap">
+        <div class="uc">
+            <!-- 用户顶部 -->
+            <div class="utop"></div>
+            <!-- 用户顶部 结束-->
+
+            <!-- 用户主体部分 -->
+            <div class="ub clearfix">
+
+                {# 用户中心左边公共部分 #}
+                {% include 'common/usercommon/left_include.html' %}
+
+                <div class="ub-right">
+
+                    <div class="page">
+                        <div class="ptitle"><span>我的消息</span></div>
+                        <div class="pbody">
+                            暂无消息
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- 用户主体部分结束 -->
+        </div>
+
+    </div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+
+
+
+
+

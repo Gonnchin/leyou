@@ -1,0 +1,34 @@
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}资讯{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="noticeBox">
+
+    <h1 class="noticeTitle">{$notice.title}</h1>
+    <div class="noticeBody">
+        {$notice.txt|htmlspecialchars_decode}
+    </div>
+
+</div>
+
+{% endblock body %}
+
+
+</body>
+</html>

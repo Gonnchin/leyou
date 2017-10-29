@@ -1,0 +1,119 @@
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}我的游记-用户中心-乐旅网{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/dialog.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/umeditor.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'user/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/js/template.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/js/umeditor.config.js' %}" charset="utf-8"></script>
+    <script type="text/javascript"src="{% static 'user/js/tiny_mce/tiny_mce.js' %}"></script>
+    <script>
+        tinyMCE.init({
+            'mode': 'exact',
+            'elements': 'mEditor',
+            'theme': 'advanced',
+            'width': 800,
+            'height': 400,
+            'language': 'zh-cn',
+        });
+    </script>
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+<div class="le-wrap">
+
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop">
+        <div class="inner">
+
+        </div>
+</div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+
+{# 用户中心左边公共部分 #}
+{% include 'common/usercommon/left_include.html' %}
+
+<div class="ub-right">
+
+    <div class="page">
+        <div class="ptitle"><span>发布游记</span></div>
+        <div class="pbody ">
+
+
+<div class="formbody">
+<form action="{% url 'users:travnotes' %}" method="post">
+    {% csrf_token %}
+    <ul class="forminfo">
+        <li>
+            <label>标题</label><input name="ntitle" type="text" class="dfinput" />
+            <i>标题不能超过30个字符</i>
+        </li>
+        <li>
+            <label>关键字</label><input name="nkeywords" type="text" class="dfinput" />
+            <i>多个关键字用,隔开</i>
+        </li>
+        <li>
+            <label>图片上传</label>
+            <div class="imgUp">
+                {# <input type="file" name= "image" id="imgBtn" class="btn"> #}
+                <input type="file" name= "nimage">
+            </div>
+        </li>
+        <li>
+            <label>内容简介</label>
+            <div class="txtinput">
+                <textarea name="content_short"  cols="" rows="" class="textinput txt100"></textarea>
+            </div>
+        </li>
+        <li>
+            <label>内容</label>
+            <div class="txtinput">
+                <textarea name="content"  id="mEditor" cols="" rows="" class="textinput txt235"></textarea>
+            </div>
+        </li>
+        <li>
+            <label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/>
+        </li>
+    </ul>
+</form>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+
+
+</div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+
+</body>
+</html>

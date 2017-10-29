@@ -1,0 +1,137 @@
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}资讯{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/info.css' %}">
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+
+<div class="mbody">
+<!-- topics -->
+<div class="sp">
+    <div class="spz">
+        <div class="flashBox">
+
+<div class="focusBox" style="margin:0 auto">
+        <ul class="pic">
+        <foreach name="dflist" item="f">
+                <li><a href="{$f.link}"><img src="/{$f.img.path}{$f.img.name}"/></a></li>
+        </foreach>
+        </ul>
+        <div class="txt-bg"></div>
+        <div class="txt">
+            <ul>
+            <foreach name="dflist" item="f">
+                    <li><a href="{$f.link}">{$f.title}</a></li>
+            </foreach>
+            </ul>
+        </div>
+        <ul class="num">
+            <foreach name="dflist" item="f"  key="k">
+            <li><a>{$k+1}</a><span></span></li>
+            </foreach>
+        </ul>
+</div>
+
+
+        </div>
+    </div>
+    <div class="spy">
+       <div class="fly">
+            <ul>
+                <dl>站内公告</dl>
+                <foreach name="notice" item="n">
+                    <li><a href="{:U('Home/Info/NoticeView',null,null)}?id={$n.id}">{$n.title}</a></li>
+                </foreach>
+
+<!--                 <li><a href="#">公告二.</a></li>
+                <li><a href="#">公告三.</a></li>
+                <li><a href="#">公告四.</a></li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- topics -->
+
+<div class="le-news">
+ <div class="listz">
+    <div class="liszw">
+        <h3 class="list-title">新鲜事</h3>
+        <ul>
+<foreach name="arcs" item="a">
+            <li>
+                <span>{$a.pubtime|date='Y-m-d',###}</span>
+                <a href="{:U('Home/Info/View',null,null)}?np={$a.open}">{$a.title}</a>
+                <p>{$a.description}
+                <font class="lixb">[<a href="{:U('Home/Info/View',null,null)}?np={$a.open}">阅读全文</a>]</font>
+                </p>
+            </li>
+</foreach>
+<!--             <li>
+                <span>2014-08-07</span>
+                <a href="#">有了这九种感情，才叫做爱情...</a>
+                <p>有了这九种感情，才叫做爱情。爱他，就崇拜他。爱她，就赞美她。 第一种 美丽的感觉 俗话说情人眼里出西施，所以在有爱情的时候，你一定会...
+                <font class="lixb">[<a href="#">阅读全文</a>]</font>
+                </p>
+            </li> -->
+        </ul>
+    </div>
+    <div class="fenye">{$page}</div>
+</div>
+
+
+<div class="listy">
+<div class="nrmk4">
+    <div id="tab1"><dl>阅读排行榜</dl></div>
+    <div id="tablist1">
+        <div class="jtzw ">
+            <ul>
+            <foreach name="sArc" key="sk" item="sa">
+                <li><p>{$sk+1}</p><a href="{:U('Home/Info/View',null,null)}?np={$sa.open}">{$sa.title}</a></li>
+            </foreach>
+                <!-- <li><p>2</p><a href="#">22222222222失去了你</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+{% endblock body %}
+
+
+{# 底部js #}
+{% block footer_js %}
+<script type="text/javascript" src="{$Think.THEME}home/style/slider/jquery1.42.min.js"></script>
+<script type="text/javascript" src="{$Think.THEME}home/style/slider/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+jQuery(".focusBox").slide({ titCell:".num li", mainCell:".pic",effect:"fold", autoPlay:true,trigger:"click",
+            //下面startFun代码用于控制文字上下切换
+            startFun:function(i){
+                 jQuery(".focusBox .txt li").eq(i).animate({"bottom":0}).siblings().animate({"bottom":-36});
+            }
+        });
+
+</script>
+{% endblock footer_js %}
+
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}个人资料-乐旅网-用户中心{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/dialog.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+    <div class="le-wrap">
+
+        <div class="uc">
+
+            <!-- 用户顶部 -->
+            <div class="utop"></div>
+            <!-- 用户顶部 结束-->
+
+            <!-- 用户主体部分 -->
+            <div class="ub clearfix">
+
+                {# 用户中心左边公共部分 #}
+                {% include 'common/usercommon/left_include.html' %}
+
+                <div class="ub-right">
+
+                    <div class="page">
+                        <div class="ptitle"><span>个人资料</span>
+                            <a class="blink fr" href="{% url 'users:updateinfo' %}">修改个人资料</a></div>
+                        <div class="pbody">
+                            <div class="u-box">
+                                <div class="le-prg">
+                                    <div class="le-uinfo-pic">
+                                        <img class="le-upic-img" src="{% static user.user_photo %}" alt="">
+                                        <a class="le-update-upic" href="javascript:void(0);">修改头像</a>
+                                    </div>
+                                </div>
+                                <div class="le-pfg">
+                                    <label class="phd">基本资料</label>
+                                </div>
+                                <div class="le-prg">
+                                    <label class="le-fltxt">用户昵称:</label>
+                                    <div class="txt">{{ user.user_name }}</div>
+                                </div>
+                                <div class="le-prg">
+                                    <label class="le-fltxt">个性签名:</label>
+                                    <div class="txt">{{ user.signature }}</div>
+                                </div>
+                                <div class="le-prg">
+                                    <label class="le-fltxt">联系方式:</label>
+                                    <div class="txt">{{ user.user_tel }}</div>
+                                </div>
+                                <div class="le-prg">
+                                    <label class="le-fltxt">用户性别:</label>
+                                    <div class="txt">{% if user.gender == 1 %}男{% else %}女{% endif %}</div>
+                                </div>
+                                <div class="le-prg">
+                                    <label class="le-fltxt">用户生日:</label>
+                                    <div class="txt">{{ user.birthday }}</div>
+                                </div>
+                                <div class="le-prg">
+                                    <label class="le-fltxt">常居住地:</label>
+                                    <div class="txt">{{ user.user_addr }}</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- 用户主体部分结束 -->
+        </div>
+
+    </div>
+</section>
+<!-- 主体部分 结束-->
+{% endblock body %}
+
+
+
+{# 底部js部分内容 #}
+{% block footer_js %}
+<!--dialog-->
+<div class="theme-popover">
+    <div class="theme-poptit">
+        <div class="theme-title">标题</div>
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-context">content</div>
+</div>
+<div class="theme-loading"></div>
+<div class="theme-popover-mask"></div>
+<div class="dialogBody">
+    <div id="imgSel">
+        <input id="photo" type="file" name="photo" />
+        <input id="submit" type="button" value="提交" >
+    </div>
+</div>
+<!--dialog-->
+<script type="text/javascript" src="/public/umeditor/third-party/jquery.min.js"></script>
+
+<script type="text/javascript" src="{$Think.THEME}user/style/js/dialog.js"></script>
+<script type="text/javascript" src="/public/ajaxFileUpload/ajaxFileUpload.js"></script>
+
+
+<script type="text/javascript">
+
+
+    $(".le-update-upic").click(function(){
+        Dialog.show(true,'图片上传','imgSel');
+    });
+    $("#submit").click(function() {
+        ajaxFileUpload();
+    });
+
+
+
+    function uploadImage() {
+        //判断是否有选择上传文件
+        var imgPath = $("#photo").val();
+        if (imgPath == "") {
+            alert("请选择上传图片！");
+            return;
+        }
+        //判断上传文件的后缀名
+        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+        if (strExtension != 'jpg' && strExtension != 'gif'
+            && strExtension != 'png' && strExtension != 'bmp') {
+            alert("请选择图片文件");
+            return;
+        }
+    }
+
+    function ajaxFileUpload () {
+        var data = { name: 'my name', description: 'short description' }
+        $.ajaxFileUpload(
+            {
+                url: "/User/FileUpload/picUp", //用于文件上传的服务器端请求地址
+                type:'post',
+                data : data,
+                secureuri: false, //是否需要安全协议，一般设置为false
+                fileElementId: "photo", //文件上传域的ID
+                dataType: 'JSON', //返回值类型 一般设置为json
+                success: function (data,status)  //服务器成功响应处理函数
+                {
+                    var objData=$.parseJSON(data);
+                    // console.log(objData);
+                    if (objData.status==1) {
+                        // console.log(objData.response);
+                        var response=objData.response;
+                        var imgThumbUrl="/"+response.rootPath+response.savepath+response.thumb;
+                        $(".le-upic-img").attr('src',imgThumbUrl);
+                        console.log(imgThumbUrl);
+                    }else if(objData.status==0){
+                        console.log("fail:"+objData.msg);
+                    }else{
+                        console.log("异常");
+                    };
+                },
+                error: function (s, xml, a, e)//服务器响应失败处理函数
+                {
+                    console.log("错误"+e);
+                }
+            }
+        );
+    }
+
+</script>
+{% endblock footer_js %}
+
+</body>
+</html>

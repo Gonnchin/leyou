@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+body{background:url(../images/yunan_1.png) no-repeat top center;}
+
+.yunan_zhi{width:980px;margin:250px auto 0;}
+.yunan_zhi p{width:815px;font-family:"微软雅黑";font-size:18px;color:#fff;line-height:35px;}
+
+.content{width:980px;margin:0 auto;margin-top:158px;}
+
+.yunnan_one{position:relative;width:950px;background:url(../images/yunan_2.png) no-repeat;padding:86px 15px 0;}
+
+.yunnan_one_left{width:488px;padding:2px;border-right:1px solid #c9c9c9;}
+.yunnan_one_top{border-bottom:1px solid #c9c9c9;padding-bottom:15px;}
+.yunnan_one_top a img{width:460px;height:230px;}
+
+.iner_wrap{width:365px;padding-left:93px;margin-top:15px;background:url(../images/yunan_8.png) no-repeat;}
+
+.iner_wrap h3
+,.yunnan_top_one h3{line-height:30px;}
+.iner_wrap h3 a
+,.yunnan_top_one h3 a{font-size:16px;color:#666;}
+.iner_wrap h3 span
+,.yunnan_top_one h3 span{color:#333;font-weight:normal;}
+.iner_wrap h3 span em
+,.yunnan_top_one h3 span em{color:#f88c8c;}
+.iner_wrap p
+,.yunnan_top_one p{line-height:20px;color:#000;}
+
+.yunnan_top_one span.yunan_top_title{width:69px;height:33px;background:url(../images/yunan_9.png) no-repeat;margin-right:10px;}
+.yunnan_top_one span.tu_two{background:url(../images/yunan_10.png) no-repeat;}
+
+.yunnan_one_bot{height:215px;background:url(../images/yunan_19.png) no-repeat 0 20px;}
+.yunnan_one_right{width:455px;}
+.yunnan_right_top{width:423px;padding:2px;}
+.yunnan_one_bot1{height:206px;background:url(../images/yunan_20.png) no-repeat 0 20px;}
+
+dl.yunnan_right_top{padding-left:30px;border-bottom:1px solid #c9c9c9;padding-bottom:15px;}
+dl.e_w{padding-top:25px;border:0;}
+.yunnan_right_top dt{width:160px;}
+.yunnan_right_top dt a img{width:160px;height:229px;}
+.yunnan_right_top dd{width:240px;padding-left:15px;}
+
+.yunnan_right_top dd .yunnan_top_one{width:240px;}
+.yunnan_top_one h3{width:161px;line-height:20px;}
+
+.yunnan_top_one h3 a{display:block;width:161px;}
+.yunnan_top_one h3 span{display:block;width:161px;}
+
+.yunnan_right_top dd p{width:245px;margin-top:10px;color:#333;}
+
+.yunnan_top_two{margin-top:10px;}
+.yunnan_top_two span.tu_title{display:block;width:100px;height:30px;line-height:30px;font-weight:bold;color:#333;}
+
+.yunnan_top_two ul li{float:left;margin-right:10px;}
+
+.yunnan_top_two ul li a
+,.yunnan_top_two ul li em{display:block;width:50px;}
+.yunnan_top_two ul li a img{width:50px;height:50px;}
+,.yunnan_top_two ul li em{width:50px;height:30px;line-height:30px;}
+
+.yunnan_top_two ul li em a{color:#666;width:50px;text-align:center;}
+.yunnan_top_two ul li em a:hover{text-decoration:underline;}
+
+.bg_title_tu,.bg_title_tu1{margin-top:35px;}
+.bg_title_tu{background:url(../images/yunan_3.png) no-repeat;}
+.bg_title_tu1{background:url(../images/yunan_4.png) no-repeat;border-bottom:1px solid #c9c9c9;}
+
+.yunnan_top_one span.yunan_top_title1{background:url(../images/yunan_12.png) no-repeat;}
+.yunnan_top_one span.yunan_top_title2{background:url(../images/yunan_13.png) no-repeat;}
+.yunan_top_title3{background:url(../images/yunan_11.png) no-repeat;}
+.yunan_top_title4{background:url(../images/yunan_14.png) no-repeat;}
+.yunnan_top_one span.yunan_top_title5{background:url(../images/yunan_15.png) no-repeat;}
+.yunnan_top_one span.yunan_top_title6{background:url(../images/yunan_16.png) no-repeat;}
+.yunnan_top_one span.yunan_top_title7{background:url(../images/yunan_17.png) no-repeat;}
+
+.add_width1{padding-left:25px;width:460px;border:0;}
+
+.add_ew1{border-right:1px solid #c9c9c9;width:460px;}
+dl.no_add_pl{padding-left:0;}
+
+.love_tis{width:980px;height:290px;background:url(../images/yunan_21.png) no-repeat 2px 20px;}
+
+.yunnan_two{width:950px;background:url(../images/yunan_5.png) no-repeat;padding:86px 15px 0;margin-top:35px;}
+.yunnan_three{width:950px;background:url(../images/yunan_6.png) no-repeat;padding:93px 15px 0;margin-top:35px;}
+.yunnan_four{width:950px;background:url(../images/yunan_7.png) no-repeat;padding:93px 15px 0;margin-top:35px;}
+
+ul.yunnan_two_lists{margin-top:20px;}
+.yunnan_two_lists li{float:left;margin-right:25px;width:218px;}
+.yunnan_two_lists li.no_margin{margin-right:0;}
+.yunnan_two_lists li a.list_img{display:block;width:210px;height:210px;padding:3px;border:1px solid #e1e1e1;}
+.yunnan_two_lists li a.list_img img{width:210px;height:210px;}
+
+.yunnan_two_lists li .list_text{margin-top:10px;}
+.yunnan_two_lists li .list_text h4{height:25px;line-height:25px;background:url(../images/yunan_23.png) no-repeat 0 bottom;}
+.yunnan_two_lists li .list_text h4 a{font-size:14px;color:#248696;}
+.yunnan_two_lists li .list_text p{margin-top:10px;line-height:20px;color:#666;}
+
+.yunnan_three{_zoom:1;}
+.yunnan_three a{display:block;position:relative;_display:inline-block;_white-space:nowrap;}
+.yunnan_three a.img0{width:202px;height:265px;margin-right:1px;}
+.yunnan_three a.img0 img{width:202px;height:265px;}
+.yunnan_three a.img1{width:341px;height:398px;margin-right:1px;}
+.yunnan_three a.img1 img{width:341px;height:398px;}
+.yunnan_three a.img2{width:202px;height:132px;margin-right:1px;}
+.yunnan_three a.img2 img{width:202px;height:132px;}
+
+.yunnan_three a.img3{margin-right:0;}
+.yunnan_three a.img4{margin-top:1px;}
+
+
+.yunnan_three a span{display:inline-block;width:100%;height:30px;line-height:30px;background:url(../images/png_tu80.png);position:absolute;bottom:0;left:0;}
+.yunnan_three a span.lh1{height:40px;line-height:40px;}
+.yunnan_three a span em.fz1{font-size:18px;}
+.yunnan_three a span em{margin-left:10px;color:#fff;font-family:"微软雅黑";font-size:16px;}
+
+.back_home{background-color:#ff9b26;height:37px;line-height:37px;position:absolute;right:0;top:24px;width:128px;z-index:3;}
+.back_home a{background: url("../images/capital_6.png") no-repeat 16px center;color:#FFFFFF;display:inline-block;font-family:"微软雅黑";font-size:16px;height:37px;padding-left:52px;}

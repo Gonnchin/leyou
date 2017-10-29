@@ -1,0 +1,131 @@
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}游记{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/notes.css' %}">
+
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="mbody">
+
+<div class="notes">
+<foreach name="notes" item="n">
+<!--/note-box/-->
+<div class="note-box">
+    <div class="note-view">
+    <if condition="($n.thumb neq null)">
+        <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">
+            <img class="note-thumb" src="/{$n.img.path}{$n.img.name}" />
+        </a>
+    </if>
+        <div class="note-info">
+            <div class="note-title">
+                <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">{$n.title}</a>
+            </div>
+            <div class="note-author">
+                <a href="{:U('Home/User/index',null,null)}?np={$n.writer.open}">
+                    <img class="upic" src="/{$n.writer.img.path}{$n.writer.img.thumb}">
+                </a>
+                <a class="author-name" href="{:U('Home/User/index',null,null)}?np={$n.writer.open}" >{$n.writer.nick}</a>
+            </div>
+             <div class="note-des">{$n.description}</div>
+        </div>
+    </div>
+</div>
+<!--/note-box/-->
+</foreach>
+<!--/note-box/
+<div class="note-box">
+    <div class="note-view">
+        <a href="#">
+            <img class="note-thumb" src="http://127.0.0.1:82/data/notes/5.jpg" />
+        </a>
+        <div class="note-info">
+            <div class="note-title">
+                <a href="#">京城周边小众游，带你玩转唐山</a>
+            </div>
+            <div class="note-author">
+                <a href="#"><img class="upic" src="http://127.0.0.1:82/data/notes/t2.jpg"></a>
+                <a class="author-name" href="#" >lovemy凤凰</a>
+            </div>
+             <div class="note-des">夏日游海岛，恋上唐山湾
+京津冀一体化不...
+            </div>
+        </div>
+    </div>
+</div>
+--/note-box/-->
+
+</div>
+</div>
+{% endblock body %}
+
+
+{# 底部js #}
+{% block footer_js %}
+<script src="{$Think.THEME}home/style/js/jquery.min.js"></script>
+<script src="{$Think.THEME}home/style/js/jquery.imagesloaded.js"></script>
+<script src="{$Think.THEME}home/style/js/jquery.wookmark.js"></script>
+<script type="text/javascript">
+(function ($){
+    var $tiles = $('.notes'),
+    $handler = $('.note-box', $tiles),
+    $main = $('.mbody'),
+    $window = $(window),
+    $document = $(document),
+    options = {
+        autoResize: true,
+        container: $main,
+        offset: 20,
+        itemWidth:241
+     };
+/**
+* Reinitializes the wookmark handler after all images have loaded
+*/
+function applyLayout() {
+    $tiles.imagesLoaded(function() {
+        // Destroy the old handler
+        if ($handler.wookmarkInstance) {
+            $handler.wookmarkInstance.clear();
+        }
+        // Create a new layout handler.
+        $handler = $('.note-box', $tiles);
+        $handler.wookmark(options);
+     });
+}
+/**
+* When scrolled all the way to the bottom, add more tiles
+*/
+function onScroll() {
+    var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
+    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+    if (closeToBottom) {
+        var $items = $('.note-box', $tiles),
+        $firstTen = $items.slice(0, 10);
+        $tiles.append($firstTen.clone());
+        applyLayout();
+    }
+};
+    applyLayout();
+    //$window.bind('scroll.wookmark', onScroll);
+})(jQuery);
+</script>
+{% endblock footer_js %}
+
+
+</body>
+</html>

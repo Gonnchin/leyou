@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乐旅网</title>
+    <link href="./favicon.ico" rel="SHORTCUT ICON" />
+    <link rel="stylesheet" href="{$Think.THEME}front/style/css/g.css">
+</head>
+<body>
+<div class="soHeader">
+    
+<div class="so-hd-nav">
+    <div class="so-wrapper">
+        <ul class="so-nav clearfix">
+            <li><a href="/">首页</a></li>
+            <li><a href="{:U('Home/Dest/index')}">目的地</a></li>
+            <li><a href="{:U('Home/Photos/index')}">摄影</a></li>
+            <li><a href="{:U('Home/Notes/index')}">游记</a></li>
+            <li><a href="{:U('Home/Tourist/index')}">旅行家</a></li>
+            <li><a href="{:U('Home/Info/index')}">资讯</a></li>
+            <li><a href="{:U('Home/Travel/index')}">旅行社</a></li>
+        </ul>
+    </div>
+</div>
+<div class="subHd">
+    <div class="subInner">   
+        <h1 class="so-logo">乐旅网</h1>
+        <div class="hd-so">
+            <form class="so-form clearfix" name="so-form" method="get" action="{:U('Home/So/index',null,null)}">
+                <input name="kw" class="so-input" type="text" placeholder="搜索感兴趣的内容" 
+                maxlength="256" value="{$result.kw}">
+                <button type="submit" class="so-btn">搜索</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="mhtml">
+    <div class="soBody">
+        <div class="resultMsg">
+            共找到了<span>{$result.count}</span>条记录
+        </div>
+        <div class="resultContent">
+
+            <div class="reslist fl">
+
+
+<!--                 <div class="resItem">
+                    <h3 class="rH3t">
+                        <a href="#slink">搜索结果1</a>
+                    </h3>
+                    <div class="rCtx">
+                        <div class="rImg">
+                            <a href="#link"><img src="./src/s_11.jpg"></a>
+                        </div>
+                        <p>搜索结果内容简介搜索结果内容简介搜索结果内容简介搜索结果内容简介搜索结果内容简介搜索结果内容简介搜索结果内容简介搜索结果内容简介</p>
+                    </div>
+                </div> -->
+    
+
+<if condition="($result.status neq 0)">
+        <foreach name="result.list" item="r">
+                <div class="resItem">
+                    <h3 class="rH3t">
+                        <a href="{$r.link}">[{$r.org}]{$r.title}</a>
+                    </h3>
+                    <div class="rCtx">
+                    <if condition="($r.thumb neq '')">
+                        <div class="rImg">
+                            <a href="{$r.link}"><img src="/{$r.img.path}{$r.img.thumb}"></a>
+                        </div>
+                    </if>
+                        <p>{$r.description}</p>
+                    </div>
+                </div>
+        </foreach>
+<else/>
+            <div class="resItem">未查询到相关结果</div>
+</if>
+
+
+            </div>
+
+
+
+<!--             <div class="rSide fl">
+                <div class="gSo">
+                    <h3 class="gH3t">猜你喜欢</h3>
+                    <div class="glist">
+                        <ul>
+                            <li>
+                                <a href="#link">猜你喜欢内容列表1</a>
+                            </li>
+                            <li>
+                                <a href="#link">猜你喜欢内容列表2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+        <div class="sPage">
+            {$page}
+        </div>
+    </div>
+</div>
+
+<!--脚底部分-->
+<div class="so-footer clearfix">
+    <div class="so-wrapper">
+        <div class="ft-copy">
+            版权所有 翻版必究 &copy;2016 lelvyou.com
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

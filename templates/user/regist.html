@@ -1,0 +1,90 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}乐旅网-用户注册{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <script type="text/javascript" src="{% static 'user/js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/js/register.js' %}"></script>
+    <script type="text/javascript">
+
+       $(function () {
+           $('#verifybttton').click(function () {
+
+                $.get("{% url 'users:send_email' %}", {'mailbox': $('#email').val() }, function (data) {
+                });
+           });
+       })
+
+    </script>
+
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+    <div class="login-box">
+        <form name="boxform" class="form-box" id="reg_form"
+              method="post" action="{% url 'users:register_handel' %}">
+            {% csrf_token %}
+            <p>
+                <input placeholder="邮箱" type="text"  class="txtin" id="email" name="user_email" />
+                <span class="error_tip">提示信息</span>
+                <span class="error_tip_info" >{{ info.user_email }}</span>
+            </p>
+            <p>
+                <input placeholder="密码" type="password" class="txtin" id="pwd" name="user_pwd"/>
+                <span class="error_tip">提示信息</span>
+                <span class="error_tip_info" >{{ info.user_pwd }}</span>
+            </p>
+            <p>
+                <input placeholder="确认密码" type="password" class="txtin" id="cpwd" name="user_pwdsure"/>
+                <span class="error_tip">提示信息</span>
+                <span class="error_tip_info" >{{ info.user_pwdsure }}</span>
+            </p>
+            <div class="dVerify">
+                <input placeholder="验证码" type="text" id="verify" name="verifycode"/>
+                <input id='verifybttton' type="button" value="获取验证码">
+                <span class="error_tip_info" >{{ info.verifycode }}</span>
+            </div>
+            <p><button type="submit">注册</button></p>
+        </form>
+        <div class="navb1ar">
+            <a href="{% url 'users:login' %}">用户登录</a>
+            <span>&nbsp; - &nbsp;</span>
+            <a href="javascript:void(0);" target="_blank">用户协议</a>
+        </div>
+    </div>
+</section>
+<!-- 主体部分 结束-->
+{% endblock body %}
+
+
+{# 底部js部分内容 #}
+{% block footer_js %}
+<!--<script>-->
+    <!--var captcha_img = $('.dVerify').find('img')-->
+    <!--var verifyimg = captcha_img.attr("src");-->
+    <!--captcha_img.attr('title', '点击刷新');-->
+    <!--captcha_img.click(function(){-->
+        <!--if( verifyimg.indexOf('?')>0){-->
+            <!--$(this).attr("src", verifyimg+'&random='+Math.random());-->
+        <!--}else{-->
+            <!--$(this).attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());-->
+        <!--}-->
+    <!--});-->
+<!--</script>-->
+{% endblock footer_js %}
+
+</body>
+</html>

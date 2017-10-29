@@ -1,0 +1,78 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}密码管理-乐旅网-用户中心{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+
+<!-- 主体部分 -->
+<section class="mbody">
+
+<div class="le-wrap">
+
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop"></div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+
+    {# 用户中心左边公共部分 #}
+    {% include 'common/usercommon/left_include.html' %}
+
+    <div class="ub-right">
+        <div class="page">
+        <div class="ptitle"><span>修改密码</span></div>
+        <div class="pbody">
+    <div class="u-box">
+
+    <div class="formbox">
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            <p><input placeholder="原密码" name="original_pwd" type="password" class="txtput" /></p>
+            <p><input placeholder="新密码"   name="new_pwd" type="password" class="txtput" /></p>
+            <p><input placeholder="确认密码"  name="sure_pwd" type="password" class="txtput" /></p>
+            <p class="line-top"><input  type="submit" class="btn bpwd" value="修改"/></p>
+        </form>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+</div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+
+
+<!-- 通用底部 -->
+<footer class="le-ft">
+    <div class="le-wrap">
+        <p class="le-copy">版权所有 翻版必究 &copy;2017 乐旅网</p>
+    </div>
+</footer>
+<!-- 通用底部 结束-->
+
+</body>
+</html>

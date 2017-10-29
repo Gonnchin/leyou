@@ -1,0 +1,29 @@
+
+
+<div class="ub-left">
+    <div class="unav">
+        <div class="nd">
+            <h3 class="nd-title">用户中心</h3>
+            <div class="nd-list">
+                <a href="{% url 'users:index' %}">用户主页</a>
+                <a href="{% url 'users:ualbum' %}">个人相册</a>
+                <a href="{% url 'users:travnotes' %}" >我的游记</a>
+            </div>
+        </div>
+        <div class="nd">
+            <h3 class="nd-title">消息中心</h3>
+            <div class="nd-list">
+                <a href="{% url 'users:umessage' %}">我的消息</a>
+                <a href="{% url 'users:uconcern' %}">我的关注</a>
+            </div>
+        </div>
+        <div class="nd">
+            <h3 class="nd-title">个人资料</h3>
+            <div class="nd-list">
+                <a href="{% url 'users:uinfo' %}">个人信息</a>
+                <a href="{% url 'users:pwdmanage' %}">密码管理</a>
+                <a href="{% url 'users:logoff' %}">退出登录</a>
+            </div>
+        </div>
+    </div>
+</div>

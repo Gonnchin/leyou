@@ -1,0 +1,109 @@
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}我的游记-用户中心-乐旅网{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+<div class="le-wrap">
+
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop">
+<div class="inner">
+
+</div>
+</div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+
+{% include 'common/usercommon/left_include.html' %}
+
+<div class="ub-right">
+
+    <div class="page">
+        <div class="ptitle"><span>我的游记</span>
+            <a class="blink fr" href="{% url 'users:pub_travnotes' %}">发布游记</a></div>
+        <div class="pbody ">
+
+        <ul class="nlist line-bottom">
+        {% if travelnotes_all %}
+            {% for notes in current_pag %}
+                <foreach name="notes" item="n">
+                    <li class="ns-item">
+                        <h4 class="ns-title"><a href="#">{{ notes.travel_title }}</a></h4>
+                        <div class="ns-content fl">
+                            <div class="ns-pic fl">
+                                <a href="#">
+                                    <img src="{% static notes.travel_image %}" alt="">
+                                </a>
+                            </div>
+                            <p class="ns-abstract">{{ notes.content_short }}</p>
+                        </div>
+                        <div class="n-bottom">
+                            <div>浏览<span>{{ notes.notes_look }}</span></div>
+                            <div>发布时间:<span>{{ notes.create_time }}</span></div>
+                            <div><a href="#">编辑</a></div>
+                            <div><a href="#">删除</a></div>
+                        </div>
+                    </li >
+                </foreach>
+                {% endfor %}
+            {% else %}
+                <li>暂无游记,<a class="blink" href="{% url 'users:pub_travnotes' %}">马上发布一篇</a></li>
+            {% endif %}
+            </ul>
+            <!-- 分页 -->
+            <div class="fp">
+                {% if current_pag.has_previous %}
+                    <a href="?pag={{ current_pag.previous_page_number }}"><上一页</a>
+                {% endif %}
+
+                {% for index in paginator.page_range %}
+                    {% if index == current_pag.number %}
+                        <a href="?pag={{ index }}" class="active">{{ index }}</a>
+                    {% else %}
+                        <a href="?pag={{ index }}" >{{ index }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if current_pag.has_next %}
+                    <a href="?pag={{ current_pag.next_page_number }}">下一页></a>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+</div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+</body>
+</html>

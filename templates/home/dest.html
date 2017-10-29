@@ -1,0 +1,130 @@
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}目的地攻略{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/dest.css' %}">
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="mbody">
+
+<!-- 频道模型 -->
+<div class="dest-channel dest-top">
+    <div class="dest-ch-hd">
+        <div class="ch-info">
+            <h2 class="ch-title">目的地精选</h2>
+            <p class="ch-word">去哪儿玩</p>
+        </div>
+    </div>
+    <div class="dest-ch-body">
+        <div class="dest-box fl">
+            <div class="dest-t3">
+                <a href="{% url 'front:detail' %}?id={{ newview.0.id }}">
+                    <img src="{% static newview.0.view_image %}" alt="" target="_blank">
+                    <div class="fg-tile">{{ newview.0.view_name }}</div>
+                </a>
+            </div>
+
+            {% for view in newview|slice:'1:' %}
+            <div class="dest-t1">
+                <a href="{% url 'front:detail' %}?id={{ view.id }}">
+                    <img src="{% static view.view_image %}" alt="" target="_blank">
+                    <div class="fg-tile">{{ view.view_name }}</div>
+                </a>
+            </div>
+           {% endfor %}
+        </div>
+
+
+        <div class="dt-side fr">
+            {% for cag in hotcag|slice:':4' %}
+            <div class="sbox">
+                <a href="{% url 'front:topics' %}?cag={{ cag.id }}" class="tlink" target="_blank">
+                     <img src="{% static cag.cag_image %}">
+                     <p>{{ cag.cag_name }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+<!-- 主题游 -->
+<div class="dest-channel top-line">
+    <div class="dest-ch-hd">
+        <div class="ch-info">
+            <h2 class="ch-title">主题游</h2>
+            <p class="ch-word">本站策划</p>
+        </div>
+    </div>
+    <div class="dest-ch-body">
+
+<div class="theme-box">
+
+<div class="tbline">
+    {% for cag in hotcag|slice:':4' %}
+    <div class="tb-li">
+        <a href="{% url 'front:topics' %}?cag={{ cag.id }}" class="themelink" target="_blank">
+            <img src="{% static cag.cag_image %}">
+            <span class="theme-kw">{{ cag.cag_name }}</span>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="tblist">
+    {% for cag in hotcag|slice:'4:9' %}
+    <div class="thb-li">
+        <a href="{% url 'front:topics' %}?cag={{ cag.id }}" class="tdlink" target="_blank">
+            <img src="{% static cag.cag_image %}">
+            <span class="theme-kw">{{ cag.cag_name }}</span>
+        </a>
+    </div>
+    {% endfor %}
+
+</div>
+
+</div>
+
+    </div>
+</div>
+
+<!-- 国内游 -->
+<div class="dest-channel top-line">
+    <div class="dest-ch-hd">
+        <div class="ch-info">
+            <h2 class="ch-title">景点大全</h2>
+            <p class="ch-word">秀美山川，美不胜收</p>
+        </div>
+    </div>
+    <div class="dest-ch-body">
+        <ul class="visit-lisit">
+           <foreach name='dall' item="d">
+                {% for view in desview %}
+               <a href="{% url 'front:detail' %}?id={{ view.id }}" target="_blank" ><font size="4">{{ view.view_name }}</font></a>
+                {% endfor %}
+           </foreach>
+
+        </ul>
+    </div>
+</div>
+
+</div>
+{% endblock body %}
+
+
+</body>
+</html>

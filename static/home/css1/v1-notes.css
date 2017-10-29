@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+.mbody{
+    width: 1024px;
+    margin: 0px auto;
+    overflow: hidden;
+    border-bottom: 1px solid #e2e2e5;
+}
+.notes{
+    position: relative;
+    padding:0px;
+}
+.note-box{
+    width: 239px;
+    position: relative;
+    border: 1px solid #ccc;
+    float: left;
+    margin: 0;
+    padding: 0;
+    /*margin: 0 10px 20px 10px;*/
+}
+.note-view{
+    padding: 5px;
+}
+.note-view  a:hover{color: #f60;}
+.note-thumb{
+    width: 100%;
+}
+.note-title {margin: 5px auto;}
+.note-title a{
+    color: #007ed9;    
+    font: 14px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;
+}
+
+.note-author {
+    overflow: hidden; margin: 5px auto;
+    line-height: 28px;
+}
+.note-author img.upic{
+    width: 24px;height: 24px;
+    border-radius: 50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+}
+.note-author a{
+    display: block;
+    float: left;
+    color: #007ed9;  
+    font: 12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;
+}
+.author-name{margin: 2px 0 0 10px;}
+.note-des{
+    font: 12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;
+    color: #666; 
+}
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+
+
+{# 继承父模板 #}
+{% extends 'common/front_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}游记-乐旅网{% endblock title %}
+
+{# 顶部js部分 #}
+{% block head_js %}
+
+<link rel="stylesheet" href="{% static 'front/css/g.css' %}">
+
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="mhtml">
+<div class="le-wrapper">
+    <div class="ntPage">
+        <div class="ntb">
+
+            <h1 class="ntH1title">{$article.title}</h1>
+            <div class="ntInfo">
+                <div class="ntFrom">
+                    <span>作者:</span>
+                    <a href="{:U('Home/User/Index',null,null)}?np={$article.writer.open}" class="u-link">
+                       {$article.writer.nick}
+                    </a>
+                </div>
+                <div class="ntPubtime">
+                    <span>时间:</span>
+                    <span>{$article.pubtime|date='Y-m-d',###}</span>
+                </div>
+                <div class="ntPubtime">
+                    <span>浏览:</span>
+                    <span>{$article.visted}</span>
+                </div>
+            </div>
+        </div>
+        <div class="ntDtx">
+            <div class="ntdx fl">
+
+<div class="ntContent">
+   {$article.content|htmlspecialchars_decode}
+</div>
+<div class="ntCmt">
+    评论区
+</div>
+            </div>
+            <div class="ntSide fr">
+                <div class="sideBar">
+                    <div class="sideTop">
+                        <if condition="($article.thumb neq null)">
+                            <img src="/{$article.img.path}{$article.img.name}"/>
+                        </if>
+                    </div>
+                </div>
+                <div class="sideBar">
+                    <h3 class="dt3hd">热门游记</h3>
+                    <div class="dlist">
+                        <ul class="jtzw">
+                        <foreach name="notes" item="n" key="nk">
+                            <li><p>{$nk+1}</p><a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">{$n.title}</a></li>
+                        </foreach>
+                        </ul>
+                    </div>
+                    <div class="vMore">
+                        <div class="vmp">
+                            <a href="{:U('Home/Notes/index')}" class="vlink">查看更多游记</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+

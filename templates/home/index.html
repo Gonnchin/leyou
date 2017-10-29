@@ -1,0 +1,337 @@
+
+
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}首页{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/slider.css' %}">
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!--幻灯片部分-->
+<div class="le-slider">
+	<div class="fullSlide">
+		<div class="bd">
+			<ul>
+				{% for cag in hotcag|slice:':4' %}
+				<foreach name="flist" item="f">
+					<li >
+						<a href="{% url 'front:topics' %}?cag={{ cag.id }}" target="_blank">
+							<img src="{% static cag.background %}" alt="">
+						</a>
+					</li>
+				</foreach>
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="hd">
+			<ul>
+				{% for cag in hotcag|slice:':4' %}
+				<foreach name="flist" item="f">
+					<li><img src="{% static cag.background %}" /></li>
+				</foreach>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+<!--主体部分-->
+<div class="body">
+	<!--频道-->
+	<div class="le-top-channel">
+		<div class="le-ch-hd">
+			<div class="ch-info">
+				<h2 class="ch-title">目的地精选</h2>
+				<p class="ch-word">去哪儿玩</p>
+			</div>
+			<div class="ch-more"><a href="{% url 'home:destination' %}" target="_blank">更多</a></div>
+		</div>
+		<div class="ch-body">
+			<div class="dest-fl">
+
+				<figure class="ld-fg2">
+					<a href="{% url 'front:detail' %}?id={{ hotview.0.id }}">
+						<img src="{% static hotview.0.view_image %}" alt="">
+						<div class="fg-tile">{{ hotview.0.view_name }}</div>
+					</a>
+				</figure>
+				{% for view in hotview|slice:'1:' %}
+				<figure class="ld-fg">
+					<a href="{% url 'front:detail' %}?id={{ view.id }}" target="_blank">
+						<img src="{% static view.view_image %}" alt="">
+						<div class="fg-tile">{{ view.view_name }}</div>
+					</a>
+				</figure>
+				{% endfor %}
+			</div>
+
+			<div class="dest-fr">
+				{% for cag in hotcag|slice:'4:8' %}
+				<div class="dr-box">
+					<a href="{% url 'front:topics' %}?cag={{ cag.id }}" class="tlink" target="_blank">
+						<img src="{% static cag.cag_image %}">
+						<p>{{ cag.cag_name }}</p>
+					</a>
+				</div>
+				{% endfor %}
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<!--风景-频道-->
+	<div class="le-channel">
+		<div class="le-ch-hd">
+			<div class="ch-info">
+				<h2 class="ch-title">美丽风景</h2>
+				<p class="ch-word">放开眼睛，去看世界</p>
+			</div>
+			<div class="ch-more"><a href="#">更多</a></div>
+		</div>
+		<div class="ch-body">
+			<div class="pic-banner">
+				<div class="p-box">
+					<a href="/Home/Info/View?np=42b35dc2fd6a524afa401835f6a45716d6fc3eec" class="plink">
+						<img src="/public/upload/20170419/1492570124819.jpeg">
+						<p>走进婺源，邂逅春天</p>
+					</a>
+				</div>
+				<div class="p-box">
+					<a href="/Home/Info/View?np=42b35dc2fd6a524afa401835f6a45716d6fc3eec" class="plink">
+						<img src="/public/upload/20170419/1492570124819.jpeg">
+						<p>走进婺源，邂逅春天</p>
+					</a>
+				</div>
+				<div class="p-box">
+					<a href="/Home/Info/View?np=42b35dc2fd6a524afa401835f6a45716d6fc3eec" class="plink">
+						<img src="/public/upload/20170419/1492570124819.jpeg">
+						<p>走进婺源，邂逅春天</p>
+					</a>
+				</div>
+			</div>
+			<div class="pic-list">
+				<figure class="le-pic">
+					<a href="#">
+						<img src="/data/picture/01.jpg" alt="">
+						<div class="fg-tile">上海俯瞰</div>
+					</a>
+				</figure>
+				<figure class="le-pic">
+					<a href="#">
+						<img src="/data/picture/02.jpg" alt="">
+						<div class="fg-tile">南湖傍晚</div>
+					</a>
+				</figure>
+				<figure class="le-pic">
+					<a href="#">
+						<img src="/data/picture/03.jpg" alt="">
+						<div class="fg-tile">远山静湖</div>
+					</a>
+				</figure>
+				<figure class="le-pic">
+					<a href="#">
+						<img src="/data/picture/04.jpg" alt="">
+						<div class="fg-tile">大湖风光</div>
+					</a>
+				</figure>
+				<figure class="le-pic">
+					<a href="#">
+						<img src="/data/picture/05.jpg" alt="">
+						<div class="fg-tile">最美海岸线</div>
+					</a>
+				</figure>
+				<figure class="le-pic">
+					<a href="#">
+						<img src="/data/picture/08.jpg" alt="">
+						<div class="fg-tile">沙漠奇景</div>
+					</a>
+				</figure>
+			</div>
+		</div>
+	</div>
+
+
+	<!--达人-频道-->
+	<div class="le-channel">
+		<div class="le-ch-hd">
+			<div class="ch-info">
+				<h2 class="ch-title">旅游达人</h2>
+				<p class="ch-word">世界那么大，我想去看看</p>
+			</div>
+			<div class="ch-more">
+				<a href="{:U('Home/Tourist/Index')}">更多</a>
+			</div>
+		</div>
+		<div class="ch-body">
+			<div class="dt-list">
+				<!-- <div class="dt-card">
+                    <div class="u-avatar">
+                        <img class="ucard-bg" src="http://127.0.0.1:82/data/daren/02_bg.jpg" alt="">
+                        <figure class="ucard-pic"><a href="#"><img src="http://127.0.0.1:82/data/daren/02.jpg" alt=""></a></figure>
+                    </div>
+                    <div class="u-pannel">
+                        <h3 class="u-name"><a href="#">飞扬的心情</a></h3>
+                        <p class="u-sign ellipsis">我就是我，走过千山和万水,不负时光，只为看到这个世界的美丽，看见太阳，看见最美的你</p>
+                    </div>
+                </div> -->
+				<foreach name="tourist" item="ut">
+					<div class="dt-card">
+						<div class="u-avatar">
+							<img class="ucard-bg" src="/public/theme/home/style/img/td_bg.png" alt="">
+							<figure class="ucard-pic">
+								<a href="{:U('Home/User/index',null,null)}?np={$ut.open}">
+									<img src="/{$ut.img.path}{$ut.img.thumb}" alt="">
+								</a>
+							</figure>
+						</div>
+						<div class="u-pannel">
+							<h3 class="u-name"><a href="{:U('Home/User/index',null,null)}?np={$ut.open}">{$ut.nick}</a></h3>
+							<p class="u-sign ellipsis">{$ut.sign}</p>
+						</div>
+					</div>
+				</foreach>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--游记-频道-->
+	<div class="le-channel">
+		<div class="notes">
+			<div class="le-ch-hd">
+				<div class="ch-info">
+					<h2 class="ch-title">精彩游记攻略</h2>
+					<p class="ch-word">美丽就在笔尖</p>
+				</div>
+				<div class="ch-more"><a href="{:U('Home/Notes/Index')}">更多</a></div>
+			</div>
+			<div class="ch-body">
+				<div class="notes-list">
+					<!-- <div class="notes-item">
+                        <div class="note-pic fl"><a href="#"><img src="http://127.0.0.1:82/data/y/01.jpg" alt=""></a></div>
+                        <div class="note-content fl">
+                            <h4><a href="#">巴厘岛，每一次相遇都是奇迹</a></h4>
+                            <div class="note-ft">
+                                作者：<a class="notes-author" href="#">蘑菇张NKU</a>
+                                时间：<span class="notes-date">11-15 18:17</span>
+                                浏览：<span class="notes-view-num">31</span>
+                            </div>
+                            <p class="notes-abstract">
+                            【第一日】在云端 从忙碌的工作中暂时解脱出来，开始读一些书，也开始在购物车里丢进一些书名。在读的其中一本叫做《每一次相遇都是奇迹》，想读的其中一本叫做《我想遇见...
+                            </p>
+                        </div>
+                    </div> -->
+					<foreach name="notes" item='ns'>
+						<div class="notes-item">
+							<div class="note-pic fl"><a href="#"><img src="/{$ns.img.path}{$ns.img.thumb}" alt=""></a></div>
+							<div class="note-content fl">
+								<h4>
+									<a href="{:U('Home/Notes/View',null,null)}?np={$ns.open}">{$ns.title}</a>
+								</h4>
+								<div class="note-ft">
+									作者：<a class="notes-author"
+										  href="{:U('Home/User/Index',null,null)}?np={$ns.writer.open}">{$ns.writer.nick}</a>
+									时间：<span class="notes-date">{$ns.pubtime|date='Y-m-d',###}</span>
+									浏览：<span class="notes-view-num">{$ns.visted}</span>
+								</div>
+								<p class="notes-abstract">
+									{$ns.description}
+								</p>
+							</div>
+						</div>
+					</foreach>
+				</div>
+			</div>
+		</div>
+		<div class="notes-rbar">
+			<div class="b-body">
+				<div class="b-top">
+					<h3 class="b-hd">新鲜事儿</h3>
+					<div class="b-more"><a href="{:U('Home/Info/index')}">更多</a></div>
+				</div>
+				<div class="b-list">
+					<ul class="b-link">
+						<foreach name="arcs" item="a">
+							<li><a href="{:U('Home/Info/View',null,null)}?np={$a.open}">{$a.title}</a></li>
+						</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock body %}
+
+
+{# 网页底部 #}
+{% block footer %}
+<!--脚底部分-->
+<div class="le-footer clearfix">
+	<div class="le-ft-wrapper">
+		<div class="le-friend-link clearfix">
+			<div class="le-friend-title">
+				<span>友情链接</span>
+			</div>
+			<ul class="le-friend-list">
+				<li><a href="#link">百度旅游</a></li>
+				<li><a href="#link">携程旅游</a></li>
+				<li><a href="#link">去哪儿网</a></li>
+			</ul>
+		</div>
+		<div class="ft-nav">
+			&nbsp;<a href="./le/protocol.html">用户协议</a>&nbsp;
+			&nbsp;<a href="./le/contact.html">联系我们</a>&nbsp;
+			&nbsp;<a href="./le/friends.html">友情链接</a>&nbsp;
+		</div>
+		<div class="le-copyright">
+			版权所有 翻版必究 &copy;2016 lelvyou.com
+		</div>
+	</div>
+</div>
+
+{% endblock footer %}
+
+
+{# 底部js #}
+{% block footer_js %}
+<script type="text/javascript" src="{% static 'home/js/jquery1.42.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/js/jquery.SuperSlide.2.1.1.js' %}"></script>
+<script>
+    jQuery(".fullSlide").slide({
+        titCell:".hd li",
+        mainCell:".bd ul",
+        effect:"fold",
+        autoPlay:true,
+        delayTime:500
+    });
+</script>
+
+{% endblock footer_js %}
+
+
+</body>
+</html>

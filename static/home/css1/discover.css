@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+.mbody{
+    width: 1024px;
+    margin: 0px auto;
+    overflow: hidden;
+    border-bottom:1px solid #e2e2e5;
+}
+
+.side-bar{
+    width: 300px;
+    background: #fff;
+}
+.day-start{
+    text-align: center;
+    line-height: 60px;
+    background: #e2e2e5;
+    margin-bottom: 10px;
+}
+.day-start .s-btn{
+    color: #0c92f2;
+    font-size: 20px;
+}
+a.s-btn:hover{
+    color: #f60;
+}
+.s-put{
+    overflow: hidden;
+}
+.s-put p{text-align: center;margin-bottom: 5px;}
+.s-textarea{
+    outline: none;
+    resize:none;
+    padding: 4px 5px;
+    border:1px solid #e2e2e5;
+    border-left: none;
+    border-right: none;
+}
+.s-sub{
+    font-family: 'Microsoft YaHei';
+    font-size: 16px;
+    line-height: 16px;
+    width: 98%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+    letter-spacing: .5em;
+    color: #fff;
+    border: 1px solid #22b4f6;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    outline: none;
+    background: #22b4f6;
+}
+.s-sub:hover{
+    border-color: #1e9ed8;
+    background: #1e9ed8;
+}
+
+.first-mark{
+    margin: 5px auto;
+    padding: 10px 20px;
+}
+.first-mark section{
+    margin: 5px auto;
+    overflow: hidden;
+}
+.first-mark section h3{
+    font-weight: normal;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #e2e2e5;
+}
+.first-mark section a{
+    color: #0c92f2;
+    display: block;float: left;
+    margin: 5px;
+}
+.d-col2{
+    padding: 5px;
+}
+
+
+
+/*列表*/
+.discover-list{
+    width: 700px;
+    overflow: hidden;
+}
+.bd-x1{    
+    border:1px solid #e2e2e5;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+}
+
+.wbox{
+    width: 698px;
+    background: #fff;
+    margin-bottom: 10px;
+    border:1px solid #e2e2e5;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+}
+.w-view{}
+.w-top{
+    height: 50px; 
+    background: #fff url(../data/discover/cloundbg.png) no-repeat right top;
+    background-size: 600px;
+    padding: 15px;
+    border-bottom:1px solid #f2f2f2;
+}
+.u-face{width: 50px;height: 50px;overflow: hidden;}
+.u-face img{
+    width: 50px;height: 50px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+}
+.w-info{width: 610px;}
+.w-info a:hover{color: #f60;}
+.w-info .w-user{
+    margin: 4px auto 2px;
+}
+.w-user a{color: #333;}
+.w-info .w-from{
+    font-size: 14px;
+    margin: 3px auto 1px;
+}
+.w-from a,.w-from{
+    color: #808080;
+}
+.w-from span{
+    margin: 0 5px;
+}
+.w-body{
+    padding: 10px 73px 5px;
+}
+.m-txt{
+    font-size: 14px;
+    line-height: 23px;
+    color: #555;
+    margin-bottom: 2px;
+}
+.m-box{
+    margin-top:8px;
+}
+.m-img{overflow: hidden; width: 390px;}
+.m-box a.thumb-go3,.m-box a.thumb-go2,.m-box a.thumb-go1{
+    float: left;
+    margin: 0 10px 10px 0;
+}
+.thumb-go3 img{
+    width: 120px; height: 120px;
+}
+.thumb-go2 img{
+    width: 185px; height: 185px;
+}
+.thumb-go1 img{
+    width: 240px; height: 240px;
+}
+
+.w-handle{
+    height: 39px;
+    background: #fff;
+    border-top: 1px solid #e2e2e5;
+}
+.w-han{overflow: hidden;}
+.w-han li{
+    display: block;
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+.w-han a.w-txt2,.w-han a.w-txt1{
+    position: relative;
+    font-size: 14px;
+    display: block;
+    color: #808080;
+}
+.w-han a.w-txt2 span.s-txt{    
+    border-right: 1px solid #e2e2e2;
+}
+.w-han a:hover{color: #f60;}
+.w-han li .s-txt{
+    display: block;
+    margin: 10px auto;
+}

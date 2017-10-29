@@ -1,0 +1,59 @@
+
+.mbody{background:url(../images/um4_bg.jpg) no-repeat top center;background-size: cover;}
+
+.uc{padding: 0 0 5px;}
+.utop{height: 50px;}
+
+.ub{margin: 15px auto;}
+
+.ub-left{float: left;width: 179px; background-color: rgba(255,255,255,.5);}
+.ub-right{float: right;width: 830px; background-color: rgba(255,255,255,.5);}
+
+.unav{padding:0 0 5px;}
+.unav{border: 2px solid #2f6efe;}
+.nd-list a{
+    display: block;
+    color: #2f6efe;
+    padding: 8px 10px 8px 36px;
+    margin: 5px 0px;}
+.nd-list a.on,.nd-list a:hover{background: #ffffff;}
+.nd-title {
+    font-weight: normal;
+    color: rgb(255,255,255);
+    cursor: pointer;
+    padding: 5px 10px 5px 20px;
+    font-size: 18px;
+    background-color: #2f6efe;
+}
+
+.page{padding: 10px 15px 0;}
+.ptitle{
+    border-bottom: solid 1px #0c92f2;
+    height: 35px;line-height: 35px;position: relative;    
+}
+.ptitle span {
+    font-weight: bold;
+    font-size: 14pt;
+    border-bottom: solid 3px #0c92f2;
+    float: left;
+    position: absolute;
+    z-index: 100;
+    bottom: -1px;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+}
+.pbody{margin: 15px auto;padding: 20px;overflow: hidden;}
+
+
+
+/*欢迎页面*/
+.welinfo{line-height: 60px;border-bottom: dashed 1px #c2c2c2;padding: 0 0 20px;margin: 0 25px;}
+.welinfo b{font-weight: normal;font-size: 14pt;}
+
+.nav-bd{line-height: 36px;margin: 20px 25px;padding: 20px 0 40px;
+    overflow: hidden;border-bottom: dashed 1px #c2c2c2;}
+.h3fn{font-weight: normal;float: left;padding: 0 15px; background: #e2e2e5;color:#0c92f2;}
+.fns{margin: 0 15px;overflow: hidden;float: left;}
+.fn{margin: 0 15px;padding: 0 15px; font-size: 14pt; color: #565656;display: block;float: left;}
+.fn:hover{color: #fff; background-color:#0c92f2; }

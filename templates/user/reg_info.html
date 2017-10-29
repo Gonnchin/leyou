@@ -1,0 +1,67 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}乐旅网-用户注册{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+    <div class="login-box">
+        <form name="boxform" class="form-box"
+              method="post" action="{% url 'users:baseinfo_handle' %}">
+            {% csrf_token %}
+
+            <input type="text" style="display: none" name="user_email" value="{{ user_email }}">
+
+            <p><input placeholder="昵称" class="txtin" type="text" name="user_name"/></p>
+            <p><input placeholder="生日" class="txtin" type="text" name="brithday"/></p>
+            <p class="reg_p">
+                <label class="le-fltxt">性别:</label>
+                <cite>
+                    <input name="sex" type="radio" value="0" checked="checked" />男
+                    <input name="sex" type="radio" value="1" />女
+                </cite>
+            </p>
+            <p><input placeholder="手机号" class="txtin" type="text" name="user_tel"/></p>
+            <p><input placeholder="居住地" class="txtin" type="text" name="user_addr"/></p>
+            <p><input placeholder="个人签名" class="txtin" type="text" name="sign"/></p>
+            <p><button type="submit">注册</button></p>
+        </form>
+    </div>
+</section>
+<!-- 主体部分 结束-->
+{% endblock body %}
+
+
+{# 底部js部分内容 #}
+{% block footer_js %}
+<!--<script src="{$Think.THEME}user/style/js/jquery.min.js"></script>-->
+<!--<script>-->
+    <!--var captcha_img = $('.dVerify').find('img')-->
+    <!--var verifyimg = captcha_img.attr("src");-->
+    <!--captcha_img.attr('title', '点击刷新');-->
+    <!--captcha_img.click(function(){-->
+        <!--if( verifyimg.indexOf('?')>0){-->
+            <!--$(this).attr("src", verifyimg+'&random='+Math.random());-->
+        <!--}else{-->
+            <!--$(this).attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());-->
+        <!--}-->
+    <!--});-->
+<!--</script>-->
+{% endblock footer_js %}
+
+</body>
+</html>

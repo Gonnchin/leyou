@@ -1,0 +1,204 @@
+@charset "utf-8";
+
+.mbody{
+    width: 1024px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+.sp {
+    width:1024px;
+    margin: 0 auto 15px;
+    height: 282px;
+    background: #fff;
+    overflow: hidden;
+}
+.spz {
+    float: left;
+    width: 752px;
+    margin-right: 20px;
+    height: 280px;
+    background: #fff;
+    border: 1px solid #e9e9e9;
+}
+.flashBox {
+    float: left;
+    width: 440px;
+    height: 260px;
+    margin: 10px 20px 10px 10px;
+    display: inline;
+    padding-right: 20px;
+    border-right: 1px solid #e9e9e9;
+}
+.fly {float: left;width: 261px;height: 280px;}
+
+.fly ul {padding-top: 10px;padding-bottom: 10px;padding-right: 10px;}
+.fly dl {
+    width: 100px;
+    height: 24px;
+    background: url(../img/tj.gif) no-repeat;
+    padding-left: 10px;
+    line-height: 24px;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.fly li {line-height: 26px;font-size: 14px;}
+.fly li a {color: #666;}
+.fly li a:hover {color: #f60;}
+.spy {
+    float: left;
+    width: 248px;
+    height: 280px;
+    border: #e9e9e9 1px solid;
+    background: #fff;
+}
+.spy dl {
+    width: 160px;
+    height: 36px;
+    background: url(../img/fx.gif) no-repeat;
+    text-indent: -999em;
+    margin-top: 5px;
+}
+.spy p {margin-top: 10px;text-align: center;}
+.spy p img {margin: auto}
+
+
+/* 幻灯片css */
+.focusBox { position: relative; width: 440px; height: 260px; overflow: hidden; font: 12px/1.5 Verdana, Geneva, sans-serif; text-align: left; background: white; }
+.focusBox .pic img { width: 440px; height: 260px; display: block; }
+.focusBox .txt-bg { position: absolute; bottom: 0; z-index: 1; height: 36px; width:100%;  background: #333; filter: alpha(opacity=40); opacity: 0.4; overflow: hidden; }
+.focusBox .txt { position: absolute; bottom: 0; z-index: 2; height: 36px; width:100%; overflow: hidden; }
+.focusBox .txt li{ height:36px; line-height:36px; position:absolute; bottom:-36px;}
+.focusBox .txt li a{ display: block; color: white; padding: 0 0 0 10px; font-size: 12px; font-weight: bold; text-decoration: none; }
+.focusBox .num { position: absolute; z-index: 3; bottom: 8px; right: 8px; }
+.focusBox .num li{ float: left; position: relative; width: 18px; height: 15px; line-height: 15px; overflow: hidden; text-align: center; margin-right: 1px; cursor: pointer; }
+.focusBox .num li a,.focusBox .num li span { position: absolute; z-index: 2; display: block; color: white; width: 100%; height: 100%; top: 0; left: 0; text-decoration: none;}
+.focusBox .num li span { z-index: 1; background: black; filter: alpha(opacity=50); opacity: 0.5; }
+.focusBox .num li.on a,.focusBox .num a:hover{ background:#f60;  }
+
+
+
+.le-news{
+    width: 1024px;
+    margin:20px auto 15px;
+    overflow: hidden;
+}
+.listz {
+    float: left;
+    width: 754px;
+    margin-right: 20px;
+}
+
+.liszw {
+    float: left;
+    width: 752px;
+    background: #fff;
+    border: #e9e9e9 1px solid;
+    padding-bottom: 20px;
+}
+.list-title{
+    font-weight: normal; 
+    font-size: 18px; 
+    padding:10px 10px 10px 20px;
+    border-bottom: 1px solid #e9e9e9;
+    color: #666666;
+}
+.liszw ul {
+    padding-left: 20px;
+    padding-right: 20px;  
+    color: #999999;
+}
+.liszw li {
+    font-size: 16px;
+    line-height: 32px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-bottom: 1px dashed #ddd;
+}
+.liszw span {
+    float: right;
+    font-size: 14px;
+}
+.liszw li a {color: #666;}
+.liszw li a:hover {color: #f60;}
+.liszw p {
+    color: #999;
+    font-size: 12px;
+    line-height: 22px;
+}
+a.lixb {color: #007d7d;}
+
+
+.fenye {
+    float: left;
+    width:752px;
+    background: #fff;
+    border-left: #e9e9e9 1px solid;
+    border-right: #e9e9e9 1px solid;
+    border-bottom: #e9e9e9 1px solid;
+}
+.jogger {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+ul.jogger  {
+    color: #999999;
+}
+
+.listy {
+    float: left;
+    width: 250px;
+}
+.nrmk4 {
+    float: left;
+    width: 250px;
+    background: #fff;
+}
+#tab1 {
+    width: 248px;
+    height: 30px;
+    background: #fff;
+    border: #e9e9e9 1px solid;
+}
+#tab1 dl {
+    float: left;
+    line-height: 30px;
+    padding-left: 10px;
+    color: #007d7d;
+    font-size: 14px;
+}
+.jtzw {
+    width: 248px;
+    border-left: #e9e9e9 1px solid;
+    border-right: #e9e9e9 1px solid;
+    border-bottom: #e9e9e9 1px solid;
+}
+.jtzw ul {padding: 10px;}
+.jtzw li {
+    line-height: 30px;
+    font-size: 12px;    color: #999999;
+    height: 30px;
+}
+
+.jtzw li p {
+    float: left;
+    background: #00b5b5;
+    color: #fff;
+    line-height: 14px;
+    margin-top: 7px;
+    margin-right: 5px;
+    height: 14px;
+    width: 14px;
+    text-align: center;
+}
+.jtzw li a {color: #666;}
+.jtzw li a:hover {color: #f60;}
+
+.col2 {
+    float: left;
+    width: 250px;
+    margin: 0px 0 0px 0;
+    position: relative;
+    margin-top: 10px;
+}

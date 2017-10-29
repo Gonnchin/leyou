@@ -1,0 +1,84 @@
+{# 继承父模板 #}
+{% extends 'common/front_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}资讯详情-乐旅网{% endblock title %}
+
+{# 顶部js部分 #}
+{% block head_js %}
+
+<link rel="stylesheet" href="{% static 'front/css/g.css' %}">
+
+{% endblock head_js %}
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="mhtml">
+
+<div class="infoBody">
+
+<div class="le-wrapper clearfix">
+    <!-- ch-top -->
+    <div class="ch-top"></div>
+    <!-- mbd -->
+    <div class="mBd">
+        <!-- 内容区域 -->
+        <div class="mCtx fl">
+            <div class="ctxInfo">
+                <h1 class="h1hd">{$article.title}</h1>
+
+                <div class="ntInfo">
+                    <div class="ntFrom">
+                        <span>作者:</span>
+                        <span>管理员</span>
+                    </div>
+                    <div class="ntPubtime">
+                        <span>时间:</span>
+                        <span>{$article.pubtime|date='Y-m-d',###}</span>
+                    </div>
+                    <div class="ntPubtime">
+                        <span>浏览:</span>
+                        <span>{$article.visted}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ctxBody">
+
+
+<!-- 正文begin -->
+{$article.content|htmlspecialchars_decode}
+                    <!-- 正文end -->
+
+
+            </div>
+            <div class="ctxCmt">
+                评论区
+            </div>
+        </div>
+        <!-- 旁栏 -->
+        <div class="mSide fr">
+            <h3 class="h3hd">热门阅读</h3>
+            <div class="slist">
+                <ul class="jtzw">
+<foreach name="sArc" key="sk" item="sa">
+                    <li><p>{$sk+1}</p><a href="{:U('Home/Info/View',null,null)}?np={$sa.open}">{$sa.title}</a></li>
+</foreach>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+</div>
+
+{% endblock body %}
+
+
+

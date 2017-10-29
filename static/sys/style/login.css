@@ -1,0 +1,43 @@
+@charset "utf-8";
+.mbody{
+    position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;
+    background-color: 0;
+    overflow: hidden;
+}
+.tlogin{margin: 80px auto 75px;float: none;}
+.login-box{
+    border-radius: 5px;padding: 0px 0 10px;width: 460px;height: 330px;overflow: hidden;
+    background-color:#EBF2F9;
+    position: absolute;top: 50%;left: 50%;margin: -180px auto auto -230px;
+    box-shadow: 2px 2px 5px rgb(226,226,226);
+}
+.hd-top{
+    height: 195px;overflow: hidden;
+    background:url(./images/timg2.png) no-repeat top right;
+    background-size: cover;
+}
+.login-form{
+    width: 220px; padding: 5px 5px 6px;
+    margin: 5px auto;
+}
+.login-form p.b{width: 100%;overflow: hidden;margin: 15px 0 5px;}
+.login-form .put{
+    width: 218px;position: relative;border: 1px solid rgb(216,216,216);
+    display: block;overflow: hidden; margin: 5px 0px;
+    background: rgb(255,255,255);border-radius: 3px;
+}
+.iput{
+    float: left;width: 200px;background:none;
+    padding:7px 9px;outline: 0;border: 0;color: #333;font-size: 16px;
+}
+p.tline{border-top: 1px solid rgb(216,216,216);width: 100%;overflow: hidden;}
+
+button.loginbtn {
+    display: block;font-size: 16px;line-height: 30px;width: 220px;
+    color: rgb(255,255,255);cursor: pointer;outline: 0;border: 0;
+    background: rgb(20, 150, 245);border-radius: 3px;
+    letter-spacing: .2em;
+}
+button.loginbtn:hover{
+    background: rgb(50, 195, 245);
+}

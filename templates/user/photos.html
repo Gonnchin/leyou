@@ -1,0 +1,103 @@
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}个人相册-用户中心-乐旅网{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+<div class="le-wrap">
+
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop">
+<div class="inner">
+
+</div>
+</div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+
+{# 用户中心左边公共部分 #}
+{% include 'common/usercommon/left_include.html' %}
+
+<div class="ub-right">
+
+<div class="page">
+<div class="ptitle"><span>我的相册 </span>
+    <a class="blink fr" href="{% url 'users:create_album' %}">创建相册</a></div>
+<div class="pbody ">
+
+    <ul class="imglist line-bottom">
+        {% if albums %}
+            {% for album in current_pag %}
+            <foreach name="plist" item="p">
+                <li>
+                    <span><img src="{% static album.albumimage_set.all.0.image %}" /></span>
+                    <h2><a href="">{{ album.album_name }}</a></h2>
+                    <p>
+                        <a href="#">编辑</a>&nbsp;&nbsp;
+                        <a href="#">删除</a>
+                    </p>
+                </li>
+            </foreach>
+            {% endfor %}
+        {% else %}
+            <p>暂无相册,<a class="blink" href="{% url 'users:create_album' %}">马上创建</a></p>
+        {% endif %}
+
+    </ul>
+    <!-- 分页 -->
+    <div class="fp">
+        {% if current_pag.has_previous %}
+            <a href="?pag={{ current_pag.previous_page_number }}"><上一页</a>
+        {% endif %}
+
+        {% for index in paginator.page_range %}
+            {% if index == current_pag.number %}
+                <a href="?pag={{ index }}" class="active">{{ index }}</a>
+            {% else %}
+                <a href="?pag={{ index }}" >{{ index }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if current_pag.has_next %}
+            <a href="?pag={{ current_pag.next_page_number }}">下一页></a>
+        {% endif %}
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+
+
+</div>
+</section>
+<!-- 主体部分 结束-->
+{% endblock body %}
+
+
+</body>
+</html>

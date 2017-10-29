@@ -1,0 +1,119 @@
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}个人相册-用户中心-乐旅网{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/dialog.css' %}">
+
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+
+<div class="le-wrap">
+
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop">
+<div class="inner">
+
+</div>
+</div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+{# 用户中心左边公共部分 #}
+{% include 'common/usercommon/left_include.html' %}
+
+<div class="ub-right">
+
+<div class="page">
+<div class="ptitle"><span>创建相册 </span></div>
+<div class="pbody ">
+
+    <div class="formbody">
+        <form action="{% url 'users:ualbum' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul class="forminfo">
+                <li>
+                    <label>名称</label><input name="ualbum_name" type="text" class="dfinput" />
+                    <i>名称不能超过30个字符</i>
+                </li>
+                <li>
+                    <label>图片上传</label>
+                    <div class="imgUp">
+                        <input type="file" name="ualbum_image" id="imgBtn" multiple accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"/>
+                    </div>
+                </li>
+                <li>
+                    <label>简介</label>
+                    <div class="txtinput">
+                        <textarea name="album_short" cols="" rows="" class="textinput txt100"></textarea>
+                    </div>
+                </li>
+                <li>
+                    <label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/>
+                </li>
+
+            </ul>
+        </form>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+
+</div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+{# 底部js部分内容 #}
+{% block footer_js %}
+<!--dialog-->
+<div class="theme-popover">
+    <div class="theme-poptit">
+        <div class="theme-title">标题</div>
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-context">content</div>
+</div>
+<div class="theme-loading"></div>
+<div class="theme-popover-mask"></div>
+<div class="dialogBody">
+    <div id="imgSel">
+        <input id="photo" type="file" name="photo" />
+        <input id="submit" type="button" value="提交" >
+    </div>
+</div>
+<!--dialog-->
+<script type="text/javascript" src="{% static 'user/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'user/js/dialog.js' %}"></script>
+<script type="text/javascript" src="{% static 'user/js/ajaxfileupload.js' %}"></script>
+
+{% endblock footer_js %}
+
+
+</body>
+</html>

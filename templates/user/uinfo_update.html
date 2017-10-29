@@ -1,0 +1,99 @@
+
+{# 继承父模板 #}
+{% extends 'common/usercommon/base.html' %}
+
+
+{# 加载标签 #}
+
+{% load staticfiles %}
+
+{# 顶部标题}
+{% block title %}个人资料-乐旅网-用户中心{% endblock title %}
+
+
+{# 顶部js,css #}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/u.css' %}">
+{% endblock head %}
+
+{# 网页主体部分内容 #}
+{% block body %}
+<!-- 主体部分 -->
+<section class="mbody">
+    <div class="le-wrap">
+<div class="uc">
+
+<!-- 用户顶部 -->
+<div class="utop"></div>
+<!-- 用户顶部 结束-->
+
+<!-- 用户主体部分 -->
+<div class="ub clearfix">
+
+{# 用户中心左边公共部分 #}
+{% include 'common/usercommon/left_include.html' %}
+
+<div class="ub-right">
+
+<div class="page">
+    <div class="ptitle"><span>修改个人资料</span></div>
+    <div class="pbody">
+
+        <div class="u-box">
+            <form action="{% url 'users:uinfo' %}" method="post">
+                {% csrf_token %}
+                <div class="le-pfg">
+                    <label class="phd">基本资料</label>
+                </div>
+                <div class="le-prg">
+                    <label class="le-fltxt">用户昵称:</label>
+                    <input type="text"class="le-fput" name="user_name" value="{{user.user_name  }}">
+                </div>
+                <div class="le-prg">
+                    <label class="le-fltxt">个性签名:</label>
+                    <textarea class="le-ftxt" cols="40" rows="4" name="signature" isvalid="1">{{ user.signature }}</textarea>
+                </div>
+                <div class="le-prg">
+                    <label class="le-fltxt">联系方式:</label>
+                    <input class="le-fput" name="user_tel" type="text" value="{{ user.user_tel }}" />
+                </div>
+                <div class="le-prg">
+                    <label class="le-fltxt">用户性别:</label>
+                    <cite>
+                        <input name="gender" type="radio" value="0" {% if user.gender == 1 %} checked="checked" {% endif %} />男
+                        <input name="gender" type="radio" value="1" {% if user.gender == 0 %} checked="checked" {% endif %}/>女
+                    </cite>
+                </div>
+                <div class="le-prg">
+                    <label class="le-fltxt">用户生日:</label>
+                    <input class="le-fput" name="brithday" type="text" value="{{ user.birthday }}" />
+                </div>
+                <div class="le-prg">
+                    <label class="le-fltxt">常居住地:</label>
+                    <input class="le-fput" name="user_addr" type="text" value="{{ user.user_addr }}" />
+                </div>
+                <div class="le-prg line-top">
+                    <input name="" type="submit" class="btn bpwd" value="修改"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<!-- 用户主体部分结束 -->
+</div>
+
+</div>
+</section>
+<!-- 主体部分 结束-->
+
+{% endblock body %}
+
+
+
+

@@ -1,0 +1,94 @@
+
+{# 继承父模板 #}
+{% extends 'common/front_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}用户的主页-乐旅网{% endblock title %}
+
+{# 顶部js部分 #}
+{% block head_js %}
+
+<link rel="stylesheet" href="{% static 'front/css/g.css' %}">
+
+{% endblock head_js %}
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+
+<div class="mhtml">
+
+<div class="uHome">
+<div class="le-wrapper98">
+    <div class="uHeader">
+        <div class="uPic">
+            <img src="/{$User.img.path}{$User.img.name}">
+        </div>
+        <div class="uInfo">
+            <div class="infoTop">
+                <h1 class="uH1n">{$User.nick}</h1>
+                <div class="uSign">{$User.sign}</div>
+            </div>
+            <div class="navMenu">
+                <ul class="nMbar">
+                    <li><a href="{:U('Home/User/index',null,null)}?np={$User.open}">主页</a></li>
+                    <li><a href="{:U('Home/User/Notes',null,null)}?np={$User.open}">游记</a></li>
+                    <li><a href="{:U('Home/User/Photos',null,null)}?np={$User.open}">相册</a></li>
+                    <li><a href="{:U('Home/User/Info',null,null)}?np={$User.open}">个人资料</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="uBody">
+        <div class="uBmian fl">
+            <h2 class="uH2n">{$User.nick}的档案</h2>
+<div class="uChs">           
+
+<div class="uBinfo">
+    <h3 class="ubH3t">基本资料</h3>
+    <div class="ubCtx">
+        <ul class="uinfolist">
+            <li>
+                <span>昵称:</span>
+                <div>{$User.nick}</div>
+            </li>
+            <li>
+                <span>个性签名:</span>
+                <div>{$User.sign}</div>
+            </li>
+            <li>
+                <span>生日:</span>
+                <div>{$User.brith}</div>
+            </li>
+            <li>
+                <span>性别:</span>
+                <div><if condition="($User.sex eq 0)">男<else/>女</if></div>
+            </li>
+            <li>
+                <span>现居住地:</span>
+                <div>{$User.locate}</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+</div> 
+        </div>
+
+        {# 个人资料公共部分 #}
+        {% include 'common/front_common/user_common.html' %}
+
+
+    </div>
+</div>
+</div>
+
+
+</div>
+{% endblock body %}
+
+

@@ -1,0 +1,85 @@
+
+{# 继承父模板 #}
+{% extends 'common/home_common/base.html' %}
+
+{# 加载标签 #}
+{% load staticfiles %}
+
+{# 标题部分 #}
+{% block title%}旅行社{% endblock title %}
+
+
+{# 顶部js部分 #}
+{% block head_js %}
+<link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/travel.css' %}">
+
+{% endblock head_js %}
+
+
+
+{# 网页主体部分内容 #}
+{% block body %}
+<div class="mbody">
+
+<!-- m-top -->
+<div class="m-top">
+    <img src="/static/home/images/top.jpg">
+</div>
+<!-- m-top end -->
+<!-- model start -->
+<div class="m-model">
+    <div class="md-bar fl">
+        <div class="md-jion">加入我们</div>
+        <div class="md-introduce">
+            乐旅网已经扩展到合作机构旅游爱好者，基于大数据分析，以市场化导向，以目的地及景区营销一体化为核心的智能解决体系和一站式服务体系。乐旅游充分利用信心技术，提供系列软硬件、数据接口、APP、微信平台等智慧旅游产品。
+        </div>
+        <div class="md-contact">
+            <p>邮箱:lelv@126.com</p>
+            <p>地址:上海市</p>
+        </div>
+    </div>
+
+    <div class="md-list fr">
+        <div class="md-box">
+            <img src="/static/home/images/1.jpg">
+            <div class="md-binfo">
+                <a href="#">镇江旅游商务网</a>
+            </div>
+        </div>
+        <div class="md-box">
+            <img src="/static/home/images/lvxingshe.jpg">
+            <div class="md-binfo">
+                <a href="http://www.citsqd.net/">中国国旅</a>
+            </div>
+        </div>
+        <div class="md-box">
+            <img src="/static/home/images/lvxingshe2.jpg">
+            <div class="md-binfo">
+                <a href="http://www.ctsho.com/">中旅总社</a>
+            </div>
+        </div>
+        <div class="md-box">
+            <img src="/static/home/images/lvxingshe3.jpg">
+            <div class="md-binfo">
+                <a href="#">青城山都江宴旅游</a>
+            </div>
+        </div>
+        <div class="md-box">
+            <img src="/static/home/images/lvxingshe4.jpg">
+            <div class="md-binfo">
+                <a href="#">酒泉旅游</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- model end -->
+
+</div>
+{% endblock body %}
+
+
+
+</body>
+</html>

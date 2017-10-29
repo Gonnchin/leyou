@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+.mbody{
+    width: 1024px;
+    margin: 0px auto;
+    overflow: hidden;
+    border-bottom:1px solid #e2e2e5;
+}
+
+
+/*dest 频道模型*/
+.top-line{border-top: 1px solid #e2e2e2;}
+.dest-channel{overflow: hidden;margin: 15px auto;}
+
+.dest-ch-hd{line-height: 29px; height: 29px;margin: 15px auto;border-left: 2px solid #007ed9;overflow: hidden;}
+.dest-top{margin: 0px auto;}
+.dest-top .dest-ch-hd{margin: 0px auto 15px;}
+.ch-info{float: left;}
+.ch-title{float: left; font-weight: normal; margin: auto 15px;color: #444;}
+.ch-word{float: left; margin: auto 5px;color: #696969;line-height: 36px;}
+.ch-more{float: right; margin-right: 8px;}
+.ch-more a{color:#696969; }
+.ch-more a:hover{color:#f60;}
+.dest-ch-body{margin: 5px auto;}
+
+
+
+.dest-box{width: 1032px;height: 395px; overflow: hidden;}
+.dest-t3,.dest-t2,.dest-t1{display:block; overflow: hidden;float: left; margin:0 10px 10px 0;}
+.dest-t3{width: 334px; height: 260px;}
+.dest-t2{width: 333px; height: 125px;}
+.dest-t1{width: 162px; height: 125px;}
+.dest-t3 img{width: 334px; height: 260px;}
+.dest-t2 img{width: 332px; height: 125px;}
+.dest-t1 img{width: 162px; height: 125px;}
+
+
+.dest-tc{display:block; overflow: hidden;float: left; margin:0 10px 10px 0;}
+.dest-tc{width: 246px; height: 190px; border: 1px solid #ccc;}
+.dest-tc img{width: 246px; height: 150px;}
+.dest-list{width: 1032px;overflow: hidden;}
+.visit-lisit{}
+.visit-lisit li{
+display: -moz-inline-stack;
+display: inline-block;
+zoom: 1;
+vertical-align: top;
+width: 236px;
+margin: 0 0 0 16px;
+}
+.visit-type {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.visit-lisit li p a {
+    font: 12px/1.5 tahoma,arial,宋体,sans-serif;
+    color: #007ed9;
+    margin-right: 8px;
+    line-height: 26px;
+    display: inline-block;
+}
+.visit-lisit li p a:hover {color: #f60;}
