@@ -12,13 +12,13 @@
 .dt-list .dt-box{height: 217px; 
 	width: 240px; float: left;
 	margin: 0 15px 15px 0; position: relative;
-    background: #fff url(../img/td_bg.png)no-repeat top center;
+    background: #fff url(../images/td_bg.png)no-repeat top center;
 	background-size:100%;
     border: 1px solid #dedfe0;
 	border-bottom: 3px solid #E3E4E5;}
 .dt-box .u-avatar{
 	padding:76px 10px 0;z-index: 9;
-    background: url(../img/w-bg.png)repeat-x left bottom;}
+    background: url(../images/w-bg.png)repeat-x left bottom;}
 .u-nav{
     height: 60px;
 	border-bottom: 1px solid #EFEFEF;

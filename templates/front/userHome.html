@@ -26,19 +26,19 @@
 <div class="le-wrapper98">
     <div class="uHeader">
         <div class="uPic">
-            <img src="/{$User.img.path}{$User.img.name}">
+            <img src="{% static user.user_photo %}">
         </div>
         <div class="uInfo">
             <div class="infoTop">
-                <h1 class="uH1n">{$User.nick}</h1>
-                <div class="uSign">{$User.sign}</div>
+                <h1 class="uH1n">{{ user.user_name }}</h1>
+                <div class="uSign">{{ user.signature }}</div>
             </div>
             <div class="navMenu">
                 <ul class="nMbar">
-                    <li><a href="{:U('Home/User/index',null,null)}?np={$User.open}">主页</a></li>
-                    <li><a href="{:U('Home/User/Notes',null,null)}?np={$User.open}">游记</a></li>
-                    <li><a href="{:U('Home/User/Photos',null,null)}?np={$User.open}">相册</a></li>
-                    <li><a href="{:U('Home/User/Info',null,null)}?np={$User.open}">个人资料</a></li>
+                    <li><a href="{% url 'front:userhome' %}">主页</a></li>
+                    <li><a href="{% url 'front:usernotes' %}">游记</a></li>
+                    <li><a href="{% url 'front:userphotos' %}">相册</a></li>
+                    <li><a href="{% url 'front:userinfo' %}">个人资料</a></li>
                 </ul>
             </div>
         </div>
@@ -46,84 +46,68 @@
     <div class="uBody">
         <div class="uBmian fl">
             <h2 class="uH2n">主页</h2>
-<div class="uChs">           
-<div class="uCh">
-    <div class="uPhotos">
-<if condition="($User.pics neq null)">
-<foreach name="User.pics" item="p">
-        <div class="uAlbum">
-            <img class="pupic" src="/{$p.img.path}{$p.img.name}" />
-            <h3 class="uH3tn">
-                <a href="{:U('Home/Photos/Album',null,null)}?np={$p.open}">{$p.title}</a>
-            </h3>
-        </div>
-</foreach>
-<else/>
-    <p style="text-align:center;padding:5px 0 20px;">暂无相册</p>
-</if>
-<!--         <div class="uAlbum">
-            <img class="pupic" src="./src/psb.jpg" />
-            <h3 class="uH3tn">
-                <a href="#link">美丽的淮师大</a>
-            </h3>
-        </div> -->
 
-    </div>
-    <div class="uMore">
-        <div class="ump"> 
-            <a href="{:U('Home/User/Photos',null,null)}?np={$User.open}" class="ulink">查看更多相册</a>
+            <div class="uChs">
+            <div class="uCh">
+                <div class="uPhotos">
+            {% if user.useralbm_set.all %}
+            {% for album in user.useralbm_set.all %}
+            <foreach name="User.pics" item="p">
+                    <div class="uAlbum">
+                        <img class="pupic" src="{% static album.albumimage_set.all.0.imge %}" />
+                        <h3 class="uH3tn">
+                            <a href="{% url 'front:userphotos' %}?id={{ album.id }}">{{ album.album_name }}</a>
+                        </h3>
+                    </div>
+            </foreach>
+            {% endfor %}
+            {% else %}
+                <p style="text-align:center;padding:5px 0 20px;">暂无相册</p>
+            {% endif %}
         </div>
-    </div> 
+
+    <div class="uMore">
+        <div class="ump">
+            <a href="#" class="ulink">查看更多相册</a>
+        </div>
+    </div>
+
 </div>
 <div class="uCh">
     <div class="untlist">
 
 <ul>
-<if condition="($User.notes neq null)">
+{% if user.travelnotes_set.all %}
+{% for note in user.travelnotes_set.all %}
 <foreach name="User.notes" item="n">
     <li class="uNt">
         <h3 class="unH3t">
-            <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">{$n.title}</a>
+            <a href="{% url 'front:noteview' %}?id={{ note.id }}">{{ note.travel_title }}</a>
         </h3>
         <div class="ntCtx">
             <if condition="($n.thumb neq null)">
                 <div class="ntImg">
-                    <img src="/{$n.img.path}{$n.img.name}">
+                    <img src="{% static note.travel_image %}">
                 </div>
             </if>
-            <p>{$n.description}</p>
+            <p>{{ note.content_short }}</p>
         </div>
         <div class="ntInfo">
             <div class="ntPubtime">
                 <span>发布时间:</span>
-                <span>{$n.pubtime|date='Y-m-d',###}</span>
+                <span>{{ note.create_time }}</span>
             </div>
             <div class="ntFrom">
-                <span>浏览({$n.visted})</span>
-            </div>  
+                <span>浏览({{ note.note_look }})</span>
+            </div>
         </div>
     </li>
 </foreach>
-<else/>
+{% endfor %}
+{% else %}
     <p style="text-align:center;padding:5px 0 20px;">暂无游记</p>
-</if>
-<!--     <li class="uNt">
-        <h3 class="unH3t">
-            <a href="#nlink">美丽的颐和园游记</a>
-        </h3>
-        <div class="ntCtx">
-            <p>颐和园是我国现存规模最大，保存最完整的皇家园林。它原是清朝帝王的行宫和花园，以杭州西湖风景为蓝本，汲取江南园林的某些设计手法和意境而建成的一座大型天然山水园。</p>
-        </div>
-        <div class="ntInfo">
-            <div class="ntPubtime">
-                <span>发布时间:</span>
-                <span>2017-3-25</span>
-            </div>
-            <div class="ntFrom">
-                <span>浏览(217)</span>
-            </div>  
-        </div>
-    </li> -->
+{% endif %}
+
 
 </ul>
 
@@ -131,7 +115,7 @@
     
     <div class="uMore">
         <div class="ump"> 
-            <a href="{:U('Home/User/Notes',null,null)}?np={$User.open}" class="ulink">查看更多游记</a>
+            <a href="#" class="ulink">查看更多游记</a>
         </div>
     </div> 
 </div>                
@@ -147,6 +131,7 @@
 
 
 </div>
-{% e
-</div>ndblock body %}
+
+</div>
+{% endblock body %}
 

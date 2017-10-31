@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from users.models import *
 
 
 # 网站主页
@@ -8,6 +9,14 @@ def index(request):
     hotview = Scenes.objects.hot_view_byname('目的地精选')
     # 获取多个热门景点类型
     hotcag = Category.objects.hot_view()
+    # 获取最新资讯信息
+    infos = Information.objects.get_new_info()
+    # 获取热门相册
+    albums = UserAlbum.objects.get_hot_album()[:6]
+    # 获取旅游达人
+    travel_users = User.objects.get_travel_user()[:5]
+    # 获取2条精彩游记
+    notes = TravelNotes.objects.get_hot_travel_notes()[:2]
     return render(request, 'home/index.html', locals())
 
 
@@ -24,21 +33,30 @@ def destination(request):
 
 # 摄影
 def photography(request):
+    # 获取所有相册
+    albums = UserAlbum.objects.all().order_by('-id')
     return render(request, 'home/photos.html', locals())
 
 
 # 游记
 def travelnotes(request):
+    # 获取所有游记
+    notes = TravelNotes.objects.all().order_by('-id')
     return render(request, 'home/notes.html', locals())
 
 
 # 旅行家
 def tourist(request):
+    users = User.objects.all()
     return render(request, 'home/tourist.html', locals())
 
 
 # 资讯
 def info(request):
+    # 获取资讯信息
+    infos = Information.objects.all()
+    # 资讯阅读排序
+    order_infos = Information.objects.get_read_many()
     return render(request, 'home/info.html', locals())
 
 

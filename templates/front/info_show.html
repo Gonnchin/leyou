@@ -29,7 +29,7 @@
         <!-- 内容区域 -->
         <div class="mCtx fl">
             <div class="ctxInfo">
-                <h1 class="h1hd">{$article.title}</h1>
+                <h1 class="h1hd">{{ info.info_title }}</h1>
 
                 <div class="ntInfo">
                     <div class="ntFrom">
@@ -38,11 +38,11 @@
                     </div>
                     <div class="ntPubtime">
                         <span>时间:</span>
-                        <span>{$article.pubtime|date='Y-m-d',###}</span>
+                        <span>{{ info.create_time }}</span>
                     </div>
                     <div class="ntPubtime">
                         <span>浏览:</span>
-                        <span>{$article.visted}</span>
+                        <span>{{ info.info_look }}</span>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
 
 
 <!-- 正文begin -->
-{$article.content|htmlspecialchars_decode}
+{{ info_content|safe }}
                     <!-- 正文end -->
 
 
@@ -64,9 +64,11 @@
             <h3 class="h3hd">热门阅读</h3>
             <div class="slist">
                 <ul class="jtzw">
-<foreach name="sArc" key="sk" item="sa">
-                    <li><p>{$sk+1}</p><a href="{:U('Home/Info/View',null,null)}?np={$sa.open}">{$sa.title}</a></li>
-</foreach>
+                    {% for info in hotinfo %}
+                    <foreach name="sArc" key="sk" item="sa">
+                            <li><p>{{ forloop.counter }}</p><a href="{% url 'front:infoshow' %}?id={{info.id }}">{{ info.info_title }}</a></li>
+                    </foreach>
+                    {% endfor %}
                 </ul>
 
             </div>

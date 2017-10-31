@@ -103,73 +103,39 @@
 	<div class="le-channel">
 		<div class="le-ch-hd">
 			<div class="ch-info">
-				<h2 class="ch-title">美丽风景</h2>
+				<h2 class="ch-title">资讯与风景</h2>
 				<p class="ch-word">放开眼睛，去看世界</p>
 			</div>
 			<div class="ch-more"><a href="#">更多</a></div>
 		</div>
 		<div class="ch-body">
 			<div class="pic-banner">
+
+				{% for info in infos|slice:':3' %}
 				<div class="p-box">
-					<a href="/Home/Info/View?np=42b35dc2fd6a524afa401835f6a45716d6fc3eec" class="plink">
-						<img src="/public/upload/20170419/1492570124819.jpeg">
-						<p>走进婺源，邂逅春天</p>
+					<a href="{% url 'home:info' %}" class="plink">
+						<img src="{% static info.info_image %}">
+						<p>{{ info.info_title }}</p>
 					</a>
 				</div>
-				<div class="p-box">
-					<a href="/Home/Info/View?np=42b35dc2fd6a524afa401835f6a45716d6fc3eec" class="plink">
-						<img src="/public/upload/20170419/1492570124819.jpeg">
-						<p>走进婺源，邂逅春天</p>
-					</a>
-				</div>
-				<div class="p-box">
-					<a href="/Home/Info/View?np=42b35dc2fd6a524afa401835f6a45716d6fc3eec" class="plink">
-						<img src="/public/upload/20170419/1492570124819.jpeg">
-						<p>走进婺源，邂逅春天</p>
-					</a>
-				</div>
+				{% endfor %}
 			</div>
+
 			<div class="pic-list">
+				<div class="pic-list">
+				{% for album in albums %}
 				<figure class="le-pic">
 					<a href="#">
-						<img src="/data/picture/01.jpg" alt="">
-						<div class="fg-tile">上海俯瞰</div>
+						<img src="{% static album.albumimage_set.all.0.image %}" alt="">
+						<div class="fg-tile">{{ album.album_name }}</div>
 					</a>
 				</figure>
-				<figure class="le-pic">
-					<a href="#">
-						<img src="/data/picture/02.jpg" alt="">
-						<div class="fg-tile">南湖傍晚</div>
-					</a>
-				</figure>
-				<figure class="le-pic">
-					<a href="#">
-						<img src="/data/picture/03.jpg" alt="">
-						<div class="fg-tile">远山静湖</div>
-					</a>
-				</figure>
-				<figure class="le-pic">
-					<a href="#">
-						<img src="/data/picture/04.jpg" alt="">
-						<div class="fg-tile">大湖风光</div>
-					</a>
-				</figure>
-				<figure class="le-pic">
-					<a href="#">
-						<img src="/data/picture/05.jpg" alt="">
-						<div class="fg-tile">最美海岸线</div>
-					</a>
-				</figure>
-				<figure class="le-pic">
-					<a href="#">
-						<img src="/data/picture/08.jpg" alt="">
-						<div class="fg-tile">沙漠奇景</div>
-					</a>
-				</figure>
+				{% endfor %}
 			</div>
+
 		</div>
 	</div>
-
+	</div>
 
 	<!--达人-频道-->
 	<div class="le-channel">
@@ -179,37 +145,30 @@
 				<p class="ch-word">世界那么大，我想去看看</p>
 			</div>
 			<div class="ch-more">
-				<a href="{:U('Home/Tourist/Index')}">更多</a>
+				<a href="{% url 'home:tourist' %}">更多</a>
 			</div>
 		</div>
 		<div class="ch-body">
 			<div class="dt-list">
-				<!-- <div class="dt-card">
-                    <div class="u-avatar">
-                        <img class="ucard-bg" src="http://127.0.0.1:82/data/daren/02_bg.jpg" alt="">
-                        <figure class="ucard-pic"><a href="#"><img src="http://127.0.0.1:82/data/daren/02.jpg" alt=""></a></figure>
-                    </div>
-                    <div class="u-pannel">
-                        <h3 class="u-name"><a href="#">飞扬的心情</a></h3>
-                        <p class="u-sign ellipsis">我就是我，走过千山和万水,不负时光，只为看到这个世界的美丽，看见太阳，看见最美的你</p>
-                    </div>
-                </div> -->
+				{% for user in travel_users %}
 				<foreach name="tourist" item="ut">
 					<div class="dt-card">
+						<a href="{% url 'front:userhome' %}?id={{ user.id }}">
 						<div class="u-avatar">
-							<img class="ucard-bg" src="/public/theme/home/style/img/td_bg.png" alt="">
+							<img class="ucard-bg" src="{% static 'home/images/td_bg.png' %}" alt="">
 							<figure class="ucard-pic">
-								<a href="{:U('Home/User/index',null,null)}?np={$ut.open}">
-									<img src="/{$ut.img.path}{$ut.img.thumb}" alt="">
-								</a>
+								<img src="{% static user.user_photo %}" alt="">
 							</figure>
 						</div>
 						<div class="u-pannel">
-							<h3 class="u-name"><a href="{:U('Home/User/index',null,null)}?np={$ut.open}">{$ut.nick}</a></h3>
-							<p class="u-sign ellipsis">{$ut.sign}</p>
+							<h3 class="u-name">{{ user.user_name }}</h3>
+							<p class="u-sign ellipsis">{{ user.signature }}</p>
 						</div>
+						</a>
 					</div>
 				</foreach>
+				{% endfor %}
+
 			</div>
 		</div>
 	</div>
@@ -224,43 +183,31 @@
 					<h2 class="ch-title">精彩游记攻略</h2>
 					<p class="ch-word">美丽就在笔尖</p>
 				</div>
-				<div class="ch-more"><a href="{:U('Home/Notes/Index')}">更多</a></div>
+				<div class="ch-more"><a href="{% url 'home:travelnotes' %}">更多</a></div>
 			</div>
 			<div class="ch-body">
 				<div class="notes-list">
-					<!-- <div class="notes-item">
-                        <div class="note-pic fl"><a href="#"><img src="http://127.0.0.1:82/data/y/01.jpg" alt=""></a></div>
-                        <div class="note-content fl">
-                            <h4><a href="#">巴厘岛，每一次相遇都是奇迹</a></h4>
-                            <div class="note-ft">
-                                作者：<a class="notes-author" href="#">蘑菇张NKU</a>
-                                时间：<span class="notes-date">11-15 18:17</span>
-                                浏览：<span class="notes-view-num">31</span>
-                            </div>
-                            <p class="notes-abstract">
-                            【第一日】在云端 从忙碌的工作中暂时解脱出来，开始读一些书，也开始在购物车里丢进一些书名。在读的其中一本叫做《每一次相遇都是奇迹》，想读的其中一本叫做《我想遇见...
-                            </p>
-                        </div>
-                    </div> -->
+					{% for note in notes %}
 					<foreach name="notes" item='ns'>
 						<div class="notes-item">
-							<div class="note-pic fl"><a href="#"><img src="/{$ns.img.path}{$ns.img.thumb}" alt=""></a></div>
+							<div class="note-pic fl"><a href="#"><img src="{% static note.travel_image %}" alt=""></a></div>
 							<div class="note-content fl">
 								<h4>
-									<a href="{:U('Home/Notes/View',null,null)}?np={$ns.open}">{$ns.title}</a>
+									<a href="{% url 'front:noteview' %}?id={{ note.id }}">{{ note.travel_title }}</a>
 								</h4>
 								<div class="note-ft">
 									作者：<a class="notes-author"
-										  href="{:U('Home/User/Index',null,null)}?np={$ns.writer.open}">{$ns.writer.nick}</a>
-									时间：<span class="notes-date">{$ns.pubtime|date='Y-m-d',###}</span>
-									浏览：<span class="notes-view-num">{$ns.visted}</span>
+										  href="#">{{ note.travel_user.user_name }}</a>
+									时间：<span class="notes-date">{{ note.create_time }}</span>
+									浏览：<span class="notes-view-num">{{ note.notes_look }}</span>
 								</div>
 								<p class="notes-abstract">
-									{$ns.description}
+									{{ note.content_short }}
 								</p>
 							</div>
 						</div>
 					</foreach>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
@@ -268,13 +215,15 @@
 			<div class="b-body">
 				<div class="b-top">
 					<h3 class="b-hd">新鲜事儿</h3>
-					<div class="b-more"><a href="{:U('Home/Info/index')}">更多</a></div>
+					<div class="b-more"><a href="{% url 'home:info' %}">更多</a></div>
 				</div>
 				<div class="b-list">
 					<ul class="b-link">
+						{% for info in infos|slice:':7' %}
 						<foreach name="arcs" item="a">
-							<li><a href="{:U('Home/Info/View',null,null)}?np={$a.open}">{$a.title}</a></li>
+							<li><a href="{% url 'front:infoshow' %}?id={{ info.id }}">{{ info.info_title }}</a></li>
 						</foreach>
+						{% endfor %}
 					</ul>
 				</div>
 			</div>
@@ -303,9 +252,9 @@
 			</ul>
 		</div>
 		<div class="ft-nav">
-			&nbsp;<a href="./le/protocol.html">用户协议</a>&nbsp;
-			&nbsp;<a href="./le/contact.html">联系我们</a>&nbsp;
-			&nbsp;<a href="./le/friends.html">友情链接</a>&nbsp;
+			&nbsp;<a href="#">用户协议</a>&nbsp;
+			&nbsp;<a href="#">联系我们</a>&nbsp;
+			&nbsp;<a href="#">友情链接</a>&nbsp;
 		</div>
 		<div class="le-copyright">
 			版权所有 翻版必究 &copy;2016 lelvyou.com

@@ -24,55 +24,59 @@
 <div class="le-wrapper">
     <div class="ntPage">
         <div class="ntb">
-
-            <h1 class="ntH1title">{$article.title}</h1>
+            <h1 class="ntH1title">{{ note.travel_title }}</h1>
             <div class="ntInfo">
                 <div class="ntFrom">
                     <span>作者:</span>
-                    <a href="{:U('Home/User/Index',null,null)}?np={$article.writer.open}" class="u-link">
-                       {$article.writer.nick}
+                    <a href="" class="u-link">
+                       {{ note.travel_user.user_name }}
                     </a>
                 </div>
                 <div class="ntPubtime">
                     <span>时间:</span>
-                    <span>{$article.pubtime|date='Y-m-d',###}</span>
+                    <span>{{ note.create_time }}</span>
                 </div>
                 <div class="ntPubtime">
                     <span>浏览:</span>
-                    <span>{$article.visted}</span>
+                    <span>{{ note.notes_look }}</span>
                 </div>
             </div>
         </div>
+
         <div class="ntDtx">
             <div class="ntdx fl">
 
-<div class="ntContent">
-   {$article.content|htmlspecialchars_decode}
-</div>
-<div class="ntCmt">
-    评论区
-</div>
+            <div class="ntContent">
+               {{ note.travel_content }}
+            </div>
+            <div class="ntCmt">
+                评论区
+            </div>
             </div>
             <div class="ntSide fr">
+
                 <div class="sideBar">
                     <div class="sideTop">
-                        <if condition="($article.thumb neq null)">
-                            <img src="/{$article.img.path}{$article.img.name}"/>
-                        </if>
+                        {% if hotnote.1.travel_image %}
+                            <img src="{% static hotnote.1.travel_image %}"/>
+                        {% endif %}
                     </div>
                 </div>
+
                 <div class="sideBar">
                     <h3 class="dt3hd">热门游记</h3>
                     <div class="dlist">
                         <ul class="jtzw">
+                        {% for note in hotnote %}
                         <foreach name="notes" item="n" key="nk">
-                            <li><p>{$nk+1}</p><a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">{$n.title}</a></li>
+                            <li><p>{{ forloop.counter }}</p><a href="{% url 'front:noteview' %}?id={{ note.id }}">{{ note.travel_title }}</a></li>
                         </foreach>
+                        {% endfor %}
                         </ul>
                     </div>
                     <div class="vMore">
                         <div class="vmp">
-                            <a href="{:U('Home/Notes/index')}" class="vlink">查看更多游记</a>
+                            <a href="{% url 'home:travelnotes' %}" class="vlink">查看更多游记</a>
                         </div>
                     </div>
                 </div>

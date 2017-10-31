@@ -35,6 +35,10 @@ class UserManage(models.Manager):
         user.signature = post(request, 'sign')
         user.save()
 
+    # 根据个人主页浏览量　获取旅游达人
+    def get_travel_user(self):
+        return self.all().order_by('-user_look')
+
 
 # 用户模型类
 class User(AbstractModel):
@@ -49,6 +53,8 @@ class User(AbstractModel):
     gender = models.BooleanField(default=1)
     birthday = models.CharField(max_length=10,  blank=True, null=True)
     user_photo = models.ImageField(default='')
+    # 个人主页浏览量
+    user_look = models.IntegerField(default=0)
     objects = UserManage()
 
 
@@ -77,6 +83,10 @@ class TravelNotesManager(models.Manager):
         tnotes.travel_content = post(request, 'content')
         tnotes.content_short = post(request, 'content_short')
         tnotes.save()
+
+    # 获取热门游记
+    def get_hot_travel_notes(self):
+        return self.all().order_by('-notes_look')
 
 
 # 用户游记类
@@ -112,6 +122,10 @@ class UserAlbumManager(models.Manager):
             albums.append(album)
         return albums
 
+    # 获取热门相册
+    def get_hot_album(self):
+        return self.all().order_by('-album_look')
+
 
 # 用户相册
 class UserAlbum(AbstractModel):
@@ -142,13 +156,21 @@ class AlbumImage(AbstractModel):
 
 # 资讯模型管理类
 class InformationManager(models.Manager):
-    pass
+    # 获取最新资讯
+    def get_new_info(self):
+        return self.all().order_by('-id')
+
+    # 获取阅读量最高的资讯
+    def get_read_many(self):
+        return self.all().order_by('-info_look')
 
 
 # 资讯信息模型类
 class Information(AbstractModel):
     # 标题
     info_title = models.CharField(max_length=20)
+    # 资讯标识图片
+    info_image = models.ImageField(default='')
     # 发布者
     info_user = models.CharField(max_length=20)
     # 资讯浏览量

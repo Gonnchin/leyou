@@ -26,42 +26,42 @@
     <div class="spz">
         <div class="flashBox">
 
-<div class="focusBox" style="margin:0 auto">
-        <ul class="pic">
-        <foreach name="dflist" item="f">
-                <li><a href="{$f.link}"><img src="/{$f.img.path}{$f.img.name}"/></a></li>
-        </foreach>
-        </ul>
-        <div class="txt-bg"></div>
-        <div class="txt">
-            <ul>
-            <foreach name="dflist" item="f">
-                    <li><a href="{$f.link}">{$f.title}</a></li>
-            </foreach>
+        <div class="focusBox" style="margin:0 auto">
+            {% for info in order_infos %}
+            <ul class="pic">
+                <foreach name="dflist" item="f">
+                        <li><a href="#"><img src="{% static info.info_image %}"/></a></li>
+                </foreach>
             </ul>
-        </div>
-        <ul class="num">
-            <foreach name="dflist" item="f"  key="k">
-            <li><a>{$k+1}</a><span></span></li>
-            </foreach>
-        </ul>
-</div>
-
+            {% endfor %}
+            <div class="txt-bg"></div>
+            <div class="txt">
+                <ul>
+                <foreach name="dflist" item="f">
+                        <li><a href="#"></a></li>
+                </foreach>
+                </ul>
+            </div>
+            <ul class="num">
+                <foreach name="dflist" item="f"  key="k">
+                <li><a href="#">{{ forloop.counter }}</a><span></span></li>
+                </foreach>
+            </ul>
 
         </div>
     </div>
+    </div>
+
     <div class="spy">
        <div class="fly">
+
             <ul>
                 <dl>站内公告</dl>
                 <foreach name="notice" item="n">
-                    <li><a href="{:U('Home/Info/NoticeView',null,null)}?id={$n.id}">{$n.title}</a></li>
+                    <li><a href="#">网站维护公告一</a></li>
                 </foreach>
-
-<!--                 <li><a href="#">公告二.</a></li>
-                <li><a href="#">公告三.</a></li>
-                <li><a href="#">公告四.</a></li>-->
             </ul>
+
         </div>
     </div>
 </div>
@@ -72,22 +72,17 @@
     <div class="liszw">
         <h3 class="list-title">新鲜事</h3>
         <ul>
-<foreach name="arcs" item="a">
+            {% for info in infos %}
+            <foreach name="arcs" item="a">
             <li>
-                <span>{$a.pubtime|date='Y-m-d',###}</span>
-                <a href="{:U('Home/Info/View',null,null)}?np={$a.open}">{$a.title}</a>
-                <p>{$a.description}
-                <font class="lixb">[<a href="{:U('Home/Info/View',null,null)}?np={$a.open}">阅读全文</a>]</font>
-                </p>
-            </li>
-</foreach>
-<!--             <li>
-                <span>2014-08-07</span>
-                <a href="#">有了这九种感情，才叫做爱情...</a>
-                <p>有了这九种感情，才叫做爱情。爱他，就崇拜他。爱她，就赞美她。 第一种 美丽的感觉 俗话说情人眼里出西施，所以在有爱情的时候，你一定会...
+                <span>{{ info.create_time }}</span>
+                <a href="#">{{ info.info_title }}</a>
+                <p>{{ info.info_title }}
                 <font class="lixb">[<a href="#">阅读全文</a>]</font>
                 </p>
-            </li> -->
+            </li>
+            </foreach>
+            {% endfor %}
         </ul>
     </div>
     <div class="fenye">{$page}</div>
@@ -100,10 +95,11 @@
     <div id="tablist1">
         <div class="jtzw ">
             <ul>
+            {% for info in order_infos %}
             <foreach name="sArc" key="sk" item="sa">
-                <li><p>{$sk+1}</p><a href="{:U('Home/Info/View',null,null)}?np={$sa.open}">{$sa.title}</a></li>
+                <li><p>{{ forloop.counter }}</p><a href="#">{{ info.info_title }}</a></li>
             </foreach>
-                <!-- <li><p>2</p><a href="#">22222222222失去了你</a></li> -->
+            {% endfor %}
             </ul>
         </div>
     </div>
@@ -119,8 +115,8 @@
 
 {# 底部js #}
 {% block footer_js %}
-<script type="text/javascript" src="{$Think.THEME}home/style/slider/jquery1.42.min.js"></script>
-<script type="text/javascript" src="{$Think.THEME}home/style/slider/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{% static 'home/js/jquery1.42.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/js/jquery.SuperSlide.2.1.1.js' %}"></script>
 <script>
 jQuery(".focusBox").slide({ titCell:".num li", mainCell:".pic",effect:"fold", autoPlay:true,trigger:"click",
             //下面startFun代码用于控制文字上下切换

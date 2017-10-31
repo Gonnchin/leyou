@@ -25,50 +25,30 @@
 <div class="notes">
 <foreach name="notes" item="n">
 <!--/note-box/-->
-<div class="note-box">
-    <div class="note-view">
-    <if condition="($n.thumb neq null)">
-        <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">
-            <img class="note-thumb" src="/{$n.img.path}{$n.img.name}" />
-        </a>
-    </if>
-        <div class="note-info">
-            <div class="note-title">
-                <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">{$n.title}</a>
-            </div>
-            <div class="note-author">
-                <a href="{:U('Home/User/index',null,null)}?np={$n.writer.open}">
-                    <img class="upic" src="/{$n.writer.img.path}{$n.writer.img.thumb}">
-                </a>
-                <a class="author-name" href="{:U('Home/User/index',null,null)}?np={$n.writer.open}" >{$n.writer.nick}</a>
-            </div>
-             <div class="note-des">{$n.description}</div>
-        </div>
-    </div>
-</div>
-<!--/note-box/-->
-</foreach>
-<!--/note-box/
+{% for note in notes %}
 <div class="note-box">
     <div class="note-view">
         <a href="#">
-            <img class="note-thumb" src="http://127.0.0.1:82/data/notes/5.jpg" />
+            <img class="note-thumb" src="{% static note.travel_image %}" />
         </a>
         <div class="note-info">
             <div class="note-title">
-                <a href="#">京城周边小众游，带你玩转唐山</a>
+                <a href="#">{{ note.note_title }}</a>
             </div>
             <div class="note-author">
-                <a href="#"><img class="upic" src="http://127.0.0.1:82/data/notes/t2.jpg"></a>
-                <a class="author-name" href="#" >lovemy凤凰</a>
+                <a href="#">
+                    <img class="upic" src="{% static note.travel_user.user_photo %}">
+                </a>
+                <a class="author-name" href="#" >{{ note.travel_user.user_name }}</a>
             </div>
-             <div class="note-des">夏日游海岛，恋上唐山湾
-京津冀一体化不...
-            </div>
+             <div class="note-des">{{ note.content_short }}</div>
         </div>
     </div>
 </div>
---/note-box/-->
+{% endfor %}
+<!--/note-box/-->
+</foreach>
+
 
 </div>
 </div>
