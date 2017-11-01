@@ -28,18 +28,18 @@
 {% for note in notes %}
 <div class="note-box">
     <div class="note-view">
-        <a href="#">
+        <a href="{% url 'front:noteview' %}?id={{ note.id }}">
             <img class="note-thumb" src="{% static note.travel_image %}" />
         </a>
         <div class="note-info">
             <div class="note-title">
-                <a href="#">{{ note.note_title }}</a>
+                <a href="{% url 'front:noteview' %}?id={{ note.id }}">{{ note.travel_title }}</a>
             </div>
             <div class="note-author">
-                <a href="#">
+                <a href="{% url 'front:noteview' %}?id={{ note.id }}">
                     <img class="upic" src="{% static note.travel_user.user_photo %}">
                 </a>
-                <a class="author-name" href="#" >{{ note.travel_user.user_name }}</a>
+                <a class="author-name" href="{% url 'front:userhome' %}?id={{ note.travel_user.id }}" >{{ note.travel_user.user_name }}</a>
             </div>
              <div class="note-des">{{ note.content_short }}</div>
         </div>

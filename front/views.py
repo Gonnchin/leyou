@@ -28,18 +28,20 @@ def userhome(request):
 
 # 用户游记
 def usernotes(request):
+    user = User.objects.get(id=int(get(request, 'id')))
     return render(request, 'front/userNotes.html', locals())
 
 
 # 用户个人资料
 def userinfo(request):
+    user = User.objects.get(id=int(get(request, 'id')))
     return render(request, 'front/userInfo.html', locals())
 
 
 # 用户相册
 def userphotos(request):
-
-    return render(request, 'front/userphotos.html', locals())
+    user = User.objects.get(id=int(get(request, 'id')))
+    return render(request, 'front/userPhotos.html', locals())
 
 
 # 游记详细页面
@@ -56,6 +58,17 @@ def infoshow(request):
     # 热门资讯
     hotinfo = Information.objects.get_read_many()
     return render(request, 'front/info_show.html', locals())
+
+
+# 用户相册内图片
+def photos(request):
+    user_album = UserAlbum.objects.get(id=int(get(request, 'id')))
+    # 热门相册
+    hotalbum = UserAlbum.objects.get_hot_album()
+    print('----', hotalbum[0].albumimage_set.all()[0].image)
+    return render(request, 'front/photolist.html', locals())
+
+
 
 # # 三亚
 # def sanya(request):

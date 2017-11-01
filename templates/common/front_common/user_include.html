@@ -1,0 +1,21 @@
+
+{% load staticfiles %}
+<div class="uHeader">
+    <div class="uPic">
+        <img src="{% static user.user_photo %}">
+    </div>
+    <div class="uInfo">
+        <div class="infoTop">
+            <h1 class="uH1n">{{ user.user_name }}</h1>
+            <div class="uSign">{{ user.signature }}</div>
+        </div>
+        <div class="navMenu">
+            <ul class="nMbar">
+                <li><a href="{% url 'front:userhome' %}?id={{ user.id }}">主页</a></li>
+                <li><a href="{% url 'front:usernotes' %}?id={{ user.id }}">游记</a></li>
+                <li><a href="{% url 'front:userphotos' %}?id={{ user.id }}">相册</a></li>
+                <li><a href="{% url 'front:userinfo' %}?id={{ user.id }}">个人资料</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

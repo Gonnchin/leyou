@@ -25,64 +25,45 @@
 
 <div class="uHome">
 <div class="le-wrapper98">
-    <div class="uHeader">
-        <div class="uPic">
-            <img src="/{$User.img.path}{$User.img.name}">
-        </div>
-        <div class="uInfo">
-            <div class="infoTop">
-                <h1 class="uH1n">{$User.nick}</h1>
-                <div class="uSign">{$User.sign}</div>
-            </div>
-            <div class="navMenu">
-                <ul class="nMbar">
-                    <li><a href="{:U('Home/User/index',null,null)}?np={$User.open}">主页</a></li>
-                    <li><a href="{:U('Home/User/Notes',null,null)}?np={$User.open}">游记</a></li>
-                    <li><a href="{:U('Home/User/Photos',null,null)}?np={$User.open}">相册</a></li>
-                    <li><a href="{:U('Home/User/Info',null,null)}?np={$User.open}">个人资料</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="uBody">
-        <div class="uBmian fl">
-            <h2 class="uH2n">相册</h2>
+
+    {# 用户头部公共部分 #}
+   {% include 'common/front_common/user_include.html' %}
+
+<div class="uBody">
+<div class="uBmian fl">
+<h2 class="uH2n">相册</h2>
 <div class="uChs">           
 <div class="uCh">
-    <div class="uPhotos">
+<div class="uPhotos">
 
-<if condition="($plist neq null)">
-    <foreach name="plist" item="p">
+{% if user.useralbm_set.all %}
+{% for album in user.useralbm_set.all %}
+<foreach name="User.pics" item="p">
         <div class="uAlbum">
-        <if condition="($p.thumb neq null)">
-            <img src="/{$p.img.path}{$p.img.thumb}" />
-        </if>
+            <img class="pupic" src="{% static album.albumimage_set.all.0.imge %}" />
             <h3 class="uH3tn">
-                <a href="{:U('Home/Photos/Album',null,null)}?np={$p.open}">{$p.title}</a>
+                <a href="{% url 'front:userphotos' %}?id={{ album.id }}">{{ album.album_name }}</a>
             </h3>
         </div>
-    </foreach>
-<else/>
+</foreach>
+{% endfor %}
+{% else %}
     <p style="text-align:center;padding:5px 0 20px;">暂无相册</p>
-</if>
+{% endif %}
         
-<!--         <div class="uAlbum">
-            <img class="pupic" src="./src/psb.jpg" />
-            <h3 class="uH3tn">
-                <a href="#link">美丽的淮师大</a>
-            </h3>
-        </div> -->
-    </div>
-    
-    <div class="ufPage">
-        {$page}
-    </div>
+</div>
+
+{% comment %}
+<div class="ufPage">
+    {$page}
+</div>
+{% endcomment %}
 </div>       
 </div> 
-        </div>
+</div>
 
-        {# 个人资料公共部分 #}
-        {% include 'common/front_common/user_common.html' %}
+{# 个人资料公共部分 #}
+{% include 'common/front_common/user_common.html' %}
 
 
     </div>

@@ -144,7 +144,6 @@ def keep_status(request):
     user = User.objects.user_by_email(post(request, 'user_email'))
     set_session(request, 'user_email', user.user_email)
     set_session(request, 'uid', user.id)
-    print('--------set_session', get(request, 'user_email'))
     set_session(request, 'user_name', user.user_name)
 
 

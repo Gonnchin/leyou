@@ -125,7 +125,7 @@
 				<div class="pic-list">
 				{% for album in albums %}
 				<figure class="le-pic">
-					<a href="#">
+					<a href="{% url 'front:photos' %}?id={{ album.id }}">
 						<img src="{% static album.albumimage_set.all.0.image %}" alt="">
 						<div class="fg-tile">{{ album.album_name }}</div>
 					</a>

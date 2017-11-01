@@ -35,8 +35,8 @@ def reg_info(request):
 # 用户中心主页
 def index(request):
     # # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
     user_name = get_session(request, 'user_name')
     return render(request, 'user/index.html', locals())
 
@@ -44,8 +44,8 @@ def index(request):
 # 用户相册
 def user_album(request):
     # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
 
     user_email = get_session(request, 'user_email')
     if request.method == 'POST':
@@ -64,8 +64,8 @@ def user_album(request):
 # 用户游记
 def utravel_notes(request):
     # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
 
     user_email = get_session(request, 'user_email')
 
@@ -84,24 +84,24 @@ def utravel_notes(request):
 # 用户消息
 def user_message(request):
     # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
     return render(request, 'user/umsg.html', locals())
 
 
 # 用户关注
 def user_concern(request):
     # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
     return render(request, 'user/unotice.html', locals())
 
 
 # 个人信息
 def user_info(request):
     # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
     if request.method == 'POST':
         # 更新用户信息
         update_uinfo(request)
@@ -118,8 +118,8 @@ def uinfo_update(request):
 # 密码管理
 def pwd_manage(request):
     # 判断是否登录
-    # if not user_is_login(request):
-    #     return redirect(reverse('users:login'))
+    if not user_is_login(request):
+        return redirect(reverse('users:login'))
     return render(request, 'user/upwd.html', locals())
 
 

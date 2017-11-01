@@ -24,32 +24,17 @@
 
 <div class="uHome">
 <div class="le-wrapper98">
-    <div class="uHeader">
-        <div class="uPic">
-            <img src="{% static user.user_photo %}">
-        </div>
-        <div class="uInfo">
-            <div class="infoTop">
-                <h1 class="uH1n">{{ user.user_name }}</h1>
-                <div class="uSign">{{ user.signature }}</div>
-            </div>
-            <div class="navMenu">
-                <ul class="nMbar">
-                    <li><a href="{% url 'front:userhome' %}">主页</a></li>
-                    <li><a href="{% url 'front:usernotes' %}">游记</a></li>
-                    <li><a href="{% url 'front:userphotos' %}">相册</a></li>
-                    <li><a href="{% url 'front:userinfo' %}">个人资料</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
+    {# 用户头部公共部分 #}
+   {% include 'common/front_common/user_include.html' %}
+
     <div class="uBody">
         <div class="uBmian fl">
             <h2 class="uH2n">主页</h2>
 
             <div class="uChs">
             <div class="uCh">
-                <div class="uPhotos">
+            <div class="uPhotos">
             {% if user.useralbm_set.all %}
             {% for album in user.useralbm_set.all %}
             <foreach name="User.pics" item="p">

@@ -26,11 +26,11 @@
     {% for album in albums %}
     <foreach name="plist" item="p">
         <li>
-            <a href="#"><img src="{% static album.albumimage_set.all.0.image %}"></a>
+            <a href="{% url 'front:photos' %}?id={{ album.id }}"><img src="{% static album.albumimage_set.all.0.image %}"></a>
             <div class="post-info">
                 <div class="post-basic-info">
-                    <h3><a href="#">{{ album.album_name }}</a></h3>
-                    <span><a href="#">{{ album.album_user.user_name }}</a></span>
+                    <h3><a href="{% url 'front:photos' %}?id={{ album.id }}">{{ album.album_name }}</a></h3>
+                    <span><a href="{% url 'front:userhome' %}?id={{ album.album_user.id }}">{{ album.album_user.user_name }}</a></span>
                     <p>{{ album.album_short }}</p>
                 </div>
             </div>

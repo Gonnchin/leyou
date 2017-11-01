@@ -11,7 +11,14 @@
         {% block title%}{% endblock title %}
     </title>
     <link href="{% static 'favicon.ico' %}" rel="SHORTCUT ICON" />
-
+    <script type="text/javascript" src="{% static 'home/js/jquery.min.js' %}"></script>
+    <script>
+        $(function () {
+            $('.le-nav').find('li').click(function () {
+                $(this).addClass("on");
+            });
+        });
+    </script>
     {# 顶部js部分 #}
     {% block head_js %}{% endblock head_js %}
 
@@ -42,7 +49,7 @@
     <nav class="le-header-nav">
         <div class="le-hd-wrapper clearfix">
             <ul class="le-nav clearfix">
-                <li class="le-m"><h3><a href="{% url 'home:index' %}">首页</a></h3></li>
+                <li class="le-m on"><h3><a href="{% url 'home:index' %}">首页</a></h3></li>
                 <li class="le-m"><h3><a href="{% url 'home:destination' %}">目的地攻略</a></h3></li>
                 <li class="le-m"><span>&nbsp;|&nbsp;</span></li>
                 <li class="le-m"><h3><a href="{% url 'home:photography' %}">摄影</a></h3></li>

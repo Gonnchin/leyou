@@ -26,21 +26,21 @@
 <div class="le-wrapper">
     <div class="photoContainer">
         <div class="photoHd">
-            <h1 class="pH1tn">{$photos.title}</h1>
+            <h1 class="pH1tn">{{ user_album.album_name }}</h1>
             <div class="pInfo">
                 <div class="ntFrom">
                     <span>作者:</span>
-                    <a href="{:U('Home/User/index',null,null)}?np={$photos.user.open}" class="u-link">
-                        {$photos.user.nick}
+                    <a href="{% url 'front:userhome' %}?id={{ user_album.album_user.id }}" class="u-link">
+                        {{ user_album.album_user.user_name }}
                     </a>
                 </div>
                 <div class="ntPubtime">
                     <span>时间:</span>
-                    <span>{$photos.create_time|date='Y-m-d',###}</span>
+                    <span>{{ user_album.create_time }}</span>
                 </div>
                 <div class="ntPubtime">
                     <span>浏览:</span>
-                    <span>{$photos.visted}</span>
+                    <span>{{ user_album.album_look }}</span>
                 </div>
             </div>
         </div>
@@ -49,13 +49,17 @@
                 <h3 class="ph3tn">图片列表</h3>
                 <div class="plist">
                     <div class="lPhotos">
+                    {% for image in user_album.albumimage_set.all %}
                     <foreach name="plist" item="p">
-                        <a class="lpic" i="/{$p.img.path}{$p.img.name}" href="#link"><img src="/{$p.img.path}{$p.img.thumb}" /></a>
+                        <a class="lpic" i="#" href="#link"><img src="{% static image.image %}" /></a>
                     </foreach>
+                    {% endfor %}
                     </div>
+                    {% comment %}
                     <div class="sPage">
                         {$page}
                     </div>
+                    {% endcomment %}
                 </div>
             </div>
             <div class="photoSide fr">
@@ -64,17 +68,19 @@
                     <ul class="imgliBox">
                         <foreach name="photos.splist" item="sp">
                             <li>
-                                <a href="{:U('Home/Photos/Album',null,null)}?np={$sp.open}">
-                                    <img src="/{$sp.img.path}{$sp.img.thumb}">
-                                    <span>{$sp.title}</span>
+                                {% for album in hotalbum %}
+                                <a href="{% url 'front:photos' %}?id={{ album.id }}">
+                                    <img src="{% static album.albumimage_set.all.0.image %}">
+                                    <span>{{ album.album_name }}</span>
                                 </a>
+                                {% endfor %}
                             </li>
                         </foreach>
                     </ul>
                 </div>
                 <div class="pMore">
                     <div class="pmp"> 
-                        <a href="{:U('Home/Photos/index')}" class="vlink">查看更多相册</a>
+                        <a href="{% url 'home:travelnotes' %}" class="vlink">查看更多相册</a>
                     </div>
                 </div> 
             </div>

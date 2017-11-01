@@ -27,13 +27,13 @@
         <div class="flashBox">
 
         <div class="focusBox" style="margin:0 auto">
+            {# 幻灯片部分 #}
             {% for info in order_infos %}
             <ul class="pic">
                 <foreach name="dflist" item="f">
-                        <li><a href="#"><img src="{% static info.info_image %}"/></a></li>
+                        <li><a href="{% url 'front:infoshow' %}?id={{ info.id }}"><img src="{% static info.info_image %}"/></a></li>
                 </foreach>
             </ul>
-            {% endfor %}
             <div class="txt-bg"></div>
             <div class="txt">
                 <ul>
@@ -47,6 +47,7 @@
                 <li><a href="#">{{ forloop.counter }}</a><span></span></li>
                 </foreach>
             </ul>
+          {% endfor %}
 
         </div>
     </div>
@@ -76,16 +77,18 @@
             <foreach name="arcs" item="a">
             <li>
                 <span>{{ info.create_time }}</span>
-                <a href="#">{{ info.info_title }}</a>
+                <a href="{% url 'front:infoshow' %}?id={{ info.id }}">{{ info.info_title }}</a>
                 <p>{{ info.info_title }}
-                <font class="lixb">[<a href="#">阅读全文</a>]</font>
+                <font class="lixb">[<a href="{% url 'front:infoshow' %}?id={{ info.id }}">阅读全文</a>]</font>
                 </p>
             </li>
             </foreach>
             {% endfor %}
         </ul>
     </div>
+     {% comment %}
     <div class="fenye">{$page}</div>
+     {% endcomment %}
 </div>
 
 
@@ -97,7 +100,7 @@
             <ul>
             {% for info in order_infos %}
             <foreach name="sArc" key="sk" item="sa">
-                <li><p>{{ forloop.counter }}</p><a href="#">{{ info.info_title }}</a></li>
+                <li><p>{{ forloop.counter }}</p><a href="{% url 'front:infoshow' %}?id={{ info.id }}">{{ info.info_title }}</a></li>
             </foreach>
             {% endfor %}
             </ul>

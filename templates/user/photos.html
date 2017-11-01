@@ -49,9 +49,10 @@
         {% if albums %}
             {% for album in current_pag %}
             <foreach name="plist" item="p">
-                <li>
+                <li><a href="{% url 'front:photos' %}?id={{ album.id }}">
                     <span><img src="{% static album.albumimage_set.all.0.image %}" /></span>
-                    <h2><a href="">{{ album.album_name }}</a></h2>
+                    <h2>{{ album.album_name }}</h2>
+                    </a>
                     <p>
                         <a href="#">编辑</a>&nbsp;&nbsp;
                         <a href="#">删除</a>

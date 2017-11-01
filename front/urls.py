@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^noteview/$', views.noteview, name='noteview'),
     # 资讯详细页面
     url(r'^infoshow/$', views.infoshow, name='infoshow'),
+    # 用户相册内图片
+    url(r'^photos/$', views.photos, name='photos'),
 
 
 

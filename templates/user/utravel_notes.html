@@ -52,7 +52,7 @@
                         <h4 class="ns-title"><a href="#">{{ notes.travel_title }}</a></h4>
                         <div class="ns-content fl">
                             <div class="ns-pic fl">
-                                <a href="#">
+                                <a href="{% url 'front:noteview' %}?id={{ notes.id }}">
                                     <img src="{% static notes.travel_image %}" alt="">
                                 </a>
                             </div>

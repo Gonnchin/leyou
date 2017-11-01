@@ -25,78 +25,67 @@
 
 <div class="uHome">
 <div class="le-wrapper98">
-    <div class="uHeader">
-        <div class="uPic">
-            <img src="/{$User.img.path}{$User.img.name}">
-        </div>
-        <div class="uInfo">
-            <div class="infoTop">
-                <h1 class="uH1n">{$User.nick}</h1>
-                <div class="uSign">{$User.sign}</div>
-            </div>
-            <div class="navMenu">
-                <ul class="nMbar">
-                    <li><a href="{:U('Home/User/index',null,null)}?np={$User.open}">主页</a></li>
-                    <li><a href="{:U('Home/User/Notes',null,null)}?np={$User.open}">游记</a></li>
-                    <li><a href="{:U('Home/User/Photos',null,null)}?np={$User.open}">相册</a></li>
-                    <li><a href="{:U('Home/User/Info',null,null)}?np={$User.open}">个人资料</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="uBody">
-        <div class="uBmian fl">
-            <h2 class="uH2n">主页</h2>
+    {# 用户头部公共部分 #}
+   {% include 'common/front_common/user_include.html' %}
+
+<div class="uBody">
+<div class="uBmian fl">
+<h2 class="uH2n">主页</h2>
 <div class="uChs">           
 
 <div class="uCh">
-    <div class="untlist">
+<div class="untlist">
 
 <ul>
-<if condition="($notes neq null)">
-<foreach name="notes" item="n">
+
+{% if user.travelnotes_set.all %}
+{% for note in user.travelnotes_set.all %}
+<foreach name="User.notes" item="n">
     <li class="uNt">
         <h3 class="unH3t">
-            <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}">{$n.title}</a>
+            <a href="{% url 'front:noteview' %}?id={{ note.id }}">{{ note.travel_title }}</a>
         </h3>
         <div class="ntCtx">
             <if condition="($n.thumb neq null)">
                 <div class="ntImg">
-                    <img src="/{$n.img.path}{$n.img.name}">
+                    <img src="{% static note.travel_image %}">
                 </div>
             </if>
-            <p>{$n.description}</p>
+            <p>{{ note.content_short }}</p>
         </div>
         <div class="ntInfo">
             <div class="ntPubtime">
                 <span>发布时间:</span>
-                <span>{$n.pubtime|date='Y-m-d',###}</span>
+                <span>{{ note.create_time }}</span>
             </div>
             <div class="ntFrom">
-                <span>浏览({$n.visted})</span>
-            </div>  
+                <span>浏览({{ note.note_look }})</span>
+            </div>
         </div>
     </li>
 </foreach>
-<else/>
+{% endfor %}
+{% else %}
     <p style="text-align:center;padding:5px 0 20px;">暂无游记</p>
-</if>
-</ul>
+{% endif %}
 
-    </div>
-    
-    <div class="ufPage">
-        {$page}
-    </div>
+
+</ul>
+</div>
+{% comment %}
+<div class="ufPage">
+    {$page}
+</div>
+{% endcomment %}
 </div>                
 </div> 
-        </div>
+</div>
 
-        {# 个人资料公共部分 #}
-        {% include 'common/front_common/user_common.html' %}
+{# 个人资料公共部分 #}
+{% include 'common/front_common/user_common.html' %}
 
 
-    </div>
+</div>
 </div>
 </div>
 
