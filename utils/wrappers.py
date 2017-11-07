@@ -33,7 +33,7 @@ def get_messages(request):
     info = dict()
     for msg in info_list:
         # 取出来的是对象，转换成字符串
-        content = str(msg).split()
+        content = str(msg).split(':')
         info[content[0]] = content[1]
     return info
 

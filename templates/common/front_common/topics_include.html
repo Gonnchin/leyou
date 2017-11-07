@@ -3,6 +3,6 @@
 <p class="juli"><span>{{ view.view_name }}</span></p>
 <div><span>推荐指数：</span>{% for i in view.view_score|myrange %}☆{% endfor %}</div>
 <div class="list_word"><span>景区看点：</span><em>{{ view.view_spot }}</em></div>
-<div><span>驴友指点：</span>{{ view.view_introduce }}</div>
-<div><span>景点描述：</span>{{ view.view_introduce }}</div>
+<div><span>驴友指点：</span>{{ view.view_introduce|slice:':23' }}</div>
+<div><span>景点描述：</span>{{ view.view_describe|slice:':40' }}</div>
 

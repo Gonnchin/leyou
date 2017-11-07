@@ -152,8 +152,8 @@
 			<div class="dt-list">
 				{% for user in travel_users %}
 				<foreach name="tourist" item="ut">
+					<a href="{% url 'front:userhome' %}?id={{ user.id }}">
 					<div class="dt-card">
-						<a href="{% url 'front:userhome' %}?id={{ user.id }}">
 						<div class="u-avatar">
 							<img class="ucard-bg" src="{% static 'home/images/td_bg.png' %}" alt="">
 							<figure class="ucard-pic">
@@ -164,8 +164,8 @@
 							<h3 class="u-name">{{ user.user_name }}</h3>
 							<p class="u-sign ellipsis">{{ user.signature }}</p>
 						</div>
-						</a>
 					</div>
+					</a>
 				</foreach>
 				{% endfor %}
 

@@ -1,0 +1,2 @@
+{{ object.view_name }}
+{{ object.view_spot }}

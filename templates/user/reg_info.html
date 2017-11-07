@@ -12,7 +12,15 @@
 
 {# 顶部js,css #}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+<link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+<style>
+    .error_tip_info{
+        font-size: 10px;
+        color: red;
+        padding-left: 30px;
+        float: left;
+    }
+</style>
 {% endblock head %}
 
 {# 网页主体部分内容 #}
@@ -27,7 +35,9 @@
             <input type="text" style="display: none" name="user_email" value="{{ user_email }}">
 
             <p><input placeholder="昵称" class="txtin" type="text" name="user_name"/></p>
+            <span class="error_tip_info" >{{ info.user_name }}</span>
             <p><input placeholder="生日" class="txtin" type="text" name="brithday"/></p>
+            <span class="error_tip_info" >{{ info.user_brithday }}</span>
             <p class="reg_p">
                 <label class="le-fltxt">性别:</label>
                 <cite>
@@ -36,6 +46,7 @@
                 </cite>
             </p>
             <p><input placeholder="手机号" class="txtin" type="text" name="user_tel"/></p>
+            <span class="error_tip_info" >{{ info.user_tel }}</span>
             <p><input placeholder="居住地" class="txtin" type="text" name="user_addr"/></p>
             <p><input placeholder="个人签名" class="txtin" type="text" name="sign"/></p>
             <p><button type="submit">注册</button></p>

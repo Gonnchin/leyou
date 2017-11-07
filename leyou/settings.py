@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f*rs!h0yo3-2_s=o@e(ws0hd_tn6w9v(*t^m(5u)7gjx0rrgz9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'front',
     'home',
     'tinymce',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,12 +110,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'static/home/images/cag_image'),
-    os.path.join(BASE_DIR, 'static/home/images/view_image'),
-    os.path.join(BASE_DIR, 'static/uploadimage'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+#     os.path.join(BASE_DIR, 'static/home/images/cag_image'),
+#     os.path.join(BASE_DIR, 'static/home/images/view_image'),
+#     os.path.join(BASE_DIR, 'static/uploadimage'),
+#     os.path.join(BASE_DIR, 'static/front/image'),
+# ]
 
 # 配置静态文件上传路径
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploadimage')
@@ -148,3 +150,19 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_buttons1': 'bold, italic, underline, strikethrough, justifyleft, justifycenter, justifyright, justifyfull, styleselect, bullist, numlist, outdent, indent, undo,redo, link, unlink, image, cleanup, help, code, table, row_before, row_after, delete_row, separator, rowseparator',
     'theme_advanced_buttons2': 'col_before, col_after, delete_col, hr, removeformat, sub, sup, formatselect, fontselect, fontsizeselect, forecolor,charmap,visualaid,spacer,cut,copy,paste'
 }
+
+# ------全文检索------
+HAYSTACK_CONNECTIONS = {
+   'default': {
+        # 使用whoosh引擎
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        # 索引文件路径
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+        }
+}
+# 当添加、修改、删除数据时，自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+
+

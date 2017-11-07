@@ -11,6 +11,8 @@
         {% block title%}{% endblock title %}
     </title>
     <link href="{% static 'favicon.ico' %}" rel="SHORTCUT ICON" />
+    <link rel="stylesheet" href="{% static 'home/css/common.css' %}">
+
     <script type="text/javascript" src="{% static 'home/js/jquery.min.js' %}"></script>
     <script>
         $(function () {
@@ -31,8 +33,8 @@
     <div class="le-hd-wrapper clearfix">
         <h1 class="logo"></h1>
         <div class="le-hd-so">
-            <form class="so-form clearfix" name="so-form" method="get" action="###">
-                <input name="so" class="so-word" type="text"
+            <form class="so-form clearfix" name="so-form" action="/search/", method="get">
+                <input name="q" class="so-word" type="text"
                        placeholder="搜索感兴趣的内容"
                        maxlength="256" autocomplete="off">
                 <button type="submit" class="so-btn"></button>

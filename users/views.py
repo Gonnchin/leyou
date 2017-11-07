@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .functions import *
 from .models import *
 from django.core.urlresolvers import reverse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .tasks import *
 import random
 
@@ -203,5 +203,23 @@ def logoff(request):
     return redirect(reverse("users:login"))
 
 
+# 验证码
+def verification_code(request):
+    # 生成随机字符序列
+    random_string = generate_random_string(request)
+    # 创建图片对象
+    verify_image = create_base_image()
+    # 创建对图片(verify_image)的画笔
+    pen_for_image = ImageDraw.Draw(verify_image)
+    # 将随机字符绘制到图片上
+    draw_random_string(pen_for_image, random_string)
+    # 绘制图片干扰点
+    draw_disturb_point(pen_for_image)
+
+    # 将图片数据暂存到内存中
+    image_data = BytesIO()
+    verify_image.save(image_data, 'png')
+
+    return HttpResponse(image_data.getvalue(), 'image/png')
 
 

@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^front/', include('front.urls', namespace='front', app_name='front')),
     url(r'^home/', include('home.urls', namespace='home', app_name='home')),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^search/', include('haystack.urls')),
 ]

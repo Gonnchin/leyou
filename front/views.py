@@ -15,7 +15,7 @@ def detail(request):
 # 专题页面
 def topics(request):
     # 获取某类景点中的10个热门景点
-    hotview = Scenes.objects.hot_view_byid(int(get(request, 'cag')))[:10]
+    hotview = Scenes.objects.hot_view_byid(int(get(request, 'cag')))
     cag = Category.objects.get(id=int(get(request, 'cag')))
     return render(request, 'front/topics.html', locals())
 

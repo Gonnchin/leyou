@@ -82,22 +82,16 @@
                         <if condition="($photos neq null)">
                         <foreach name="photos" item="p">
                                 <div class="dAlbum">
-                                    <img class="dpic" src="/{$p.img.path}{$p.img.thumb}" />
+                                    <img class="dpic" src="" />
                                     <h3 class="dH3tn">
-                                        <a href="{:U('Home/Photos/Album',null,null)}?np={$p.open}">{$p.title}</a>
+                                        <a href="#">title</a>
                                     </h3>
                                 </div>
                         </foreach>
                         <else/>
                             <p style="text-align:center;padding:5px 0 20px;">暂无相关相册</p>
                         </if>
-            <!--
-                <div class="dAlbum">
-                    <img class="dpic" src="./src/s_11.jpg" />
-                    <h3 class="dH3tn">
-                        <a href="#link">美丽的颐和园</a>
-                    </h3>
-                </div> -->
+
             </div>
             <div class="vMore">
                 <div class="vmp">
@@ -112,75 +106,53 @@
         <h2 class="h2tn">
             <span>精选景区游记</span>
         </h2>
-        <div class="tnBd">
+            <div class="tnBd">
             <div class="ntlist">
 
-<if condition="($notes neq null)">
-<foreach name="notes" item="n">                            
-        <div class="dtNt">
-            <h3 class="nH3t">
-                <a href="{:U('Home/Notes/View',null,null)}?np={$n.open}" target="_blank">{$n.title}</a>
-            </h3>
-            <div class="ntCtx">
-                <if condition="($n.thumb neq null)">
-                    <div class="ntImg">
-                        <img src="/{$n.img.path}{$n.img.name}">
+            <if condition="($notes neq null)">
+            <foreach name="notes" item="n">
+                    <div class="dtNt">
+                        <h3 class="nH3t">
+                            <a href="#" target="_blank">title</a>
+                        </h3>
+                        <div class="ntCtx">
+                            <if condition="($n.thumb neq null)">
+                                <div class="ntImg">
+                                    <img src="#">
+                                </div>
+                            </if>
+                            <p></p>
+                        </div>
+                        <div class="ntInfo">
+                            <div class="ntFrom">
+                                <span>作者:</span>
+                                <a href="#" class="u-link" target="_blank">
+
+                                </a>
+                            </div>
+                            <div class="ntPubtime">
+                                <span>时间:</span>
+                                <span></span>
+                            </div>
+                        </div>
                     </div>
-                </if>
-                <p>{$n.description}</p>
+            </foreach>
+            <else/>
+                <p style="text-align:center;padding:5px 0 20px;">暂无相关游记</p>
+            </if>
+
             </div>
-            <div class="ntInfo">
-                <div class="ntFrom">
-                    <span>作者:</span>
-                    <a href="{:U('Home/User/Index',null,null)}?np={$n.writer.open}" class="u-link" target="_blank">
-                        {$n.writer.nick}
-                    </a>
-                </div>
-                <div class="ntPubtime">
-                    <span>时间:</span>
-                    <span>{$n.pubtime|date='Y-m-d',###}</span>
+                <div class="vMore">
+                    <div class="vmp">
+                        <a href="{% url 'home:travelnotes' %}" class="vlink" target="_blank">查看更多游记</a>
+                    </div>
                 </div>
             </div>
         </div>
-</foreach>
-<else/>
-    <p style="text-align:center;padding:5px 0 20px;">暂无相关游记</p>
-</if>
-                            <!-- <div class="dtNt">
-                                <h3 class="nH3t">
-                                    <a href="#nlink">美丽的颐和园游记</a>
-                                </h3>
-                                <div class="ntCtx">
-                                    <p>颐和园是我国现存规模最大，保存最完整的皇家园林。它原是清朝帝王的行宫和花园，以杭州西湖风景为蓝本，汲取江南园林的某些设计手法和意境而建成的一座大型天然山水园。</p>
-                                </div>
-                                <div class="ntInfo">
-                                    <div class="ntFrom">
-                                        <span>作者:</span>
-                                        <a href="#u-link" class="u-link">
-                                            小新的天空
-                                        </a>
-                                    </div>
-                                    <div class="ntPubtime">
-                                        <span>时间:</span>
-                                        <span>2017-3-25</span>
-                                    </div>
-                                </div>
-                            </div> -->
 
-
-                        </div>
-                        
-                        <div class="vMore">
-                            <div class="vmp"> 
-                                <a href="{% url 'home:travelnotes' %}" class="vlink" target="_blank">查看更多游记</a>
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="dtCH">
-                    <div class="dcmt">评论区</div>
-                </div>
+        <div class="dtCH">
+            <div class="dcmt">评论区</div>
+        </div>
 
             </div>
             <div class="dSide fr">
@@ -192,22 +164,22 @@
                 <div class="sideBar">
                     <h3 class="dt3hd">热门景点</h3>
 
-{% for view in hotview %}
-<div class="dlist">
-<foreach name="sd" item="si">
-    <div class="dtli">
-        <div class="dimg"><img src="{% static view.view_image %}"/></div>
-        <h2 class="dh2t"><a href="{% url 'front:detail' %}?id={{ view.id }}">{{ view.view_name }}</a></h2>
-    </div>
-</foreach>
-</div>
-{% endfor %}
+                    {% for view in hotview %}
+                    <div class="dlist">
+                    <foreach name="sd" item="si">
+                        <div class="dtli">
+                            <div class="dimg"><img src="{% static view.view_image %}"/></div>
+                            <h2 class="dh2t"><a href="{% url 'front:detail' %}?id={{ view.id }}">{{ view.view_name }}</a></h2>
+                        </div>
+                    </foreach>
+                    </div>
+                    {% endfor %}
 
-<div class="vMore">
-    <div class="vmp"> 
-        <a href="{% url 'home:destination' %}" class="vlink">查看更多景区</a>
-    </div>
-</div> 
+                    <div class="vMore">
+                        <div class="vmp">
+                            <a href="{% url 'home:destination' %}" class="vlink">查看更多景区</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>

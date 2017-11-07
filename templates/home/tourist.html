@@ -24,14 +24,15 @@
 <div class="dt-list">
 {% for user in users %}
 <foreach name="Users" item="u">
+    <a href="{% url 'front:userhome' %}?id={{ user.id }}">
     <div class="dt-box">
         <div class="u-avatar">
             <div class="u-nav">
-                <a href="#" class="ucard-pic fl">
+                <span class="ucard-pic fl">
                     <img src="{% static user.user_photo %}" alt="">
-                </a>
+                </span>
                 <div class="u-info">
-                    <h3 class="u-name"><a href="#">{{ user.user_name }}</a></h3>
+                    <h3 class="u-name"><span>{{ user.user_name }}</span></h3>
                     <div class="u-dt">
                         游记<span>{{ user.travelnotes_set.all|length }}</span>
                         相册<span>{{ user.useralbum_set.all|length }}</span>
@@ -43,6 +44,7 @@
             <p class="u-sign ellipsis">{{ user.signature }}</p>
         </div>
     </div>
+    </a>
 </foreach>
 {% endfor %}
 

@@ -34,9 +34,9 @@ class ScenesManager(models.Manager):
 
     # 根据景点类型id获取10个热门景点
     def hot_view_byid(self, cag_id):
-        return self.filter(view_category_id=cag_id).order_by('-view_look')[:9]
+        return self.filter(view_category_id=cag_id).order_by('-view_look')[:10]
 
-    # 根据景点类型name获取9个最新景点
+    # 根据景点类型name获10个最新景点
     def new_view_byname(self, cag_name):
         cag = Category.objects.filter(cag_name=cag_name)
         return self.filter(view_category=cag).order_by('-id')[:9]

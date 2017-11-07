@@ -1,5 +1,108 @@
 from django.test import TestCase
 from .models import *
+import random
+
+image_list = [
+ 'shanghu.jpg',
+ 'taihu.jpg',
+ 'xuanwuhu.jpg',
+ 'shouxihu.jpg',
+ 'yunlonghu.jpg',
+ 'yangchenghu.jpg',
+ 'weiminghu.jpg',
+ 'qinghaihu.jpg',
+ 'tiananmenchenglou.jpg',
+ 'yueyanglou.jpg',
+ 'yuejianglou.jpg',
+ 'yueyalou.jpg',
+ 'tengwangge.jpg',
+ 'kejiatulou.jpg',
+ 'yanyulou.jpg',
+ 'daguanlou.jpg'
+ 'jingsiyuan.jpg',
+ 'gulianhuachi.jpg',
+ 'shizilin.jpg',
+ 'tongluowan.jpg',
+ 'donghu.jpg',
+ 'xihu.jpg',
+ 'weiminghu.jpg',
+ 'qinghaihu.jpg',
+ 'tiananmenchenglou.jpg',
+ 'yueyanglou.jpg',
+ 'yuejianglou.jpg',
+ 'yueyalou.jpg',
+ 'tengwangge.jpg',
+ 'kejiatulou.jpg',
+ 'yanyulou.jpg',
+ 'tengwangge.jpg',
+ 'kejiatulou.jpg',
+ 'yanyulou.jpg',
+ 'daguanlou.jpg'
+ 'jingsiyuan.jpg',
+ 'gulianhuachi.jpg',
+ 'shizilin.jpg',
+ 'tongluowan.jpg',
+ 'donghu.jpg']
+# for i in range(1, 20):
+#     for i in image_list:
+#         img = AlbumImage()
+#         img.image_album_id = int(random.randint(1, 20))
+#         img.image = i
+#         img.save()
+
+# photo_list = ['u1.jpg', 'u2.jpg', 'u3.jpg', 'u4.jpg', 'u5.jpg']
+#
+# users = User.objects.all()
+# print('-----', len(users[1:]))
+# for i,u in enumerate(users[1:]):
+#     u.user_photo = photo_list[i]
+#     u.save()
+
+# a = "太湖风光、江南水乡、西湖、阅江楼、烟雨楼、青海湖、月牙楼、云龙湖、东湖、西湖、阅江楼、烟雨楼、青海湖、月牙楼、云龙湖、东湖、玄武湖、阅江楼、烟雨楼、青海湖、月牙楼、云龙湖、东湖、玄武湖"
+# view_names = a.split('、')
+# name = UserAlbum.objects.all()
+# for i,n in enumerate(name):
+#     n.album_name = view_names[i]
+#     n.save()
+
+
+
+
+
+
+
+#
+# s = ['薄荷街的香草先生', '海蓝了夏迷了眼睛', '青春谁作伴']
+# users = User.objects.all()
+# for i,u in enumerate(users[3:]):
+#     u.signature = s[i]
+#     u.save()
+#
+# con = ['以其秀丽的湖光山色和众多的名胜古迹而成为闻名中外的旅游胜地。西湖是目前中国列入《世界遗产名录》的世界遗产中唯一一处湖泊类文化遗产。',
+# '颐和园是我国现存规模最大，保存最完整的皇家园林。它原是清朝帝王的行宫和花园，以杭州西湖风景为蓝本，汲取江南园林的某些设计手法和意境而建成的一座大型天然山水园。']
+#
+# content = TravelNotes.objects.all()[:2]
+# for i,cont in enumerate(content):
+#     cont.content_short = con[i]
+#     cont.save()
+
+
+
+
+# note_list = TravelNotes.objects.all()
+# for i,note in enumerate(note_list):
+#     note.travel_image = image_list[i]
+#     note.save()
+#
+#
+# photo = AlbumImage.objects.all()
+# for i,image in enumerate(photo):
+#     image.image = image_list[i]
+#     image.save()
+
+
+
+
 
 # info = Information.objects.get(id=2)
 # info.info_title = '走进婺源，邂逅春天'

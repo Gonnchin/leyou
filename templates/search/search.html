@@ -1,0 +1,136 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乐旅网</title>
+    <link href="{% static 'favicon.ico' %}" rel="SHORTCUT ICON" />
+    <link rel="stylesheet" href="{% static 'front/css/g.css' %}">
+</head>
+<body>
+<div class="soHeader">
+
+<div class="so-hd-nav">
+    <div class="so-wrapper">
+        <ul class="so-nav clearfix">
+            <li><a href="{% url 'home:index' %}">首页</a></li>
+            <li><a href="{% url 'home:index' %}">目的地</a></li>
+            <li><a href="{% url 'home:photography' %}">摄影</a></li>
+            <li><a href="{% url 'home:travelnotes' %}">游记</a></li>
+            <li><a href="{% url 'home:tourist' %}">旅行家</a></li>
+            <li><a href="{% url 'home:info' %}">资讯</a></li>
+            <li><a href="{% url 'home:travel' %}">旅行社</a></li>
+        </ul>
+    </div>
+</div>
+<div class="subHd">
+    <div class="subInner">
+        <h1 class="so-logo">乐旅网</h1>
+        <div class="hd-so">
+            <form class="so-form clearfix" name="so-form" action="/search/", method="get"">
+                <input name="q" class="so-input" type="text" placeholder="搜索感兴趣的内容"
+                maxlength="256" value="">
+                <button type="submit" class="so-btn">搜索</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="mhtml">
+    <div class="soBody">
+        <div class="resultMsg">
+            共找到了<span>{{ page.length }}</span>条记录
+        </div>
+        <div class="resultContent">
+
+            <div class="reslist fl">
+
+        {% for parame in page %}
+            {% if parame.object.view_name %}
+            <foreach name="result.list" item="r">
+                    <div class="resItem">
+                        <h3 class="rH3t">
+                            <a href="{% url 'front:detail' %}?id={{ parame.object.id }}">{{ parame.object.view_name }}</a>&nbsp&nbsp<span>[景点]</span>
+                        </h3>
+                        <div class="rCtx">
+                            <div class="rImg">
+                                <a href="{% url 'front:detail' %}?id={{ parame.object.id }}"><img src="{% static parame.object.view_image %}"></a>
+                            </div>
+                            <p>{{ parame.object.view_introduce }}</p>
+                        </div>
+                    </div>
+            </foreach>
+            {% elif parame.object.travel_title %}
+            <foreach name="result.list" item="r">
+                <div class="resItem">
+                    <h3 class="rH3t">
+                        <a href="{% url 'front:noteview' %}?id={{ parame.object.id }}">{{ parame.object.travel_title }}</a>&nbsp&nbsp<span>[游记]</span>
+                    </h3>
+                    <div class="rCtx">
+                        <div class="rImg">
+                            <a href="{% url 'front:noteview' %}?id={{ parame.object.id }}"><img src="{% static parame.object.travel_image %}"></a>
+                        </div>
+                        <p>{{ parame.object.content_short }}</p>
+                    </div>
+                </div>
+            </foreach>
+            {% elif parame.object.album_name %}
+            <foreach name="result.list" item="r">
+                <div class="resItem">
+                    <h3 class="rH3t">
+                        <a href="{% url 'front:photos' %}?id={{ parame.object.id }}">{{ parame.object.album_name }}</a>&nbsp&nbsp<span>[相册]</span>
+                    </h3>
+                    <div class="rCtx">
+                        <div class="rImg">
+                            <a href="{% url 'front:photos' %}?id={{ parame.object.id }}"><img src="{% static parame.object.albumimage_set.all.0.image %}"></a>
+                        </div>
+                        <p>{{ parame.object.album_short }}</p>
+                    </div>
+                </div>
+            </foreach>
+            {% elif parame.object.info_title %}
+            <foreach name="result.list" item="r">
+                <div class="resItem">
+                    <h3 class="rH3t">
+                        <a href="{% url 'front:infoshow' %}?id={{ parame.object.id }}">{{ parame.object.info_title }}</a>&nbsp&nbsp<span>[资讯]</span>
+                    </h3>
+                    <div class="rCtx">
+                        <div class="rImg">
+                            <a href="{% url 'front:infoshow' %}?id={{ parame.object.id }}"><img src="{% static parame.object.info_image %}"></a>
+                        </div>
+                        <p>{{ parame.object.info_content|slice:':121' }}</p>
+                    </div>
+                </div>
+            </foreach>
+            {% else %}
+            <div class="resItem">未查询到相关结果</div>
+            {% endif %}
+            {% endfor %}
+
+</div>
+
+</div>
+{% comment %}
+<div class="sPage">
+    {$page}
+</div>
+{% endcomment %}
+
+</div>
+</div>
+
+<!--脚底部分-->
+<div class="so-footer clearfix">
+    <div class="so-wrapper">
+        <div class="ft-copy">
+            版权所有 翻版必究 &copy;2016 lelvyou.com
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

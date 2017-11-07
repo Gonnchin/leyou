@@ -56,7 +56,7 @@
                                     <img src="{% static notes.travel_image %}" alt="">
                                 </a>
                             </div>
-                            <p class="ns-abstract">{{ notes.content_short }}</p>
+                            <p class="ns-abstract">{{ notes.content_short|slice:':60' }}</p>
                         </div>
                         <div class="n-bottom">
                             <div>浏览<span>{{ notes.notes_look }}</span></div>

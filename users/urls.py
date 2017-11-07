@@ -33,9 +33,8 @@ urlpatterns = [
     url(r'^check_exist/$', views.check_exist, name='check_exist'),
     url(r'^send_email/$', views.send_email, name='send_email'),
     url(r'^login_handle/$', views.login_handle, name='login_handle'),
-    # 用户游记入库
-    # url(r'^save_travnotes/$', views.save_travnotes, name='save_travnotes'),
-
+    # 验证码
+    url(r'^verification_code/\d+/$', views.verification_code, name='verification_code'),
 
 ]
 

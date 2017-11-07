@@ -11,6 +11,15 @@
 {# 顶部js,css #}
 {% block head %}
     <link rel="stylesheet" href="{% static 'user/css/g.css' %}">
+    <script type="text/javascript" src="{% static 'user/js/jquery-1.12.4.min.js' %}"></script>
+    <style>
+        .error_tip_info{
+            font-size: 10px;
+            color: red;
+            padding-left: 30px;
+            float: left;
+        }
+    </style>
 {% endblock head %}
 
 {# 网页主体部分内容 #}
@@ -22,18 +31,21 @@
               method="post" action="{% url 'users:login_handle' %}">
             {% csrf_token %}
             <p>
-                <input placeholder="邮箱" type="text" class="txtin" id="userName" name="user_email"/>
+                <input placeholder="邮箱" type="text" class="txtin" value="{{ request.COOKIES.user_email }}" id="userName" name="user_email"/>
+                <span class="error_tip_info" >{{ info.user_email }}</span>
             </p>
             <p>
                 <input placeholder="密码" type="password" class="txtin" id="userPwd" name="user_pwd"/>
+                <span class="error_tip_info" >{{ info.user_pwd }}</span>
             </p>
             <div class="dVerify">
                 <input placeholder="验证码" type="text" id="verify" name="verify"/>
-                <img class="img-verify" src="">
+                <img class="img-verify" src="/users/verification_code/234/" onclick="javascript:this.src='/users/verification_code/'+ Math.ceil(Math.random()*1000) +'/'" />
+                <span class="error_tip_info" >{{ info.verify }}</span>
             </div>
             <div class="more_input clearfix">
-                <input type="checkbox" name="reme_name" style="margin: 0 0 0 29px">
-                <label >记住用户名</label>
+                <input type="checkbox" name="reme_email" style="margin: 0 0 0 29px">
+                <label >记住邮箱</label>
                 <a href="#"style="margin: 0 0 0 36px">忘记密码</a>
             </div>
             <p>

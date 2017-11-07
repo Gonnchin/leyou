@@ -78,20 +78,30 @@ def check_loginfo(request):
     email = post(request, 'user_email')
     pwd = post(request, 'user_pwd')
     user_pwd = password_encryption(pwd)
+    verify = post(request, 'verify')
+    verify_code = get_session(request, 'verify_code')
+    print('------', verify, verify_code)
     # 验证邮箱
     reg = '^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$'
     if not re.match(reg, email):
+        add_message(request, 'user_email', '邮箱格式不正确')
         return False
 
     # 验证密码
     if not (6 <= len(pwd) <= 20):
+        add_message(request, 'user_pwd', '邮箱或密码错误')
+        return False
+
+    # 判断验证码是否正确
+    if verify.lower() != verify_code.lower():
+        add_message(request, 'verify', '验证码不正确')
         return False
 
     user = User.objects.user_by_email(email)
     if user:
         if user.user_pwd == user_pwd:
             return True
-    add_message(request, 'user_pwd', '用户名或密码错误')
+    add_message(request, 'user_pwd', '邮箱或密码错误')
     return False
 
 
@@ -216,6 +226,57 @@ def update_uinfo(request):
     user.user_tel = user_tel
     user.save()
 
+# 验证码----------------------------------------------------
+
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
+from io import BytesIO
+import random
+
+
+# 绘制随机字符
+def generate_random_string(request):
+    # 随机字符串
+    chars = 'abcdefghijklmnopqrstuvwxyz123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    # 随机产生４个不同字符
+    random_chars = "".join(random.sample(chars, 4))
+    # 随机字符存储到session中
+    request.session['verify_code'] = random_chars
+
+    return random_chars
+
+
+# 获得图片背景颜色
+def draw_disturb_point(pen_for_image):
+    for _ in range(100):
+        # 随机生成干扰点位置
+        pos = (random.randint(0, 100), random.randint(0, 30))
+        # 随机生成点的颜色
+        color = (random.randint(0, 255), 255, random.randint(0, 255))
+        # 将点绘制到图片上
+        pen_for_image.point(pos, color)
+
+
+# 给图片绘制随机文字
+def draw_random_string(pen_for_image, random_string):
+    # 加载字体 字体所在目录:/usr/share/fonts/
+    my_font = ImageFont.truetype('FreeMono.ttf', 23)
+    # 设置字符颜色
+    my_color = (100, random.randrange(0, 100), random.randrange(0, 100))
+    # 绘制字符
+    for number, ch in enumerate(random_string):
+        pen_for_image.text((5 + number * 20, 2), ch, my_color, my_font)
+
+
+# 绘制基本图片
+def create_base_image():
+    # 定义图片背景颜色(RGB)
+    bg_color = (random.randrange(100, 255), random.randrange(100, 255), 200)
+    # 创建图片, 分别设置图片格式, 图片大小, 图片背景颜色
+    verify_image = Image.new('RGB', (100, 30), bg_color)
+
+    return verify_image
 
 
 
