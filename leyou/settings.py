@@ -126,11 +126,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 25
 # 发送邮件的邮箱
-EMAIL_HOST_USER = 'itcast888@163.com'
+EMAIL_HOST_USER = 'Python__test@163.com'
 # 在邮箱中设置的客户端授权密码
-EMAIL_HOST_PASSWORD = 'abc1234567890'
+EMAIL_HOST_PASSWORD = '123456pythontest'
 # 收件人看到的发件人
-EMAIL_FROM = 'python<itcast888@163.com>'
+EMAIL_FROM = 'python<python@163.com>'
 
 
 # ------配置celery----

@@ -220,6 +220,6 @@ def verification_code(request):
     image_data = BytesIO()
     verify_image.save(image_data, 'png')
 
-    return HttpResponse(image_data.getvalue(), 'image/png')
+    return HttpResponse(image_data.getvalue(), content_type='image/png')
 
 

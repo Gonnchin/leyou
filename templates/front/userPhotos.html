@@ -36,13 +36,13 @@
 <div class="uCh">
 <div class="uPhotos">
 
-{% if user.useralbm_set.all %}
-{% for album in user.useralbm_set.all %}
+{% if user.useralbum_set.all %}
+{% for album in user.useralbum_set.all %}
 <foreach name="User.pics" item="p">
         <div class="uAlbum">
-            <img class="pupic" src="{% static album.albumimage_set.all.0.imge %}" />
+            <img class="pupic" src="{% static album.albumimage_set.all.0.image %}" />
             <h3 class="uH3tn">
-                <a href="{% url 'front:userphotos' %}?id={{ album.id }}">{{ album.album_name }}</a>
+                <a href="{% url 'front:photos' %}?id={{ album.id }}">{{ album.album_name }}</a>
             </h3>
         </div>
 </foreach>
