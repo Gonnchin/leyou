@@ -31,7 +31,7 @@
 				<foreach name="flist" item="f">
 					<li >
 						<a href="{% url 'front:topics' %}?cag={{ cag.id }}" target="_blank">
-							<img src="{% static cag.background %}" alt="">
+							<img src="{% static cag.background %}" id="{{ cag.id }}:cag" alt="">
 						</a>
 					</li>
 				</foreach>
@@ -43,7 +43,7 @@
 			<ul>
 				{% for cag in hotcag|slice:':4' %}
 				<foreach name="flist" item="f">
-					<li><img src="{% static cag.background %}" /></li>
+					<li><img src="{% static cag.background %}" id="{{ cag.id }}:cag" /></li>
 				</foreach>
 				{% endfor %}
 			</ul>
@@ -69,14 +69,14 @@
 
 				<figure class="ld-fg2">
 					<a href="{% url 'front:detail' %}?id={{ hotview.0.id }}">
-						<img src="{% static hotview.0.view_image %}" alt="">
+						<img src="{% static hotview.0.view_image %}" id="{{ hotview.0.id }}:view" alt="">
 						<div class="fg-tile">{{ hotview.0.view_name }}</div>
 					</a>
 				</figure>
 				{% for view in hotview|slice:'1:' %}
 				<figure class="ld-fg">
 					<a href="{% url 'front:detail' %}?id={{ view.id }}" target="_blank">
-						<img src="{% static view.view_image %}" alt="">
+						<img src="{% static view.view_image %}" id="{{ view.id }}:view" alt="">
 						<div class="fg-tile">{{ view.view_name }}</div>
 					</a>
 				</figure>
@@ -87,7 +87,7 @@
 				{% for cag in hotcag|slice:'4:8' %}
 				<div class="dr-box">
 					<a href="{% url 'front:topics' %}?cag={{ cag.id }}" class="tlink" target="_blank">
-						<img src="{% static cag.cag_image %}">
+						<img src="{% static cag.cag_image %}" id="{{ cag.id }}:cag" >
 						<p>{{ cag.cag_name }}</p>
 					</a>
 				</div>
@@ -277,6 +277,19 @@
         autoPlay:true,
         delayTime:500
     });
+    $(function () {
+
+		$('img').each(function () {
+			$(this).one("mouseover", function () {
+			    id = $(this).attr('id');
+			    img = $(this);
+				$.get('/home/mini_image/?id='+id,function (data) {
+				    img.attr('src', data.image);
+				})
+        	})
+        })
+
+    })
 </script>
 
 {% endblock footer_js %}

@@ -2,6 +2,35 @@ from django.test import TestCase
 from .models import *
 import random
 
+# view_images = Scenes.objects.all()
+# for view in view_images:
+#     view.view_image = view.mini_image
+#     view.save()
+
+# cag_images = Category.objects.all()
+# for img in cag_images:
+#     img.mini_background = img.background
+#     img.save()
+
+
+# view_images = Scenes.objects.all()
+# for view in view_images:
+#     name, type1 = str(view.view_image).split('.')
+#     view.view_image = name + '_mini.' + type1
+#     view.save()
+#
+# cag_images = Category.objects.all()
+# for img in cag_images:
+#     # img.mini_background = img.background
+#     name, type1 = str(img.background).split('.')
+#     img.background = name + '_mini.' + type1
+#     img.save()
+
+
+
+
+
+
 
 
 
@@ -37,7 +66,7 @@ import random
 
 
 
-image_list = [
+# image_list = [
  # 'bishushanzhuang.jpg',
  # 'shajiabangjinianguan.jpg',
  # 'ludingqiaojinianguan.jpg',
@@ -56,99 +85,99 @@ image_list = [
  # 'chongshengsi.jpg',
  # 'zuozhengyuan.jpg',
  # 'liuyuan.jpg',
- 'geyuan.jpg',
- 'bishushanzhuang.jpg',
- 'yuanmingyuan.jpg',
- 'yiheyuan.jpg',
- 'yuyuan.jpg',
- 'jingsiyuan.jpg',
- 'gulianhuachi.jpg',
- 'shizilin.jpg',
- 'tongluowan.jpg',
- 'donghu.jpg',
- 'xihu.jpg',
- 'shanghu.jpg',
- 'taihu.jpg',
- 'xuanwuhu.jpg',
- 'shouxihu.jpg',
- 'yunlonghu.jpg',
- 'yangchenghu.jpg',
- 'weiminghu.jpg',
- 'qinghaihu.jpg',
- 'tiananmenchenglou.jpg',
- 'yueyanglou.jpg',
- 'yuejianglou.jpg',
- 'yueyalou.jpg',
- 'tengwangge.jpg',
- 'kejiatulou.jpg',
- 'yanyulou.jpg',
- 'daguanlou.jpg',
- 'penglaige.jpg',
- 'huanghelou.jpg',
- 'gugong.jpg',
- 'budalagong.jpg',
- 'yiheyuan.jpg',
- 'badalingchangcheng.jpg',
- 'zhuozhengyuan.jpg',
- 'beijingtiantan.jpg',
- 'mogaoku.jpg',
- 'huanghelou.jpg',
- 'wudangshan.jpg',
- 'yueyanglou.jpg',
- 'jiuzhaigou.jpg',
- 'taiyangdao.jpg',
- 'lushan.jpg',
- 'gudongsenlin.jpg',
- 'laya.jpg',
- 'dieshuihe.jpg',
- 'jingbohu.jpg',
- 'malinghe.jpg',
- 'huanggushu.jpg',
- 'xiningqingzhen.jpg',
- 'budalagong.jpg',
- 'emeishan.jpg',
- 'qingchengshan.jpg',
- 'dazhaosi.jpg',
- 'wutaishan.jpg',
- 'wofosi.jpg',
- 'putuoshan.jpg',
- 'wudangshan.jpg',
- 'wuyishan.jpg',
- 'taishan.jpg',
- 'emeishan.jpg',
- 'huangshan.jpg',
- 'huashan.jpg',
- 'wudangshan.jpg',
- 'hengshan.jpg',
- 'lushan.jpg',
- 'wuyishan.jpg',
- 'putuoshan.jpg',
- 'wutaishan.jpg',
- 'tongliguzhen.jpg',
- 'hexiaguzhen.jpg',
- 'jingdezhen.jpg',
- 'zhujiajiaoguzhen.jpg',
- 'shuheguzhen.jpg',
- 'baishaguzhen.jpg',
- 'huangyuanguzhen.jpg',
- 'xianggelilaguzhen.jpg',
- 'dangeerguzhen.jpg',
- 'xitangguzhen.jpg',
- 'yiheyuan.jpg',
- 'yuntaishan.jpg',
- 'taishan.jpg',
- 'laohushatan.jpg',
- 'xiangshawan.jpg',
- 'jingbohu.jpg',
- 'qingjiang.jpg',
- 'xikou.jpg',
- 'qingchengshan.jpg',
- 'nanjingdatushajinianguan.jpg',
- 'zhouenlaijinainguan.jpg',
- 'baiseqiyijinianguan.jpg',
- 'yangzhoubaguaijinianguan.jpg',
- 'leifengjinianguan.jpg'
-              ]
+ # 'geyuan.jpg',
+ # 'bishushanzhuang.jpg',
+ # 'yuanmingyuan.jpg',
+ # 'yiheyuan.jpg',
+ # 'yuyuan.jpg',
+ # 'jingsiyuan.jpg',
+ # 'gulianhuachi.jpg',
+ # 'shizilin.jpg',
+ # 'tongluowan.jpg',
+ # 'donghu.jpg',
+ # 'xihu.jpg',
+ # 'shanghu.jpg',
+ # 'taihu.jpg',
+ # 'xuanwuhu.jpg',
+ # 'shouxihu.jpg',
+ # 'yunlonghu.jpg',
+ # 'yangchenghu.jpg',
+ # 'weiminghu.jpg',
+ # 'qinghaihu.jpg',
+ # 'tiananmenchenglou.jpg',
+ # 'yueyanglou.jpg',
+ # 'yuejianglou.jpg',
+ # 'yueyalou.jpg',
+ # 'tengwangge.jpg',
+ # 'kejiatulou.jpg',
+ # 'yanyulou.jpg',
+ # 'daguanlou.jpg',
+ # 'penglaige.jpg',
+ # 'huanghelou.jpg',
+ # 'gugong.jpg',
+ # 'budalagong.jpg',
+ # 'yiheyuan.jpg',
+ # 'badalingchangcheng.jpg',
+ # 'zhuozhengyuan.jpg',
+ # 'beijingtiantan.jpg',
+ # 'mogaoku.jpg',
+ # 'huanghelou.jpg',
+ # 'wudangshan.jpg',
+ # 'yueyanglou.jpg',
+ # 'jiuzhaigou.jpg',
+ # 'taiyangdao.jpg',
+ # 'lushan.jpg',
+ # 'gudongsenlin.jpg',
+ # 'laya.jpg',
+ # 'dieshuihe.jpg',
+ # 'jingbohu.jpg',
+ # 'malinghe.jpg',
+ # 'huanggushu.jpg',
+ # 'xiningqingzhen.jpg',
+ # 'budalagong.jpg',
+ # 'emeishan.jpg',
+ # 'qingchengshan.jpg',
+ # 'dazhaosi.jpg',
+ # 'wutaishan.jpg',
+ # 'wofosi.jpg',
+ # 'putuoshan.jpg',
+ # 'wudangshan.jpg',
+ # 'wuyishan.jpg',
+ # 'taishan.jpg',
+ # 'emeishan.jpg',
+ # 'huangshan.jpg',
+ # 'huashan.jpg',
+ # 'wudangshan.jpg',
+ # 'hengshan.jpg',
+ # 'lushan.jpg',
+ # 'wuyishan.jpg',
+ # 'putuoshan.jpg',
+ # 'wutaishan.jpg',
+ # 'tongliguzhen.jpg',
+ # 'hexiaguzhen.jpg',
+ # 'jingdezhen.jpg',
+ # 'zhujiajiaoguzhen.jpg',
+ # 'shuheguzhen.jpg',
+ # 'baishaguzhen.jpg',
+ # 'huangyuanguzhen.jpg',
+ # 'xianggelilaguzhen.jpg',
+ # 'dangeerguzhen.jpg',
+ # 'xitangguzhen.jpg',
+ # 'yiheyuan.jpg',
+ # 'yuntaishan.jpg',
+ # 'taishan.jpg',
+ # 'laohushatan.jpg',
+ # 'xiangshawan.jpg',
+ # 'jingbohu.jpg',
+ # 'qingjiang.jpg',
+ # 'xikou.jpg',
+ # 'qingchengshan.jpg',
+ # 'nanjingdatushajinianguan.jpg',
+ # 'zhouenlaijinainguan.jpg',
+ # 'baiseqiyijinianguan.jpg',
+ # 'yangzhoubaguaijinianguan.jpg',
+ # 'leifengjinianguan.jpg'
+ #              ]
 
 # views = Scenes.objects.all()
 #

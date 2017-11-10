@@ -20,6 +20,8 @@ class Category(AbstractModel):
     cag_image = models.ImageField()
     # 背景图
     background = models.ImageField(default='')
+    # 压缩后的图片
+    mini_background = models.ImageField(default='')
     # 描述
     cag_describe = models.CharField(max_length=300, default='')
     objects = CategoryManager()
@@ -48,6 +50,8 @@ class Scenes(AbstractModel):
     view_name = models.CharField(max_length=20)
     # 标志图片
     view_image = models.ImageField()
+    # 压缩后的图片
+    mini_image = models.ImageField(default='')
     # 景点标题
     view_title = models.CharField(max_length=30)
     # 景点推荐指数

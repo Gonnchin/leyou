@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f*rs!h0yo3-2_s=o@e(ws0hd_tn6w9v(*t^m(5u)7gjx0rrgz9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -110,13 +110,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-#     os.path.join(BASE_DIR, 'static/home/images/cag_image'),
-#     os.path.join(BASE_DIR, 'static/home/images/view_image'),
-#     os.path.join(BASE_DIR, 'static/uploadimage'),
-#     os.path.join(BASE_DIR, 'static/front/image'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/home/images/cag_image'),
+    os.path.join(BASE_DIR, 'static/home/images/view_image'),
+    os.path.join(BASE_DIR, 'static/uploadimage'),
+    os.path.join(BASE_DIR, 'static/front/image'),
+]
 
 # 配置静态文件上传路径
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploadimage')
@@ -128,9 +128,9 @@ EMAIL_PORT = 25
 # 发送邮件的邮箱
 EMAIL_HOST_USER = 'Python__test@163.com'
 # 在邮箱中设置的客户端授权密码
-EMAIL_HOST_PASSWORD = '123456pythontest'
+EMAIL_HOST_PASSWORD = '123456pyth'
 # 收件人看到的发件人
-EMAIL_FROM = 'python<python@163.com>'
+EMAIL_FROM = 'python<itcast888@163.com>'
 
 
 # ------配置celery----
@@ -138,6 +138,7 @@ import djcelery
 djcelery.setup_loader()
 BROKER_URL = 'redis://127.0.0.1:6379/2'
 CELERY_IMPORTS = ('users.tasks')
+# CELERY_TASK_TIME_LIMIT = 60
 
 
 # ----- 富文本编辑器配置-----

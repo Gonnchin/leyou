@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from users.models import *
+from django.http import JsonResponse
 
 
 # 网站主页
@@ -17,7 +18,19 @@ def index(request):
     travel_users = User.objects.get_travel_user()[:5]
     # 获取2条精彩游记
     notes = TravelNotes.objects.get_hot_travel_notes()[:2]
+
     return render(request, 'home/index.html', locals())
+
+
+def mini_image(request):
+    data = get(request, 'id').split(':')
+    type1 = data[1]
+    id = int(data[0])
+    if type1 == 'cag':
+        image = '/static/' + str(Category.objects.get(id=id).mini_background)
+    elif type1 == 'view':
+        image = '/static/' + str(Scenes.objects.get(id=id).mini_image)
+    return JsonResponse({"image": image})
 
 
 # 目的地精选

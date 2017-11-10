@@ -257,7 +257,7 @@ def draw_disturb_point(pen_for_image):
         # 将点绘制到图片上
         pen_for_image.point(pos, color)
 
-
+    cmmi10.ttf
 # 给图片绘制随机文字
 def draw_random_string(pen_for_image, random_string):
     # 加载字体 字体所在目录:/usr/share/fonts/

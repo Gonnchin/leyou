@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'^info/$', views.info, name='info'),
     # 旅行社
     url(r'^travel_agency/$', views.travel_agency, name='travel'),
+    # 压缩图片
+    url(r'^mini_image/$', views.mini_image, name='mini_image'),
+
     ]
 
 
